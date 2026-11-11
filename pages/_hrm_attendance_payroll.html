@@ -1,0 +1,963 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link href="/hrm/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Manage &rsaquo; Payroll</title>
+    <link href="/hrm/Content/bd-css/csss?v=gHaYcIPRIdSx7Cqzwb0cpov_04ZJXbfBT5MQDA2WQEY1" rel="stylesheet"/>
+
+    
+    <link href="/hrm/Content/bd-css/manage_payroll?v=gSoN6pRO9Dr_QW6AC8N_r1jC-VQbnfwYFGqealuvl-E1" rel="stylesheet"/>
+
+
+
+<script>
+        IMS_CONFIG = {
+            PING: '/hrm/ping',
+            LOG_API: '/hrm/Api/GetData/LogDatas',
+            ARRALERT: [],
+            USERID: 'test',
+            TODAY: '2026-11-03'.replace('/', '-').replace('/', '-'),
+            IP: '127.0.0.1',
+            WAREHOUSE: 'SWH',
+            ALAS: 'hrm'.trim(),
+            LOCATION: 'HRM',
+            NOW: '2026-11-03 14:47:47',
+            MONTH: '11',
+            LOG_ID: '',
+            BEARED_TOKEN: '',
+        };
+</script>
+</head>
+<body data-sa-theme="4">
+    <main class="main">
+        <div class="page-loader"><div class="page-loader__spinner"><svg viewBox="25 25 50 50"><circle cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /></svg><div>Loading...</div></div></div>
+        <header class="header">
+            <div class="navigation-trigger hidden-md-up" data-sa-action="aside-open" data-sa-target=".sidebar"><i class="zmdi zmdi-menu"></i></div>
+            <div class="logo">
+                <h1><a href="/hrm/">SIMS</a></h1>
+                <div class="sims-version">V 26.10 - HRM</div>
+            </div>
+            <div class="slogan hidden-sm-down">Manage &rsaquo; Payroll</div>
+            <ul class="top-nav hidden-sm-down">
+                    <li class="dropdown top-nav__notifications">
+                        <a data-toggle="dropdown">MANAGE</a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu--block" role="menu">
+                            <div class="dropdown-header">MANAGE</div>
+                            <div class="row app-shortcuts">
+                                    <a class="col-4 app-shortcuts__item" href="/hrm/manage/registration"><i class="zmdi zmdi-accounts-add zmdi-hc-fw"></i> <small class="">Registration</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/manage/information"><i class="zmdi zmdi-account-box-o zmdi-hc-fw"></i> <small class="">Information</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/manage/contract"><i class="zmdi zmdi-folder-person"></i> <small class="">Contract<br>(Terminate)</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/manage/resignation"><i class="zmdi zmdi-account zmdi-hc-fw color-red"></i> <small class="">Resignation</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/manage/7yrs-old"><i class="zmdi zmdi-accounts-list-alt zmdi-hc-fw"></i> <small class="">< 7yrs old</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/manage/warning"><i class="zmdi zmdi-alert-polygon zmdi-hc-fw"></i> <small class="">Warning</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/manage/set-overtime"><i class="zmdi zmdi-format-list-bulleted"></i> <small class="">Set Overtime</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/manage/leave"><i class="zmdi zmdi-format-list-bulleted"></i> <small class="">Leave</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Manage/PregnancyExam"><i class="zmdi zmdi-format-list-bulleted"></i> <small class="">Pregnancy<br>Examination</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Manage/MaternityBenefit"><i class="zmdi zmdi-format-list-bulleted"></i> <small class="">Maternity<br>Benefit</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Manage/BenefitPayment"><i class="zmdi zmdi-format-list-bulleted"></i> <small class="">Benefit<br>Payment</small></a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="dropdown top-nav__notifications">
+                        <a data-toggle="dropdown"> ATTENDANCE</a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu--block" role="menu">
+                            <div class="dropdown-header">ATTENDANCE</div>
+                            <div class="row app-shortcuts">
+                                    <a class="col-4 app-shortcuts__item" href="/hrm/attendance/working-hours"><i class="zmdi zmdi-time zmdi-hc-fw"></i> <small class="">Working hours</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/attendance/attendance"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i> <small class="">Attendance</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/attendance/annual-leave"><i class="zmdi zmdi-calendar"></i> <small class="">Annual leave</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Attendance/LateOrLeaveEarly"><i class="zmdi zmdi-calendar"></i> <small class="">Late & leave early</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/attendance/overtime"><i class="zmdi zmdi-format-list-bulleted"></i> <small class="">Overtime</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Attendance/OvertimeYear"><i class="zmdi zmdi-format-list-bulleted"></i> <small class="">Overtime<br>(Year)</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/attendance/payroll"><i class="zmdi zmdi-money zmdi-hc-fw"></i> <small class="">Payroll</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Attendance/Summary"><i class="zmdi zmdi-money zmdi-hc-fw"></i> <small class="">Summary</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Attendance/VTOffice"><i class="zmdi zmdi-money zmdi-hc-fw"></i> <small class="">VT - Office</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Attendance/StopVTOffice"><i class="zmdi zmdi-money zmdi-hc-fw"></i> <small class="">Stop<br>VT - Office</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Attendance/FacSum"><i class="zmdi zmdi-money zmdi-hc-fw"></i> <small class="">Fac Sum</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Attendance/Bank"><i class="zmdi zmdi-money zmdi-hc-fw"></i> <small class="">Bank</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Attendance/Cash"><i class="zmdi zmdi-money zmdi-hc-fw"></i> <small class="">Cash</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Attendance/Severance"><i class="zmdi zmdi-money zmdi-hc-fw"></i> <small class="">Severance</small></a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="dropdown top-nav__notifications">
+                        <a data-toggle="dropdown"> EMPLOYEE</a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu--block" role="menu">
+                            <div class="dropdown-header">EMPLOYEE</div>
+                            <div class="row app-shortcuts">
+                                    <a class="col-4 app-shortcuts__item" href="/hrm/employee/working-hours"><i class="zmdi zmdi-time zmdi-hc-fw"></i> <small class="">Working hours (OT Over)</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/employee/payroll"><i class="zmdi zmdi-money"></i> <small class="">Payroll<br />(OT Over)</small></a>
+                            </div>
+                        </div>
+                    </li>
+
+
+                    <li class="dropdown top-nav__notifications">
+                        <a data-toggle="dropdown"> CONFIG</a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu--block" role="menu">
+                            <div class="dropdown-header">CONFIG</div>
+                            <div class="row app-shortcuts">
+                                    <a class="col-4 app-shortcuts__item" href="/hrm/config/section"><i class="zmdi zmdi-repeat zmdi-hc-fw"></i> <small class="">Section</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/config/leave-elderly"><i class="zmdi zmdi-calendar-note"></i> <small class="">Leave elderly</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/config/etc"><i class="zmdi zmdi-view-headline"></i> <small class="">Etc</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/config/shift"><i class="zmdi zmdi-view-headline"></i> <small class="">Shift</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/config/schedule"><i class="zmdi zmdi-view-headline"></i> <small class="">Schedule</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/config/lock-working-hours"><i class="zmdi zmdi-lock"></i> <small class="">Lock / Work hours</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Config/Holiday"><i class="zmdi zmdi-calendar-note"></i> <small class="">Holiday</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/config/config"><i class="zmdi zmdi-settings"></i> <small class="">Config</small></a>
+                            </div>
+                        </div>
+                    </li>
+
+                <li class="dropdown top-nav__notifications hidden-xs-down">
+                    <a href="#" data-toggle="dropdown">ADMIN</a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu--block" role="menu">
+                        <div class="dropdown-header">Hello, test</div>
+                        <div class="row app-shortcuts">
+                                <a class="col-4 app-shortcuts__item" href="/hrm/admin/account"><i class="zmdi zmdi-accounts-alt zmdi-hc-fw"></i> <small class="">Account</small></a>
+                                                            <a class="col-4 app-shortcuts__item" href="/hrm/admin/login-history"><i class="zmdi zmdi-accounts-list zmdi-hc-fw"></i> <small class="">Login history</small></a>
+                                                            <a class="col-4 app-shortcuts__item" href="/hrm/admin/white-list"><i class="zmdi zmdi-check-all zmdi-hc-fw"></i> <small class="">White list</small></a>
+                            <a class="col-4 app-shortcuts__item" href="/hrm/admin/account/edit"><i class="zmdi zmdi-account-circle zmdi-hc-fw"></i> <small class="">Profile</small></a>
+                            <a class="col-4 app-shortcuts__item" href="/hrm/logout"><i class="zmdi zmdi-sign-in zmdi-hc-fw"></i> <small class="">Logout</small></a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="clock hidden-md-down"><div class="time"><span class="time__hours"></span><span class="time__min"></span><span class="time__sec"></span></div></div>
+        </header>
+
+        <aside class="sidebar sidebar--hidden">
+            <div class="scrollbar-inner">
+                <ul class="navigation">
+                    
+                    <li class="navigation__sub">
+                        <a href=""><i class="zmdi zmdi-more-vert"></i> ADMIN</a>
+                        <ul>
+                                <li><a href="/hrm/admin/account"> Account</a></li>
+                                                            <li><a href="/hrm/Common/LogTracking"> Login history</a></li>
+                                                            <li><a href="/hrm/Common/LogTracking"> White list</a></li>
+                            <li><a href="/hrm/admin/account/edit"> Profile</a></li>
+                            <li><a href="/hrm/logout"> Logout</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </aside>
+        <section class="content content--full">
+            
+
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <a class="btn btn-info pull-right btnDisplayUI"><i class="zmdi zmdi-flower"></i></a>
+                <a class="btn btn-light pull-right btnFilter mr-1"><i class="zmdi zmdi-refresh"></i> Search</a>
+                <div class="pull-right mr-1" style="width: 75px">
+                    <select class="select2" name="Q_YEAR">
+                            <option value="2025" >2025</option>
+                            <option value="2026" selected>2026</option>
+                    </select>
+                </div>
+
+
+
+                <div class="pull-right mr-1" style="width: 75px ">
+                    <select class="select2" name="Q_MONTH">
+                        <option value="1" >Jan</option>
+                        <option value="2" >Feb</option>
+                        <option value="3" >Mar</option>
+                        <option value="4" >Apr</option>
+                        <option value="5" >May</option>
+                        <option value="6" >Jun</option>
+                        <option value="7" >Jul</option>
+                        <option value="8" >Aug</option>
+                        <option value="9" >Sep</option>
+                        <option value="10" >Oct</option>
+                        <option value="11" selected>Nov</option>
+                        <option value="12" >Dec</option>
+                    </select>
+                </div>
+
+                <div class="pull-right mr-2 ml-2" style="width: 75px">
+                    <select class="select2" name="Q_TO_WEEK">
+                        <option value="5">Week 5</option>
+                        <option value="4">Week 4</option>
+                        <option value="3">Week 3</option>
+                        <option value="2">Week 2</option>
+                        <option value="1">Week 1</option>
+                        <option value="0">No Week</option>
+                    </select>
+                </div>
+                <div class="pull-right ml-1 mr-2 height-32"> ~ </div>
+
+                <div class="pull-right mr-2 ml-2" style="width: 75px ">
+                    <select class="select2" name="Q_FROM_WEEK">
+                        <option value="0">No Week</option>
+                        <option value="1">Week 1</option>
+                        <option value="2">Week 2</option>
+                        <option value="3">Week 3</option>
+                        <option value="4">Week 4</option>
+                        <option value="5">Week 5</option>
+                    </select>
+                </div>
+                <div class="pull-right mr-1" style="width: 100px">
+                    <select class="select2" name="Q_TYPE">
+                        <option value="0" selected>Working</option>
+                        <option value="1">Stopped</option>
+                    </select>
+                </div>
+                <div class="pull-right mr-1" style="width: 100px">
+                    <select class="select2" name="Q_CN_TYPE">
+                        
+                        <option value="1">Official </option>
+                        <option value="2">Probationary</option>
+                    </select>
+                </div>
+                
+                
+                <div class="btn-group pull-right mr-3" role="group">
+                    <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-download"></i> D/L</button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item btnExtDL">Main </a>
+                        
+                        <a class="dropdown-item btnExtDL_Stoped_W" data-week="1">Stop salary - Week 1</a>
+                        <a class="dropdown-item btnExtDL_Stoped_W" data-week="2">Stop salary - Week 2</a>
+                        <a class="dropdown-item btnExtDL_Stoped_W" data-week="3">Stop salary - Week 3</a>
+                        <a class="dropdown-item btnExtDL_Stoped_W" data-week="4">Stop salary - Week 4</a>
+                        <a class="dropdown-item btnExtDL_Stoped_W" data-week="5">Stop salary - Week 5</a>
+                        <a class="dropdown-item btnExtDL_VT_Office">Stop salary - Vt office</a>
+                    </div>
+                </div>
+
+
+                <div class="pull-left height-32 block-std hidden">
+                    <input type="hidden" name="WORK_YEAR" value="" />
+                    <input type="hidden" name="WORK_MONTH" value="" />
+                    <table class="table table-working-hour">
+                        <tr data-id="xx">
+                            <td>Std working hour:</td>
+                            <td>
+                                <div class="w60"><code class="editor_data_none text-right" data-type="STD_HOUR" data-element="text" data-title="" data-value="" data-pre="" data-com="1"></code></div>
+                            </td>
+                            <td>Working days:</td>
+                            <td>
+                                <div class="w60"><code class="editor_data_none text-right" data-type="STD_DAY" data-element="text" data-title="" data-value="" data-pre="" data-com="1"></code></div>
+                            </td>
+                            <td>
+                                    <a class="btn btn-sm btn-success btnSalaryCalc mr-1"><i class="zmdi zmdi-refresh-sync"></i> Salary Calculation</a>
+                            </td>
+                            <td>
+                                    <a class="btn btn-sm btn-info btnImportSalary mr-1"><i class="zmdi zmdi-upload"></i> Import</a>
+                                    <a class="btn btn-sm btn-warning btnTemplateSalary"><i class="zmdi zmdi-download"></i> Template</a>
+                                    <div class="pull-left hidden hiddenData"><input type="file" class="hidden" name="FileImport" value="" accept=".xlsx" /></div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-12">
+                <input type="hidden" name="orderby" value="SECTION_NAME" />
+                <input type="hidden" name="orderdir" value="asc" />
+                <input type="hidden" name="pageNumber" value="1" />
+                <div class="table-responsive">
+                    <table class="table mb-0 table-bordered table-inverse" id="tblOrder" data-id="tblOrder" data-name="attendance_payroll"
+                           data-orderby="orderby"
+                           data-orderdir="orderdir"
+                           data-pagenum="pageNumber"
+                           data-min-size="40">
+                        <thead class="thead-inverse">
+                            <tr>
+                                <th data-column="EMP_ID" rowspan="3">
+                                    <div class="space-empty-2"></div>
+                                    ID
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="SECTION_NAME" rowspan="3">
+                                    <div class="space-empty-2"></div>
+                                    Section
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value="asc"><i class="zmdi zmdi-sort-amount-asc zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="FULL_NAME" rowspan="3">
+                                    <div class="space-empty-2"></div>
+                                    Full name
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="SALARY_BY" rowspan="3">
+                                    <div class="space-empty-2"></div>
+                                    Payroll type
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="START_DATE" rowspan="3">
+                                    <div class="space-empty-2"></div>
+                                    Joining date
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="REG_LETTER" rowspan="3">
+                                    <div class="space-empty-2"></div>
+                                    Reason
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="END_DATE" rowspan="3">
+                                    <div class="space-empty-2"></div>
+                                    Stoped date
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="JOB_NAME" rowspan="3">
+                                    <div class="space-empty-2"></div>
+                                    Job
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="TAX_CODE" rowspan="3" style="width: 95px; min-width: 95px; max-width: 95px;">
+                                    <div class="space-empty-2"></div>
+                                    Tax code
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="BANK_2" rowspan="3" style="width: 95px; min-width: 95px; max-width: 95px;">
+                                    <div class="space-empty-2"></div>
+                                    Account number
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="BASIC_INSURANCE_SALARY" rowspan="3">
+                                    <div class="space-empty-2"></div>
+                                    Insurance<br />salary
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="BASIC_GASOLINE" rowspan="3">
+                                    <div class="space-empty-2"></div>
+                                    Gasoline, Tel
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="BASIC_SALARY" rowspan="3">
+                                    <div class="space-empty-2"></div>
+                                    Basic salary
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-uncolumn="TIME" colspan="6" data-list-column="OTH_SAL_HOUR,OTH_HOUR_NT_L,OTH_HOUR_PN,OTH_HOUR_PHHT1,OTH_HOUR_OFF,OTH_TOTAL_HOUR">Time</th>
+                                <th data-column="NET_SALARY" rowspan="3">
+                                    <div class="space-empty-2"></div>
+                                    Net salary
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-uncolumn="ADDITION" colspan="19" data-list-column="OTH_MEAL,AD_OTH_MEAL,OTH_HOUR_OT,OTH_HOUR_OT_21,OTH_HOUR_OT_20,AD_OT,AD_MEAL,AD_ALLOWANCE,AD_DILIGENT,AD_HOUSE,AD_EVAL_1,AD_EVAL_2,AD_EVAL_3,AD_EVAL_4,AD_TRAVEL,AD_CHIL_7YRS,AD_PCCC,AD_OTHER,AD_OTHER_NOTE">Addition</th>
+                                <th data-column="GROSS_SALARY" rowspan="3">
+                                    <div class="space-empty-2"></div>
+                                    Gross salary
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-uncolumn="DEDUCTION_INSURANCE" colspan="6" data-list-column="DE_SOCIAL,DE_HEALTH,DE_UNEMPLOYEED,DE_UNION_FEE,DE_RET_COL_PIT,DE_PIT">Deduction Insurance(Khấu trừ)</th>
+                                <th data-column="DE_TOTAL" rowspan="3">
+                                    <div class="space-empty-2"></div>
+                                    Total Deduction
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-uncolumn="TAX_CALCULATION" colspan="4" data-list-column="TAX_ASS,DEPEND_PERSON,TAX_REDUCTION,TAX_TAXABLE_INCOME">Tax Calculation</th>
+                                <th data-column="ACTUAL_SALARY" rowspan="3">
+                                    <div class="space-empty-2"></div>
+                                    Actual salary
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="ANNUAL_LEAVE" rowspan="3">
+                                    <div class="space-empty-2"></div>
+                                    Annual leave
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="NOTE" rowspan="3">
+                                    <div class="space-empty-2"></div>
+                                    Note
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="SOCIAL_INS_CODE" rowspan="3">
+                                    <div class="space-empty-2"></div>
+                                    Social Insurance Code
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="OTH_HOUSE" rowspan="3">
+                                    <div class="space-empty-2"></div>
+                                    House<br />Nhà ở
+                                </th>
+                                <th data-column="PAY_STATUS" rowspan="3">
+                                    <div class="space-empty-2"></div>
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btn-sm btn-info btnUnLock mb-1"><i class="zmdi zmdi-lock-open"></i> UNLOCK</a>
+                                    <br />
+                                    <a class="btn btn-sm btn-danger btnLock mb-1"><i class="zmdi zmdi-lock"></i> LOCK</a>
+                                    <br />
+                                    <label class='custom-control custom-checkbox mr-0'>
+                                        <input type='checkbox' name='chkItemAll' class='custom-control-input'><span class='custom-control-indicator'></span>
+                                    </label>
+                                </th>
+                                <th data-column="COL_50" rowspan="3">
+                                    <div class="space-empty-2"></div>
+                                        <a class="btn btn-sm btn-info btnReCalc mb-1"><i class="zmdi zmdi-play"></i> RE-CALC</a>
+                                        <br />
+                                        <a class="btn btn-sm btn-primary btnPayroll mb-1"><i class="zmdi zmdi-download"></i> PAYROLL</a>
+                                        <br />
+                                        <label class='custom-control custom-checkbox mr-0'>
+                                            <input type='checkbox' name='chkItemAll2' class='custom-control-input'><span class='custom-control-indicator'></span>
+                                        </label>
+                                </th>
+                                <th data-column="PAYMENT_WEEK" rowspan="3">
+                                    <div class="space-empty-2"></div>
+                                    Payment week
+                                </th>
+                                <th data-column="COL_51" rowspan="3">
+                                    <div class="space-empty-2"></div>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th data-column="OTH_SAL_HOUR" rowspan="2">
+                                    <div class="space-empty-2"></div>
+                                    SAL/HOUR
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="OTH_HOUR_NT_L" rowspan="2">
+                                    <div class="space-empty-2"></div>
+                                    Hours+holiday
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="OTH_HOUR_PN" rowspan="2">
+                                    <div class="space-empty-2"></div>
+                                    Annual leave
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="OTH_HOUR_PHHT1" rowspan="2">
+                                    <div class="space-empty-2"></div>
+                                    Wedd & Funeral
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="OTH_HOUR_OFF" rowspan="2">
+                                    <div class="space-empty-2"></div>
+                                    Off<br />(Saturday)
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="OTH_TOTAL_HOUR" rowspan="2">
+                                    <div class="space-empty-2"></div>
+                                    Total hours
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="OTH_MEAL" rowspan="2">
+                                    <div class="space-empty-2"></div>
+                                    Time for meal
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="AD_OTH_MEAL" rowspan="2">
+                                    <div class="space-empty-2"></div>
+                                    $ Time for meal
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-uncolumn="OVERTIME" colspan="4" data-list-column="OTH_HOUR_OT,OTH_HOUR_OT_21,OTH_HOUR_OT_20,AD_OT">
+                                    <div class="space-empty-2"></div>
+                                    Overtime
+                                </th>
+                                <th data-column="AD_MEAL" rowspan="2">
+                                    <div class="space-empty-2"></div>
+                                    Meal
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="AD_ALLOWANCE" rowspan="2">
+                                    <div class="space-empty-2"></div>
+                                    Allowance
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="AD_DILIGENT" rowspan="2">
+                                    <div class="space-empty-2"></div>
+                                    Diligent
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="AD_HOUSE" rowspan="2">
+                                    <div class="space-empty-2"></div>
+                                    House
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-uncolumn="EVALUATE" colspan="4" data-list-column="AD_EVAL_1,AD_EVAL_2,AD_EVAL_3,AD_EVAL_4">
+                                    <div class="space-empty-2"></div>
+                                    Evaluate
+                                </th>
+
+                                <th data-column="AD_TRAVEL" rowspan="2">
+                                    <div class="space-empty-2"></div>
+                                    Travel Expenses supporting
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="AD_CHIL_7YRS" rowspan="2">
+                                    <div class="space-empty-2"></div>
+                                    Child under 7 years
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="AD_PCCC" rowspan="2">
+                                    <div class="space-empty-2"></div>
+                                    Salary PCCC & ATVSV
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="AD_OTHER" rowspan="2">
+                                    <div class="space-empty-2"></div>
+                                    Other additions
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="AD_OTHER_NOTE" rowspan="2">
+                                    <div class="space-empty-2"></div>
+                                    Note<br />(Other additions)
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                </th>
+
+                                <th data-column="DE_SOCIAL" rowspan="2">
+                                    <div class="space-empty-2"></div>
+                                    Social (BHXH 8%)
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="DE_HEALTH" rowspan="2">
+                                    <div class="space-empty-2"></div>
+                                    Health (BHYT 1.5%)
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="DE_UNEMPLOYEED" rowspan="2">
+                                    <div class="space-empty-2"></div>
+                                    Unemployed (BHTN 1%)
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+
+                                <th data-column="DE_UNION_FEE" rowspan="2">
+                                    <div class="space-empty-2"></div>
+                                    Union Fee
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="DE_RET_COL_PIT" rowspan="2">
+                                    <div class="space-empty-2"></div>
+                                    Return / Collection PIT
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="DE_PIT" rowspan="2">
+                                    <div class="space-empty-2"></div>
+                                    PIT
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+
+                                <th data-column="TAX_ASS" rowspan="2">
+                                    <div class="space-empty-2"></div>
+                                    Assemssable income
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="DEPEND_PERSON" rowspan="2">
+                                    <div class="space-empty-2"></div>
+                                    No. of Dependents<br />Số người phụ thuộc
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="TAX_REDUCTION" rowspan="2">
+                                    <div class="space-empty-2"></div>
+                                    Tax reduction
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="TAX_TAXABLE_INCOME" rowspan="2">
+                                    <div class="space-empty-2"></div>
+                                    Taxable income
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th data-column="OTH_HOUR_OT">
+                                    <div class="space-empty-2"></div>
+                                    150%
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="OTH_HOUR_OT_21">
+                                    <div class="space-empty-2"></div>
+                                    210%
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="OTH_HOUR_OT_20">
+                                    <div class="space-empty-2"></div>
+                                    200%
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="AD_OT">
+                                    <div class="space-empty-2"></div>
+                                    $ OT
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+
+                                <th data-column="AD_EVAL_1">
+                                    <div class="space-empty-2"></div>
+                                    Tiền BB
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="AD_EVAL_2">
+                                    <div class="space-empty-2"></div>
+                                    Năng suất
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="AD_EVAL_3">
+                                    <div class="space-empty-2"></div>
+                                    Máy ép cao tầng
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="AD_EVAL_4">
+                                    <div class="space-empty-2"></div>
+                                    Ráp/Viền
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                    <a class="btn btnOrderByColumn" data-value=""><i class="zmdi zmdi-swap-vertical zmdi-hc-fw"></i></a>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th xdata-uncolumn="UN_TOTAL_1" colspan="3"></th>
+                                <th xdata-uncolumn="UN_TOTAL_2" class="sp-data" data-totaltype="SALARY_BY"></th>
+                                <th xdata-uncolumn="UN_TOTAL_3" colspan="6"></th>
+                                <th xdata-uncolumn="UN_TOTAL_10" class="sp-data" data-totaltype="BASIC_INSURANCE_SALARY"></th>
+                                <th xdata-uncolumn="UN_TOTAL_11" class="sp-data" data-totaltype="BASIC_GASOLINE"></th>
+                                <th xdata-uncolumn="UN_TOTAL_12" class="sp-data" data-totaltype="BASIC_SALARY"></th>
+                                <th xdata-uncolumn="UN_TOTAL_13" class="sp-data" data-totaltype="OTH_SAL_HOUR"></th>
+                                <th xdata-uncolumn="UN_TOTAL_14" class="sp-data" data-totaltype="OTH_HOUR_NT_L"></th>
+                                
+                                <th xdata-uncolumn="UN_TOTAL_16" class="sp-data" data-totaltype="OTH_HOUR_PN"></th>
+                                <th xdata-uncolumn="UN_TOTAL_17" class="sp-data" data-totaltype="OTH_HOUR_PHHT1"></th>
+                                <th xdata-uncolumn="UN_TOTAL_18" class="sp-data" data-totaltype="OTH_HOUR_OFF"></th>
+                                <th xdata-uncolumn="UN_TOTAL_19" class="sp-data" data-totaltype="OTH_TOTAL_HOUR"></th>
+                                <th xdata-uncolumn="UN_TOTAL_20" class="sp-data" data-totaltype="NET_SALARY"></th>
+                                <th xdata-uncolumn="UN_TOTAL_21" class="sp-data" data-totaltype="OTH_MEAL"></th>
+                                <th xdata-uncolumn="UN_TOTAL_22" class="sp-data" data-totaltype="AD_OTH_MEAL"></th>
+                                <th xdata-uncolumn="UN_TOTAL_23" class="sp-data" data-totaltype="OTH_HOUR_OT"></th>
+                                <th xdata-uncolumn="UN_TOTAL_24" class="sp-data" data-totaltype="OTH_HOUR_OT_21"></th>
+                                <th xdata-uncolumn="UN_TOTAL_25" class="sp-data" data-totaltype="OTH_HOUR_OT_20"></th>
+                                <th xdata-uncolumn="UN_TOTAL_26" class="sp-data" data-totaltype="AD_OT"></th>
+                                <th xdata-uncolumn="UN_TOTAL_27" class="sp-data" data-totaltype="AD_MEAL"></th>
+                                <th xdata-uncolumn="UN_TOTAL_28" class="sp-data" data-totaltype="AD_ALLOWANCE"></th>
+                                <th xdata-uncolumn="UN_TOTAL_29" class="sp-data" data-totaltype="AD_DILIGENT"></th>
+                                <th xdata-uncolumn="UN_TOTAL_30" class="sp-data" data-totaltype="AD_HOUSE"></th>
+                                <th xdata-uncolumn="UN_TOTAL_31" class="sp-data" data-totaltype="AD_EVAL_1"></th>
+                                <th xdata-uncolumn="UN_TOTAL_32" class="sp-data" data-totaltype="AD_EVAL_2"></th>
+                                <th xdata-uncolumn="UN_TOTAL_33" class="sp-data" data-totaltype="AD_EVAL_3"></th>
+                                <th xdata-uncolumn="UN_TOTAL_34" class="sp-data" data-totaltype="AD_EVAL_4"></th>
+                                <th xdata-uncolumn="UN_TOTAL_35" class="sp-data" data-totaltype="AD_TRAVEL"></th>
+                                <th xdata-uncolumn="UN_TOTAL_36" class="sp-data" data-totaltype="AD_CHIL_7YRS"></th>
+                                <th xdata-uncolumn="UN_TOTAL_37" class="sp-data" data-totaltype="AD_PCCC"></th>
+                                <th xdata-uncolumn="UN_TOTAL_37" class="sp-data" data-totaltype="AD_OTHER"></th>
+                                <th xdata-uncolumn="UN_TOTAL_382" class="sp-data"></th>
+                                <th xdata-uncolumn="UN_TOTAL_39" class="sp-data" data-totaltype="GROSS_SALARY"></th>
+                                <th xdata-uncolumn="UN_TOTAL_40" class="sp-data" data-totaltype="DE_SOCIAL"></th>
+                                <th xdata-uncolumn="UN_TOTAL_41" class="sp-data" data-totaltype="DE_HEALTH"></th>
+                                <th xdata-uncolumn="UN_TOTAL_42" class="sp-data" data-totaltype="DE_UNEMPLOYEED"></th>
+                                <th xdata-uncolumn="UN_TOTAL_43" class="sp-data" data-totaltype="DE_UNION_FEE"></th>
+                                <th xdata-uncolumn="UN_TOTAL_44" class="sp-data" data-totaltype="DE_RET_COL_PIT"></th>
+                                <th xdata-uncolumn="UN_TOTAL_45" class="sp-data" data-totaltype="DE_PIT"></th>
+                                <th xdata-uncolumn="UN_TOTAL_46" class="sp-data" data-totaltype="DE_TOTAL"></th>
+                                <th xdata-uncolumn="UN_TOTAL_47" class="sp-data" data-totaltype="TAX_ASS"></th>
+                                <th xdata-uncolumn="UN_TOTAL_47_0"></th>
+                                <th xdata-uncolumn="UN_TOTAL_48" class="sp-data" data-totaltype="TAX_REDUCTION"></th>
+                                <th xdata-uncolumn="UN_TOTAL_49" class="sp-data" data-totaltype="TAX_TAXABLE_INCOME"></th>
+                                <th xdata-uncolumn="UN_TOTAL_50" class="sp-data" data-totaltype="ACTUAL_SALARY"></th>
+                                <th xdata-uncolumn="UN_TOTAL_51" class="sp-data" data-totaltype="ANNUAL_LEAVE"></th>
+                                <th xdata-uncolumn="UN_TOTAL_52" colspan="7"></th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade modal-note svg-modal" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title pull-left">Note (Other additions)</h5>
+                <a class="btn btn-danger btnCLoseModal"><i class="zmdi zmdi-close"></i></a>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-12 mt-2">
+                        <table class="table mb-0 table-bordered table-inverse" id="tblSubOrder">
+                            <thead>
+                                <tr>
+                                    <th>Date Created</th>
+                                    <th>Other additions</th>
+                                    <th>Note</th>
+                                    <th>Create by</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light btn-Cancel">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade modal-payment-week svg-modal" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title pull-left">Payment week</h5>
+                <a class="btn btn-danger btnCLoseModal"><i class="zmdi zmdi-close"></i></a>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="T_SALARY_ID" value="" />
+                <div class="row">
+                    <div class="col-sm-12 mt-2">
+                        <table class="table mb-0 table-bordered table-inverse table-layout-fixed" id="tblPaymentWeek">
+                            <thead>
+                                <tr>
+                                    <th>Year</th>
+                                    <th>Month</th>
+                                    <th>Week</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <input type="text" name="SET_PAY_YEAR" class="form-control" value="" />
+                                    </td>
+                                    <td>
+                                        <select class="select2" name="SET_PAY_MONTH">
+                                            <option value="01">Jan</option>
+                                            <option value="02">Feb</option>
+                                            <option value="03">Mar</option>
+                                            <option value="04">Apr</option>
+                                            <option value="05">May</option>
+                                            <option value="06">Jun</option>
+                                            <option value="07">Jul</option>
+                                            <option value="08">Aug</option>
+                                            <option value="09">Sep</option>
+                                            <option value="10">Oct</option>
+                                            <option value="11">Nov</option>
+                                            <option value="12">Dec</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select class="select2" name="SET_PAY_WEEK">
+                                            <option value="01">Week 1</option>
+                                            <option value="02">Week 2</option>
+                                            <option value="03">Week 3</option>
+                                            <option value="04">Week 4</option>
+                                            <option value="05">Week 5</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning btnNoSetPaymentWeek">No SET</button>
+                <button type="button" class="btn btn-success btnOKSetPaymentWeek">OK</button>
+                <button type="button" class="btn btn-light btn-Cancel">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+
+<div id="option-editor" class="hidden">
+    <div class="row">
+        <div class="col-sm-12 mb-15">
+            <input type="hidden" name="qKey" value="" />
+            <input type="text" name="qFilter" class="form-control input-sm" value="" placeholder="search..." />
+            <a class="btn-filter-cleartext"><i class="zmdi zmdi-close zmdi-hc-fw"></i></a>
+        </div>
+        <div class="col-sm-12 mb-15">
+            <div class="scrollbar-inner">
+                <div class="option-content"></div>
+            </div>
+        </div>
+        <div class="col-sm-12 text-center">
+            <a class="btn btn-sm btn-light btn-filter-ok"><i class="zmdi zmdi-check zmdi-hc-fw"></i></a>
+            <a class="btn btn-sm btn-light btn-filter-reset"><i class="zmdi zmdi-block zmdi-hc-fw"></i></a>
+            <a class="btn btn-sm btn-primary btn-filter-check-all">ALL</a>
+        </div>
+        <a class="btn btn-sm btn-light btn-filter-close"><i class="zmdi zmdi-close zmdi-hc-fw"></i></a>
+    </div>
+</div>
+
+<div id="option-column" class="hidden">
+    <div class="column-contain">
+    </div>
+    <div class="column-footer">
+        <a class="btn btn-sm btn-success btnColumnCheckAll">ALL</a>
+        <a class="btn btn-sm btn-warning btnColumnCheckNone">NONE</a>
+        <a class="btn btn-sm btn-primary btnColumnApply">APPLY</a>
+        <a class="btn btn-sm btn-primary btnColumnAutoFix">AUTO FIT</a>
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+<div class="modal fade modal-viewer svg-modal" role="dialog">
+    <div class="modal-dialog modal-big" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title pull-left">VIEW</h5>
+                <a class="btn btn-danger btnCLoseModal"><i class="zmdi zmdi-close"></i></a>
+            </div>
+            <div class="modal-body"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning btnDL_EXCEL">EXCEL</button>
+                <button type="button" class="btn btn-light btn-Cancel">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+
+            <div class="modal fade modal-log svg-modal" role="dialog">
+                <div class="modal-dialog modal-xl" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title pull-left">LOG</h5>
+                            <a class="btn btn-danger btnCLoseModal"><i class="zmdi zmdi-close"></i></a>
+                        </div>
+                        <div class="modal-body" style="max-height: 1000px; overflow: auto;">
+                            <input type="hidden" name="ID" value="" />
+                            <div class="hiddenFile hidden"></div>
+                            <div class="row">
+                                <div class="col-sm-12 mt-2">
+                                    <table class="table mb-0 table-bordered table-inverse" id="tblLog">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>TITLE</th>
+                                                <th>DESC</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div>
+            <footer class="footer hidden-xs-down p0">
+                <p>© HRM 2026. All rights reserved.</p>
+            </footer>
+        </section>
+    </main>
+
+    <!-- Javascript -->
+    <script src="/hrm/content/components/jquery/dist/jquery.min.js"></script>
+    <script src="/hrm/content/components/popper.js/dist/umd/popper.min.js"></script>
+    <script src="/hrm/content/components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script>
+        jQuery.expr[':'].icontains = function (a, i, m) {
+            return jQuery(a).text().toUpperCase()
+                .indexOf(m[3].toUpperCase()) >= 0;
+        };
+    </script>
+
+    <script src="/hrm/bundles/include?v=vzPCjYP_ihyaQrMcj2w1leL2nbwt41Vls88WLnzqW8M1"></script>
+
+
+    
+    <script>
+        APP_CONFIG = {
+            GetCompoment: '/hrm/get-compoment',
+            GetDatas: '/hrm/Api/GetData/Manage_Payroll_GetDatas',
+            Manage_Payroll_GetSalaryByID: '/hrm/Api/GetData/Manage_Payroll_GetSalaryByID',
+            Manage_Payroll_ViewNote: '/hrm/Api/GetData/Manage_Payroll_ViewNote',
+
+            Payroll_Calculation: '/hrm/Manage/Payroll_Calculation',
+            Payroll_DLPayroll: '/hrm/Manage/Payroll_DLPayroll/_ID_?DL_TYPE=_DL_TYPE_',
+
+            Payroll_DL: '/hrm/Manage/Payroll_DL?YEAR=_YEAR_&MONTH=_MONTH_&CN_TYPE=_CN_TYPE_&EID=_EID_',
+            Payroll_DL_PDF: '/hrm/Manage/Payroll_DL_PDF?YEAR=_YEAR_&MONTH=_MONTH_&CN_TYPE=_CN_TYPE_&EID=_EID_',
+
+            Payroll_DL_OFF_WEEK: '/hrm/Manage/Payroll_DL_O_WEEK?YEAR=_YEAR_&MONTH=_MONTH_&OFF_WEEK=_OFF_WEEK_&CN_TYPE=_CN_TYPE_&EID=_EID_',
+            Payroll_DL_OFF_WEEK_PDF: '/hrm/Manage/Payroll_DL_O_WEEK_PDF?YEAR=_YEAR_&MONTH=_MONTH_&OFF_WEEK=_OFF_WEEK_&CN_TYPE=_CN_TYPE_&EID=_EID_',
+
+            Payroll_DL_VT_OFFICE: '/hrm/Manage/Payroll_DL_VT_OFFICE?YEAR=_YEAR_&MONTH=_MONTH_&CN_TYPE=_CN_TYPE_&OFF=_OFF_',
+            Payroll_DL_VT_OFFICE_PDF: '/hrm/Manage/Payroll_DL_VT_OFFICE_PDF?YEAR=_YEAR_&MONTH=_MONTH_&CN_TYPE=_CN_TYPE_&OFF=_OFF_',
+
+            Payroll_DL_BANK: '/hrm/Manage/Payroll_DL_BANK?YEAR=_YEAR_&MONTH=_MONTH_&TO_YEAR=_TO_YEAR_&TO_MONTH=_TO_MONTH_&CN_TYPE=_CN_TYPE_&OFF=_OFF_',
+            Payroll_DL_BANK_PDF: '/hrm/Manage/Payroll_DL_BANK_PDF?YEAR=_YEAR_&MONTH=_MONTH_&TO_YEAR=_TO_YEAR_&TO_MONTH=_TO_MONTH_&CN_TYPE=_CN_TYPE_&OFF=_OFF_',
+
+            Payroll_DL_FAC_SUM: '/hrm/Manage/Payroll_DL_FAC_SUM?YEAR=_YEAR_&MONTH=_MONTH_&TO_YEAR=_TO_YEAR_&TO_MONTH=_TO_MONTH_&CN_TYPE=_CN_TYPE_&OFF=_OFF_',
+            Payroll_DL_FAC_SUM_PDF: '/hrm/Manage/Payroll_DL_FAC_SUM_PDF?YEAR=_YEAR_&MONTH=_MONTH_&TO_YEAR=_TO_YEAR_&TO_MONTH=_TO_MONTH_&CN_TYPE=_CN_TYPE_&OFF=_OFF_',
+
+            Payroll_DL_Summary: '/hrm/Manage/Payroll_DL_Summary?YEAR=_YEAR_&MONTH=_MONTH_&TO_YEAR=_TO_YEAR_&TO_MONTH=_TO_MONTH_&CN_TYPE=_CN_TYPE_&EID=_EID_',
+
+
+            SAVE_ITEM: '/hrm/Manage/Payroll_SaveItem',
+            PER_EDIT: parseInt('1'),
+            Payroll_Calculation: '/hrm/Manage/Payroll_Calculation',
+            Payroll_ReCalc: '/hrm/Manage/Payroll_ReCalc',
+            Payroll_Template: '/hrm/Manage/Payroll_Template?YEAR=_YEAR_&MONTH=_MONTH_',
+            Payroll_Import: '/hrm/Manage/Payroll_Import',
+            Payroll_Lock: '/hrm/Manage/Payroll_Lock',
+            Payroll_SetPaymentWeek: '/hrm/Manage/Payroll_SetPaymentWeek',
+            Payroll_NoSetPaymentWeek: '/hrm/Manage/Payroll_NoSetPaymentWeek',
+
+            PostLinkExport: '/hrm/Api/GetData/PostLinkExport',
+            pageLength: parseInt('100')
+        };
+    </script>
+    <script src="/hrm/Content/bd-js/manage_payroll?v=YJt0EUerkep4X9FHMxhIGDhB93Kw38nUNi33mjG5XLw1"></script>
+
+
+</body>
+</html>

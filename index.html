@@ -1,0 +1,2956 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cẩm Nang Hướng Dẫn Sử Dụng Hệ Thống HRM - SIMS V26.10</title>
+  <style>
+    :root {
+      --primary: #1e88e5;
+      --primary-hover: #1565c0;
+      --primary-light: #e3f2fd;
+      --accent: #ff6f00;
+      --success: #2e7d32;
+      --success-light: #e8f5e9;
+      --warning: #f57c00;
+      --warning-light: #fff3e0;
+      --danger: #d32f2f;
+      --danger-light: #ffebee;
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+      --radius: 8px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* TOP NAVBAR */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: #0f172a;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1.5rem;
+      box-shadow: var(--shadow-md);
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 700;
+      font-size: 1.15rem;
+      letter-spacing: 0.5px;
+    }
+    .badge-ver {
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.75rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    .badge-lang {
+      background: #475569;
+      color: #f1f5f9;
+      font-size: 0.75rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+    .nav-search {
+      flex: 1;
+      max-width: 460px;
+      margin: 0 1.5rem;
+      position: relative;
+    }
+    .nav-search input {
+      width: 100%;
+      padding: 0.5rem 1rem 0.5rem 2.25rem;
+      border-radius: 20px;
+      border: 1px solid #334155;
+      background: #1e293b;
+      color: #fff;
+      font-size: 0.9rem;
+      outline: none;
+      transition: all 0.2s;
+    }
+    .nav-search input:focus {
+      border-color: var(--primary);
+      background: #0f172a;
+      box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.25);
+    }
+    .nav-search .icon-search {
+      position: absolute;
+      left: 0.8rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #94a3b8;
+    }
+
+    /* MAIN CONTAINER */
+    .app-container {
+      display: flex;
+      flex: 1;
+      position: relative;
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      width: 290px;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      height: calc(100vh - 56px);
+      position: sticky;
+      top: 56px;
+      overflow-y: auto;
+      padding: 1rem 0;
+      flex-shrink: 0;
+    }
+    .role-filter-box {
+      padding: 0 1rem 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .role-filter-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .role-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+    .role-pill {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 12px;
+      background: #f1f5f9;
+      color: var(--text);
+      cursor: pointer;
+      border: 1px solid transparent;
+      user-select: none;
+    }
+    .role-pill.active {
+      background: var(--primary);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .nav-group-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      padding: 0.85rem 1rem 0.35rem;
+      letter-spacing: 0.5px;
+    }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: background 0.15s;
+      border-left: 3px solid transparent;
+      cursor: pointer;
+    }
+    .nav-item:hover {
+      background: #f8fafc;
+      color: var(--primary);
+    }
+    .nav-item.active {
+      background: var(--primary-light);
+      color: var(--primary-hover);
+      border-left-color: var(--primary);
+      font-weight: 600;
+    }
+    .nav-item .tag {
+      margin-left: auto;
+      font-size: 0.65rem;
+      padding: 0.1rem 0.4rem;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    .tag-hot { background: #fee2e2; color: #b91c1c; }
+    .tag-hr { background: #e0f2fe; color: #0369a1; }
+    .tag-mng { background: #fef3c7; color: #b45309; }
+
+    /* CONTENT AREA */
+    .content-area {
+      flex: 1;
+      padding: 1.5rem 2.5rem;
+      max-width: 1100px;
+    }
+
+    /* NOTICE BANNER - ENGLISH UI */
+    .notice-banner {
+      background: #fef3c7;
+      border-left: 4px solid #f59e0b;
+      color: #92400e;
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius);
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    /* HERO QUICK ACTION BAR */
+    .hero-banner {
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      color: #fff;
+      padding: 1.5rem;
+      border-radius: var(--radius);
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .hero-banner h1 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .hero-banner p {
+      color: #cbd5e1;
+      font-size: 0.95rem;
+      margin-bottom: 1.25rem;
+    }
+    .quick-tiles {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.75rem;
+    }
+    .quick-tile {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: var(--radius);
+      padding: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .quick-tile:hover {
+      background: rgba(255, 255, 255, 0.18);
+      transform: translateY(-2px);
+    }
+    .quick-tile .tile-title {
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .quick-tile .tile-sub {
+      font-size: 0.78rem;
+      color: #94a3b8;
+    }
+
+    /* TASK CARD */
+    .task-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 1.75rem;
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      scroll-margin-top: 75px;
+    }
+    .task-header {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #f8fafc;
+    }
+    .task-title-group {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .task-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+    .task-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .task-badge {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+    .badge-c-b { background: #e0f2fe; color: #0284c7; }
+    .badge-mgr { background: #fef3c7; color: #d97706; }
+    .badge-adm { background: #f3e8ff; color: #9333ea; }
+
+    .task-body {
+      padding: 1.25rem;
+    }
+
+    /* PATHWAY PILL */
+    .pathway {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      padding: 0.35rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #334155;
+      margin-bottom: 1rem;
+    }
+    .pathway .arrow { color: #94a3b8; font-size: 0.75rem; }
+    .pathway code {
+      background: #e2e8f0;
+      color: #0f172a;
+      padding: 0.1rem 0.35rem;
+      border-radius: 4px;
+      font-family: inherit;
+    }
+
+    /* ACTION STEPS */
+    .steps-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+    .step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+    }
+    .step-idx {
+      background: #e2e8f0;
+      color: #475569;
+      font-weight: 700;
+      font-size: 0.8rem;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0.15rem;
+      flex-shrink: 0;
+    }
+    .step-desc { flex: 1; }
+    .btn-target {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.82rem;
+      text-decoration: none;
+      border: 1px solid transparent;
+      margin: 0 0.15rem;
+      font-family: monospace, sans-serif;
+    }
+    .btn-green { background: #10b981; color: #fff; }
+    .btn-blue { background: #2563eb; color: #fff; }
+    .btn-amber { background: #f59e0b; color: #fff; }
+    .btn-red { background: #ef4444; color: #fff; }
+    .btn-gray { background: #475569; color: #fff; }
+
+    /* UI MOCKUP WINDOW */
+    .ui-mockup {
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      background: #1e293b;
+      color: #f8fafc;
+      overflow-x: auto;
+      margin: 1rem 0;
+      font-family: inherit;
+      box-shadow: var(--shadow-sm);
+    }
+    .mock-header {
+      background: #0f172a;
+      padding: 0.4rem 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #334155;
+      font-size: 0.8rem;
+      color: #94a3b8;
+    }
+    .mock-dots { display: flex; gap: 5px; }
+    .mock-dot { width: 9px; height: 9px; border-radius: 50%; }
+    .mock-dot.r { background: #ef4444; }
+    .mock-dot.y { background: #f59e0b; }
+    .mock-dot.g { background: #10b981; }
+
+    .mock-body {
+      padding: 0.85rem;
+      background: #182234;
+      font-size: 0.85rem;
+      min-width: 600px;
+    }
+    .mock-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.5rem;
+      text-align: left;
+    }
+    .mock-table th, .mock-table td {
+      padding: 0.45rem 0.6rem;
+      border: 1px solid #334155;
+    }
+    .mock-table th { background: #0f172a; color: #cbd5e1; font-weight: 600; font-size: 0.8rem; }
+    .mock-table td { color: #f1f5f9; }
+
+    .glow-highlight {
+      border: 2px dashed #f59e0b !important;
+      background: rgba(245, 158, 11, 0.25) !important;
+      color: #fef08a !important;
+      font-weight: 700;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      display: inline-block;
+      animation: pulseGlow 1.8s infinite;
+    }
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.5); }
+      70% { box-shadow: 0 0 0 6px rgba(245, 158, 11, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+    }
+
+    /* RESULT & ALERT CALLOUTS */
+    .callout {
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      font-size: 0.88rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      margin-top: 0.75rem;
+    }
+    .callout-success { background: var(--success-light); border-left: 4px solid var(--success); color: #166534; }
+    .callout-danger { background: var(--danger-light); border-left: 4px solid var(--danger); color: #991b1b; }
+    .callout-warning { background: var(--warning-light); border-left: 4px solid var(--warning); color: #9a3412; }
+
+    /* BUTTON GUIDE BOX (GIẢI THÍCH NÚT BẤM CHI TIẾT) */
+    .button-guide-box {
+      margin-top: 1.25rem;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow-x: auto;
+      box-shadow: var(--shadow-sm);
+    }
+    .button-guide-header {
+      background: #f1f5f9;
+      padding: 0.65rem 1rem;
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: #0f172a;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .button-guide-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.84rem;
+      min-width: 650px;
+    }
+    .button-guide-table th,
+    .button-guide-table td {
+      padding: 9px 12px;
+      border-bottom: 1px solid #f1f5f9;
+      text-align: left;
+      vertical-align: middle;
+    }
+    .button-guide-table th {
+      background: #f8fafc;
+      color: #475569;
+      font-weight: 600;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .button-guide-table tr:hover {
+      background: #f8fafc;
+    }
+    .btn-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.78rem;
+      white-space: nowrap;
+      font-family: inherit;
+    }
+    .btn-chip.green { background: #2e7d32; color: #fff; }
+    .btn-chip.blue { background: #1565c0; color: #fff; }
+    .btn-chip.amber { background: #f59e0b; color: #fff; }
+    .btn-chip.red { background: #dc2626; color: #fff; }
+    .btn-chip.gray { background: #f1f5f9; color: #1e293b; border: 1px solid #cbd5e1; }
+    .btn-chip.cyan { background: #0284c7; color: #fff; }
+
+    /* GLOSSARY TABLE */
+    .glossary-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.75rem;
+      font-size: 0.88rem;
+    }
+    .glossary-table th, .glossary-table td {
+      border: 1px solid var(--border);
+      padding: 0.5rem 0.75rem;
+    }
+    .glossary-table th { background: #f8fafc; font-weight: 600; text-align: left; }
+
+    /* ACCORDION FAQ */
+    .accordion-item {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 0.75rem;
+      background: var(--surface);
+      overflow: hidden;
+    }
+    .accordion-header {
+      padding: 0.85rem 1.25rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+      background: #f8fafc;
+    }
+    .accordion-header:hover { background: #f1f5f9; }
+    .accordion-body {
+      padding: 1.25rem;
+      display: none;
+      border-top: 1px solid var(--border);
+      font-size: 0.92rem;
+    }
+    .accordion-item.open .accordion-body { display: block; }
+    .accordion-icon { transition: transform 0.2s; }
+    .accordion-item.open .accordion-icon { transform: rotate(180deg); }
+
+    /* FOOTER */
+    footer {
+      background: #0f172a;
+      color: #94a3b8;
+      padding: 1.5rem 2rem;
+      text-align: center;
+      font-size: 0.85rem;
+      margin-top: auto;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .app-container { flex-direction: column; }
+      .sidebar { width: 100%; height: auto; position: static; border-right: none; border-bottom: 1px solid var(--border); }
+      .content-area { padding: 1rem; }
+    }
+
+    /* FLOATING CHATBOT & GOOGLE SHEET FEEDBACK WIDGET */
+    .floating-chat-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #1e88e5 0%, #0d47a1 100%);
+      color: #ffffff;
+      padding: 12px 22px;
+      border-radius: 50px;
+      box-shadow: 0 8px 24px rgba(13, 71, 161, 0.4);
+      cursor: pointer;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .floating-chat-btn:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 12px 28px rgba(13, 71, 161, 0.55);
+    }
+    .pulse-indicator {
+      width: 10px;
+      height: 10px;
+      background: #00e676;
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(0, 230, 118, 0.7);
+      animation: pulse-ring 2s infinite;
+    }
+    @keyframes pulse-ring {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 230, 118, 0.7); }
+      70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(0, 230, 118, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(0, 230, 118, 0); }
+    }
+
+    .chat-widget-card {
+      position: fixed;
+      bottom: 86px;
+      right: 24px;
+      width: 420px;
+      max-width: calc(100vw - 32px);
+      height: 590px;
+      max-height: calc(100vh - 120px);
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 20px 45px rgba(15, 23, 42, 0.25);
+      display: none;
+      flex-direction: column;
+      z-index: 1000;
+      overflow: hidden;
+      border: 1px solid #cbd5e1;
+      animation: slideUpWidget 0.25s ease-out;
+    }
+    @keyframes slideUpWidget {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .chat-widget-card.open {
+      display: flex;
+    }
+    .chat-widget-header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #fff;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #334155;
+    }
+    .chat-header-info h4 {
+      font-size: 1rem;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .chat-header-info p {
+      font-size: 0.75rem;
+      color: #94a3b8;
+      margin-top: 2px;
+    }
+    .chat-close-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: #fff;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+    .chat-close-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+    }
+    .chat-tabs {
+      display: flex;
+      background: #f1f5f9;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .chat-tab-btn {
+      flex: 1;
+      padding: 10px 12px;
+      background: none;
+      border: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #64748b;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+    }
+    .chat-tab-btn.active {
+      color: var(--primary);
+      background: #ffffff;
+      border-bottom: 2px solid var(--primary);
+    }
+    .chat-tab-panel {
+      flex: 1;
+      display: none;
+      flex-direction: column;
+      overflow-y: auto;
+      background: #f8fafc;
+    }
+    .chat-tab-panel.active {
+      display: flex;
+    }
+
+    /* BOT CONVERSATION TAB */
+    .chat-messages-area {
+      flex: 1;
+      padding: 14px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .chat-bubble {
+      max-width: 85%;
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+    .chat-bubble.bot {
+      background: #ffffff;
+      color: #1e293b;
+      border: 1px solid #e2e8f0;
+      align-self: flex-start;
+      border-bottom-left-radius: 2px;
+      box-shadow: var(--shadow-sm);
+    }
+    .chat-bubble.user {
+      background: var(--primary);
+      color: #ffffff;
+      align-self: flex-end;
+      border-bottom-right-radius: 2px;
+    }
+    .chat-suggestions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+    .suggestion-chip {
+      background: #e2e8f0;
+      color: #334155;
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 14px;
+      cursor: pointer;
+      transition: background 0.2s;
+      border: none;
+    }
+    .suggestion-chip:hover {
+      background: #cbd5e1;
+      color: #0f172a;
+    }
+    .chat-input-row {
+      padding: 10px 14px;
+      background: #ffffff;
+      border-top: 1px solid #e2e8f0;
+      display: flex;
+      gap: 8px;
+    }
+    .chat-input-row input {
+      flex: 1;
+      padding: 8px 12px;
+      border-radius: 20px;
+      border: 1px solid #cbd5e1;
+      font-size: 0.88rem;
+      outline: none;
+    }
+    .chat-input-row input:focus {
+      border-color: var(--primary);
+    }
+    .chat-input-row button {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      transition: background 0.2s;
+    }
+    .chat-input-row button:hover {
+      background: var(--primary-hover);
+    }
+
+    /* FEEDBACK TO GOOGLE SHEET TAB */
+    .sheet-form-container {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .sheet-notice {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 0.8rem;
+      color: #1e40af;
+      line-height: 1.4;
+    }
+    .form-group-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .form-group-item label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #334155;
+    }
+    .form-group-item textarea,
+    .form-group-item input {
+      padding: 9px 12px;
+      border-radius: 8px;
+      border: 1px solid #cbd5e1;
+      font-size: 0.88rem;
+      font-family: inherit;
+      outline: none;
+      transition: border 0.2s;
+    }
+    .form-group-item textarea:focus,
+    .form-group-item input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(30, 136, 229, 0.15);
+    }
+    .btn-submit-sheet {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: #ffffff;
+      padding: 11px;
+      border-radius: 8px;
+      border: none;
+      font-weight: 600;
+      font-size: 0.92rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: opacity 0.2s;
+    }
+    .btn-submit-sheet:hover {
+      opacity: 0.92;
+    }
+    .sheet-status-alert {
+      display: none;
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      line-height: 1.4;
+    }
+    .sheet-status-alert.success {
+      display: block;
+      background: #ecfdf5;
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+    }
+    .sheet-status-alert.error {
+      display: block;
+      background: #fef2f2;
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <header class="navbar">
+    <div class="brand">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      <span>SIMS HRM USER GUIDE</span>
+      <span class="badge-ver">V26.10</span>
+      <span class="badge-lang">English UI</span>
+    </div>
+    <div class="nav-search">
+      <span class="icon-search">🔍</span>
+      <input type="text" id="searchInput" placeholder="Tìm kiếm nhanh: payroll, quit job, sync, calculation, working hours...">
+    </div>
+    <div>
+      <a href="#troubleshooting" style="color:#f59e0b; text-decoration:none; font-size:0.85rem; font-weight:600;">⚠️ Xử lý lỗi thực tế</a>
+    </div>
+  </header>
+
+  <div class="app-container">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="role-filter-box">
+        <div class="role-filter-title">Lọc theo vai trò của bạn:</div>
+        <div class="role-pills">
+          <span class="role-pill active" data-role="all">Tất cả</span>
+          <span class="role-pill" data-role="cb">Nhân sự C&B</span>
+          <span class="role-pill" data-role="mng">Quản lý</span>
+          <span class="role-pill" data-role="admin">Quản trị</span>
+        </div>
+      </div>
+
+      <nav id="sidebarNav">
+        <div class="nav-group-title">1. Bắt đầu nhanh</div>
+        <a class="nav-item" href="#task-01" data-roles="all,cb,mng,admin">
+          <span>🔑 Đăng nhập & Bản đồ tiếng Anh</span>
+        </a>
+
+        <div class="nav-group-title">2. Quản lý Nhân sự & Hợp đồng (MANAGE)</div>
+        <a class="nav-item" href="#task-02" data-roles="cb">
+          <span>👤 Registration (Nhận NV mới)</span>
+          <span class="tag tag-hr">HR</span>
+        </a>
+        <a class="nav-item" href="#task-03" data-roles="cb">
+          <span>📝 Information (Hồ sơ chi tiết)</span>
+        </a>
+        <a class="nav-item" href="#task-04" data-roles="cb">
+          <span>📄 Contract (Hợp đồng & Thẻ)</span>
+        </a>
+        <a class="nav-item" href="#task-05" data-roles="cb">
+          <span>🚪 QUIT JOB (Báo Thôi việc)</span>
+          <span class="tag tag-hot">Quan trọng</span>
+        </a>
+
+        <div class="nav-group-title">3. Chấm công hàng ngày (ATTENDANCE)</div>
+        <a class="nav-item" href="#task-06" data-roles="mng,cb">
+          <span>⏰ Set Overtime (Đăng ký OT)</span>
+          <span class="tag tag-mng">Quản lý</span>
+        </a>
+        <a class="nav-item" href="#task-07" data-roles="mng,cb">
+          <span>🏖️ Leave (Đăng ký nghỉ phép)</span>
+        </a>
+        <a class="nav-item" href="#task-08" data-roles="cb">
+          <span>🔄 Working hours (Đồng bộ & Tính công)</span>
+          <span class="tag tag-hr">HR</span>
+        </a>
+        <a class="nav-item" href="#task-09" data-roles="all,cb,mng">
+          <span>📊 Attendance (Bảng công 31 ngày)</span>
+        </a>
+
+        <div class="nav-group-title">4. Tính lương tháng (PAYROLL)</div>
+        <a class="nav-item" href="#task-10" data-roles="cb">
+          <span>💰 Salary Calculation (Tính lương tự động)</span>
+          <span class="tag tag-hot">Cốt lõi</span>
+        </a>
+        <a class="nav-item" href="#task-11" data-roles="cb">
+          <span>🛑 Stopped (Lương người thôi việc)</span>
+          <span class="tag tag-hot">Cần đọc</span>
+        </a>
+        <a class="nav-item" href="#task-12" data-roles="cb">
+          <span>🔒 Lock & Payslip (Chốt lương & In phiếu)</span>
+        </a>
+        <a class="nav-item" href="#task-13" data-roles="cb">
+          <span>🏦 Bank & Cash (Ngân hàng / Tiền mặt)</span>
+        </a>
+
+        <div class="nav-group-title">5. Chế độ & Kỷ luật</div>
+        <a class="nav-item" href="#task-14" data-roles="cb">
+          <span>👶 &lt; 7yrs old & Maternity (Con nhỏ/Thai sản)</span>
+        </a>
+        <a class="nav-item" href="#task-15" data-roles="cb,mng">
+          <span>⚠️ Warning (Biên bản cảnh cáo)</span>
+        </a>
+
+        <div class="nav-group-title">6. Cấu hình & Quản trị</div>
+        <a class="nav-item" href="#task-16" data-roles="admin">
+          <span>⚙️ Shift & Schedule (Ca & Lịch làm)</span>
+          <span class="tag">Admin</span>
+        </a>
+        <a class="nav-item" href="#task-17" data-roles="admin">
+          <span>👥 Account (Tạo tài khoản & Quyền)</span>
+          <span class="tag">Admin</span>
+        </a>
+
+        <div class="nav-group-title">7. Xử lý sự cố</div>
+        <a class="nav-item" href="#troubleshooting" data-roles="all,cb,mng,admin">
+          <span>🛠️ Giải đáp sự cố thực tế</span>
+          <span class="tag tag-hot">HOT</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- MAIN BODY -->
+    <main class="content-area">
+
+      <!-- LƯU Ý GIAO DIỆN TIẾNG ANH -->
+      <div class="notice-banner">
+        <span style="font-size:1.4rem;">ℹ️</span>
+        <div>
+          <strong>LƯU Ý QUAN TRỌNG VỀ GIAO DIỆN HỆ THỐNG:</strong><br>
+          Giao diện thực tế của hệ thống SIMS HRM hoàn toàn bằng <strong>Tiếng Anh (English)</strong> và hiện <strong>không hỗ trợ chuyển ngữ Tiếng Việt</strong> (tính năng đổi ngôn ngữ trên web bị ẩn và chưa có backend hỗ trợ).<br>
+          Tài liệu này được biên soạn theo đúng 100% <strong>tên Menu, tên Nút bấm và nhãn Tiếng Anh thực tế trên màn hình</strong> để bạn đối chiếu và thao tác chính xác.
+        </div>
+      </div>
+
+      <!-- HERO BANNER -->
+      <section class="hero-banner">
+        <h1>Bạn muốn làm gì hôm nay?</h1>
+        <p>Chọn nhanh tác vụ cần thực hiện để xem vị trí nút bấm tiếng Anh và các bước thao tác cụ thể:</p>
+        <div class="quick-tiles">
+          <a class="quick-tile" href="#task-10">
+            <span class="tile-title">💸 Tính bảng lương tháng</span>
+            <span class="tile-sub">Nút [Salary Calculation]</span>
+          </a>
+          <a class="quick-tile" href="#task-11">
+            <span class="tile-title">🚪 Lương người thôi việc</span>
+            <span class="tile-sub">Tab [Stopped] trong Payroll</span>
+          </a>
+          <a class="quick-tile" href="#task-08">
+            <span class="tile-title">🔄 Kéo giờ công vân tay</span>
+            <span class="tile-sub">[Sync data] & [Calculation]</span>
+          </a>
+          <a class="quick-tile" href="#task-05">
+            <span class="tile-title">📝 Báo công nhân nghỉ việc</span>
+            <span class="tile-sub">Hợp đồng [QUIT JOB]</span>
+          </a>
+          <a class="quick-tile" href="#task-13">
+            <span class="tile-title">🏦 Xuất danh sách BIDV</span>
+            <span class="tile-sub">Menu [Attendance › Bank]</span>
+          </a>
+          <a class="quick-tile" href="#troubleshooting">
+            <span class="tile-title">❓ Xử lý lỗi thường gặp</span>
+            <span class="tile-sub">Lỗi mất cột lương bảo hiểm</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- TASK 01: ĐĂNG NHẬP & BẢN ĐỒ THUẬT NGỮ TIẾNG ANH -->
+      <article class="task-card" id="task-01" data-roles="all,cb,mng,admin">
+        <div class="task-header">
+          <div class="task-title-group">
+            <span class="task-num">1</span>
+            <span class="task-title">Đăng nhập & Bản đồ Menu Tiếng Anh - Tiếng Việt</span>
+          </div>
+          <span class="task-badge badge-c-b">Tất cả người dùng</span>
+        </div>
+        <div class="task-body">
+          <div class="pathway">🌐 URL Đăng nhập: <code>https://astro.sv-global.net/hrm/login</code></div>
+          <ul class="steps-list">
+            <li class="step-item">
+              <span class="step-idx">1</span>
+              <div class="step-desc">Nhập <strong>User ID</strong> và <strong>Password</strong> của bạn vào 2 ô giữa màn hình.</div>
+            </li>
+            <li class="step-item">
+              <span class="step-idx">2</span>
+              <div class="step-desc">Bấm nút tròn mũi tên <span class="btn-target btn-blue">➔</span> ở dưới để đăng nhập.</div>
+            </li>
+          </ul>
+
+          <h4 style="margin: 1.25rem 0 0.5rem; font-size:0.95rem;">Bản đồ đối chiếu 4 Menu chính trên thanh điều hướng:</h4>
+          <table class="glossary-table">
+            <thead>
+              <tr>
+                <th>Menu Tiếng Anh trên Web</th>
+                <th>Tên gọi Tiếng Việt</th>
+                <th>Dùng để làm gì?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>MANAGE</strong></td>
+                <td>Quản lý Nhân sự</td>
+                <td>Nhận nhân viên mới, hồ sơ, ký hợp đồng, báo nghỉ việc, đăng ký tăng ca, nghỉ phép, con nhỏ, kỷ luật.</td>
+              </tr>
+              <tr>
+                <td><strong>ATTENDANCE</strong></td>
+                <td>Chấm công & Tính lương</td>
+                <td>Đồng bộ quẹt thẻ vân tay, xem bảng công 31 ngày, tính lương tháng, tính lương người thôi việc, xuất ngân hàng.</td>
+              </tr>
+              <tr>
+                <td><strong>CONFIG</strong></td>
+                <td>Cấu hình tham số</td>
+                <td>Khai báo phòng ban, chức vụ, cài đặt giờ ca làm việc (Shift), phân lịch làm việc (Schedule), ngày Lễ (Holiday).</td>
+              </tr>
+              <tr>
+                <td><strong>ADMIN</strong></td>
+                <td>Quản trị hệ thống</td>
+                <td>Tạo tài khoản đăng nhập cho nhân viên mới và phân quyền màn hình.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <!-- TASK 02: TIẾP NHẬN NHÂN VIÊN MỚI (REGISTRATION) -->
+      <article class="task-card" id="task-02" data-roles="cb">
+        <div class="task-header">
+          <div class="task-title-group">
+            <span class="task-num">2</span>
+            <span class="task-title">Tiếp nhận & Đăng ký nhân viên mới (Registration)</span>
+          </div>
+          <span class="task-badge badge-c-b">Nhân sự C&B</span>
+        </div>
+        <div class="task-body">
+          <div class="pathway">📂 Menu trên Web: <strong>MANAGE</strong> <span class="arrow">▶</span> <strong>Registration</strong></div>
+          <ul class="steps-list">
+            <li class="step-item">
+              <span class="step-idx">1</span>
+              <div class="step-desc">Bấm nút màu xanh <span class="btn-target btn-blue">Sync employee</span> ở góc trên để nạp mã nhân viên vừa lấy vân tay từ máy chấm công (quẹt thẻ) về.</div>
+            </li>
+            <li class="step-item">
+              <span class="step-idx">2</span>
+              <div class="step-desc">Tại dòng của nhân viên mới, bấm nút màu xanh lá <span class="btn-target btn-green">MANAGE</span>.</div>
+            </li>
+            <li class="step-item">
+              <span class="step-idx">3</span>
+              <div class="step-desc">Trong cửa sổ bật lên, điền các ô bắt buộc:
+                <ul style="margin-left: 1.25rem; margin-top:0.25rem;">
+                  <li><strong>Full Name:</strong> Họ và tên có dấu.</li>
+                  <li><strong>ID Card:</strong> Số Căn cước công dân.</li>
+                  <li><strong>Section / Job:</strong> Chọn Phòng ban và Chức vụ.</li>
+                  <li><strong>Schedule:</strong> Chọn Lịch làm việc (ví dụ: HC, XA, XB...).</li>
+                  <li><strong>Salary Insurance:</strong> Mức lương đóng bảo hiểm (ví dụ: 10,000,000).</li>
+                  <li><strong>Gasoline:</strong> Tiền phụ cấp xăng xe (nếu có).</li>
+                </ul>
+              </div>
+            </li>
+            <li class="step-item">
+              <span class="step-idx">4</span>
+              <div class="step-desc">Bấm nút <span class="btn-target btn-green">LƯU</span> ở cuối cửa sổ để hoàn tất.</div>
+            </li>
+          </ul>
+          <div class="callout callout-success">
+            <span>✅ <strong>Kết quả:</strong> Nhân viên đã được kích hoạt, sẵn sàng để quẹt thẻ và tính lương.</span>
+          </div>
+
+          <!-- BẢNG GIẢI THÍCH NÚT BẤM MANAGE > REGISTRATION -->
+          <div class="button-guide-box">
+            <div class="button-guide-header">
+              <span>🔘 BẢNG GIẢI THÍCH TOÀN BỘ NÚT BẤM TRÊN MÀN HÌNH MANAGE › REGISTRATION</span>
+            </div>
+            <table class="button-guide-table">
+              <thead>
+                <tr>
+                  <th style="width: 200px;">Tên nút trên Web</th>
+                  <th style="width: 130px;">Màu sắc & Vị trí</th>
+                  <th>Ý nghĩa nghiệp vụ & Khi nào cần bấm?</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="btn-chip blue">🔄 Sync employee</span></td>
+                  <td>Xanh dương (Thanh trên)</td>
+                  <td><strong>Kéo mã nhân viên mới từ máy chấm công:</strong> Khi người mới lấy dấu vân tay trên máy quẹt thẻ, bấm nút này để máy chủ nhận diện và nạp vào danh sách chờ đăng ký.</td>
+                </tr>
+                <tr>
+                  <td><span class="btn-chip green">⚙️ MANAGE</span></td>
+                  <td>Xanh lá (Từng dòng NV)</td>
+                  <td><strong>Mở biểu sửa sổ xem / sửa thông tin chi tiết của nhân viên:</strong> Nhập thông tin cá nhân như họ tên, CCCD, phân xưởng, mức lương bảo hiểm, ca làm việc để kích hoạt nhân sự vào hệ thống.
+			<br> 
+			<strong>Lưu ý:</strong> Khi sửa chỉ cần nhấn trực tiếp vào dữ liệu cần sửa, rồi chọn hoặc nhập dữ liệu mới rồi bấm enter, hệ thống sẽ tự lưu thông tin.</td>
+                </tr>
+                <tr>
+                  <td><span class="btn-chip green">⬆ Import</span></td>
+                  <td>Xanh lá (Thanh trên)</td>
+                  <td><strong>Nạp nhân viên hàng loạt từ Excel:</strong> Dùng khi cần cập nhật thông tin cho nhiều nhân viên cùng lúc.</td>
+                </tr>
+                <tr>
+                  <td><span class="btn-chip amber">⬇ Export</span></td>
+                  <td>Màu cam (Thanh trên)</td>
+                  <td><strong>Xuất danh sách nhân viên:</strong> Tải toàn bộ danh sách nhân sự mới/đang chờ duyệt ra file Excel.(Chỉ xuất ra danh sách mà bạn đang Lọc (Filter)</td>
+                </tr>
+                <tr>
+                  <td><span class="btn-chip red">🚫 IGNORE</span></td>
+                  <td>Màu đỏ (Thanh trên)</td>
+                  <td><strong>Ẩn thông tin rác hoặc đã nghỉ:</strong> Ẩn các mã quét thử nghiệm dư thừa trên máy chấm công mà không tạo hồ sơ nhân viên Hoặc ẩn các nhân viên đã nghỉ việc.</td>
+                </tr>
+                <tr>
+                  <td><span class="btn-chip gray">❌ UNREGISTER</span></td>
+                  <td>Màu xám/đen (Thanh trên)</td>
+                  <td><strong>Hủy kích hoạt nhân viên:</strong> Đưa nhân viên đã kích hoạt quay trở lại trạng thái chưa đăng ký nếu chưa cần tính công.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <!-- TASK 03: SỬA HỒ SƠ CHI TIẾT (INFORMATION) -->
+      <article class="task-card" id="task-03" data-roles="cb">
+        <div class="task-header">
+          <div class="task-title-group">
+            <span class="task-num">3</span>
+            <span class="task-title">Cập nhật hồ sơ chi tiết (Information - Sửa thông tin cơ bản không bao gồm lương)</span>
+          </div>
+          <span class="task-badge badge-c-b">Nhân sự C&B</span>
+        </div>
+        <div class="task-body">
+          <div class="pathway">📂 Menu trên Web: <strong>MANAGE</strong> <span class="arrow">▶</span> <strong>Information</strong></div>
+          <ul class="steps-list">
+            <li class="step-item">
+              <span class="step-idx">1</span>
+              <div class="step-desc">Gõ mã NV hoặc tên vào ô tìm kiếm trên thanh tiêu đề bảng để lọc nhân viên.</div>
+            </li>
+            <li class="step-item">
+              <span class="step-idx">2</span>
+              <div class="step-desc"><strong>Nhấp chuột trực tiếp vào ô cần sửa:</strong> Ví dụ ô số tài khoản ngân hàng (Bank), số người phụ thuộc giảm trừ gia cảnh, ngày cấp CCCD...</div>
+            </li>
+            <li class="step-item">
+              <span class="step-idx">3</span>
+              <div class="step-desc">Gõ nội dung mới và <strong>bấm phím Enter</strong> trên bàn phím (hoặc bấm dấu tick màu xanh <span class="btn-target btn-green">✔</span>) để hệ thống lưu ngay.</div>
+            </li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- TASK 04: HỢP ĐỒNG LAO ĐỘNG (CONTRACT) -->
+      <article class="task-card" id="task-04" data-roles="cb">
+        <div class="task-header">
+          <div class="task-title-group">
+            <span class="task-num">4</span>
+            <span class="task-title">Ký hợp đồng lao động & In thẻ nhân viên (Contract)</span>
+          </div>
+          <span class="task-badge badge-c-b">Nhân sự C&B</span>
+        </div>
+        <div class="task-body">
+          <div class="pathway">📂 Menu trên Web: <strong>MANAGE</strong> <span class="arrow">▶</span> <strong>Contract (Terminate)</strong></div>
+          <ul class="steps-list">
+            <li class="step-item">
+              <span class="step-idx">1</span>
+              <div class="step-desc">Tại dòng nhân viên cần tạo hợp đồng, bấm nút màu xanh <span class="btn-target btn-green">MANAGE</span>.</div>
+            </li>
+            <li class="step-item">
+              <span class="step-idx">2</span>
+              <div class="step-desc">Trong cửa sổ quản lý hợp đồng, bấm nút <span class="btn-target btn-green">ADD CONTRACT</span>.</div>
+            </li>
+            <li class="step-item">
+              <span class="step-idx">3</span>
+              <div class="step-desc">Tại cột <strong>TYPE</strong>, chọn loại hợp đồng:
+                <ul style="margin-left: 1.25rem; margin-top:0.25rem;">
+                  <li><code>Probationary - 2 month</code>: Thử việc 2 tháng.</li>
+                  <li><code>Fixed term - 1 year for the 1st time</code>: Có thời hạn 1 năm lần 1.</li>
+                  <li><code>Indefinite term</code>: Không xác định thời hạn.</li>
+                </ul>
+              </div>
+            </li>
+            <li class="step-item">
+              <span class="step-idx">4</span>
+              <div class="step-desc">Chọn ngày bắt đầu (<code>FROM</code>), ngày kết thúc (<code>TO</code>), và điền mức lương bảo hiểm tại cột <code>INSURANCE SALARY (VND)</code>.</div>
+            </li>
+            <li class="step-item">
+              <span class="step-idx">5</span>
+              <div class="step-desc">Bấm nút màu xanh <span class="btn-target btn-green">CREATE</span> để lưu hợp đồng.</div>
+            </li>
+            <li class="step-item">
+              <span class="step-idx">6</span>
+              <div class="step-desc"><strong>In hợp đồng hoặc thẻ nhân viên:</strong> Tick chọn nhân viên ở bảng bên ngoài, bấm nút màu xanh <span class="btn-target btn-blue">CONTRACT</span> để tải hợp đồng in, hoặc nút <span class="btn-target btn-blue">CARD</span> để in thẻ đeo.</div>
+            </li>
+          </ul>
+
+          <!-- BẢNG GIẢI THÍCH NÚT BẤM MANAGE > CONTRACT -->
+          <div class="button-guide-box">
+            <div class="button-guide-header">
+              <span>🔘 BẢNG GIẢI THÍCH TOÀN BỘ NÚT BẤM TRÊN MÀN HÌNH CONTRACT (TERMINATE)</span>
+            </div>
+            <table class="button-guide-table">
+              <thead>
+                <tr>
+                  <th style="width: 200px;">Tên nút trên Web</th>
+                  <th style="width: 130px;">Màu sắc & Vị trí</th>
+                  <th>Ý nghĩa nghiệp vụ & Khi nào cần bấm?</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="btn-chip green">⚙️ MANAGE</span></td>
+                  <td>Xanh lá (Từng dòng NV)</td>
+                  <td><strong>Mở lịch sử hợp đồng:</strong> Xem danh sách các hợp đồng lao động trước đây và mở bảng thêm hợp đồng mới cho nhân sự đó.</td>
+                </tr>
+                <tr>
+                  <td><span class="btn-chip green">➕ ADD CONTRACT</span></td>
+                  <td>Xanh lá (Trong Popup)</td>
+                  <td><strong>Tạo thêm hợp đồng mới:</strong> Thêm hợp đồng thử việc, hợp đồng 1 năm, hợp đồng vô thời hạn, hoặc hợp đồng thôi việc (<code>QUIT JOB</code>).</td>
+                </tr>
+                <tr>
+                  <td><span class="btn-chip green">💾 CREATE</span></td>
+                  <td>Xanh lá (Trong Popup)</td>
+                  <td><strong>Lưu hợp đồng:</strong> Xác nhận tạo hợp đồng và lưu vào cơ sở dữ liệu để bảng lương tháng tự động liên kết mức lương.</td>
+                </tr>
+                <tr>
+                  <td><span class="btn-chip blue">📄 CONTRACT</span></td>
+                  <td>Xanh dương (Thanh trên)</td>
+                  <td><strong>Tải bản in Hợp đồng lao động:</strong> Tick chọn 1 hoặc nhiều nhân sự ở bảng ngoài, bấm nút này để tải file hợp đồng đã điền đầy đủ họ tên, CCCD, mức lương.</td>
+                </tr>
+                <tr>
+                  <td><span class="btn-chip blue">🪪 CARD</span></td>
+                  <td>Xanh dương (Thanh trên)</td>
+                  <td><strong>In thẻ đeo nhân viên:</strong> Tick chọn nhân sự và bấm nút này để xuất file in thẻ nhân viên chuẩn kích thước kèm mã vạch và ảnh đại diện.</td>
+                </tr>
+                <tr>
+                  <td><span class="btn-chip amber">📝 STATUS</span></td>
+                  <td>Màu cam (Thanh trên)</td>
+                  <td><strong>Cập nhật tiến độ ký kết:</strong> Cập nhật trạng thái: Đã ký đủ 2 bên / Công ty chưa ký / Người lao động chưa ký để theo dõi hồ sơ pháp lý.</td>
+                </tr>
+                <tr>
+                  <td><span class="btn-chip red">🗑️ DELETE</span></td>
+                  <td>Màu đỏ (Trong Popup)</td>
+                  <td><strong>Xóa hợp đồng sai:</strong> Xóa dòng hợp đồng nhập nhầm ngày hoặc nhầm loại (chỉ xóa được khi kỳ lương tháng đó chưa bị Lock).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </article>
+
+      <!-- TASK 05: BÁO THÔI VIỆC / NGHỈ NGANG (QUIT JOB) -->
+      <article class="task-card" id="task-05" data-roles="cb">
+        <div class="task-header">
+          <div class="task-title-group">
+            <span class="task-num">5</span>
+            <span class="task-title">Khai báo Thôi việc / Nghỉ ngang (Hợp đồng QUIT JOB)</span>
+          </div>
+          <span class="task-badge badge-c-b" style="background:#fee2e2; color:#b91c1c;">Cực kỳ quan trọng</span>
+        </div>
+        <div class="task-body">
+          <div class="pathway">📂 Menu trên Web: <strong>MANAGE</strong> <span class="arrow">▶</span> <strong>Contract (Terminate)</strong></div>
+          
+          <div class="callout callout-warning" style="margin-bottom:1rem;">
+            <span>ℹ️ <strong>LƯU Ý NGHIỆP VỤ & LỘ TRÌNH CẬP NHẬT:</strong><br>
+            • <strong>Phiên bản hiện tại (trên môi trường live):</strong> Khi bấm thêm hợp đồng thôi việc, hệ thống tự để giá trị lương mặc định là <code>0</code>. Trong lúc chờ bản vá mới được public, bạn <strong>nên chủ động gõ lại mức lương bảo hiểm</strong> tại cột <code>INSURANCE SALARY (VND)</code> để đảm bảo bảng tính lương thôi việc (Payroll &gt; Stopped) luôn hiển thị đầy đủ số tiền Basic Salary.<br>
+            • <strong>Bản nâng cấp sắp tới (Đã hoàn thiện):</strong> Hệ thống đã được cập nhật logic backend để tự động lấy mức lương từ hợp đồng trước đó và không còn đọc trường lương từ dòng QUIT JOB nữa. Khi bản cập nhật này được public lên môi trường chính thức, bạn sẽ không cần phải gõ lại mức lương này nữa!</span>
+          </div>
+
+          <ul class="steps-list">
+            <li class="step-item">
+              <span class="step-idx">1</span>
+              <div class="step-desc">Vào menu <strong>MANAGE › Contract (Terminate)</strong>, tìm nhân viên nghỉ việc và bấm nút <span class="btn-target btn-green">MANAGE</span>.</div>
+            </li>
+            <li class="step-item">
+              <span class="step-idx">2</span>
+              <div class="step-desc">Bấm nút <span class="btn-target btn-green">ADD CONTRACT</span>.</div>
+            </li>
+            <li class="step-item">
+              <span class="step-idx">3</span>
+              <div class="step-desc">Tại cột <strong>TYPE</strong>, bấm vào và chọn đúng mục: <strong style="color:#ef4444;">QUIT JOB</strong>.</div>
+            </li>
+            <li class="step-item">
+              <span class="step-idx">4</span>
+              <div class="step-desc">Tại cột <strong>FROM</strong> và <strong>TO</strong>, chọn ngày người lao động nghỉ việc.</div>
+            </li>
+            <li class="step-item">
+              <span class="step-idx">5</span>
+              <div class="step-desc"><strong style="color:#ef4444;">BƯỚC QUYẾT ĐỊNH:</strong> Tại cột <strong>INSURANCE SALARY (VND)</strong> (đang hiển thị số 0), <strong>nhấp chuột vào và gõ đúng mức lương đóng bảo hiểm của nhân viên</strong> (ví dụ: <code>10000000</code>).</div>
+            </li>
+            <li class="step-item">
+              <span class="step-idx">6</span>
+              <div class="step-desc">Tại cột <strong>REMARK</strong>, gõ lý do: <em>Nghi ngang</em> (nếu tự ý bỏ việc) hoặc <em>Nghi co don</em>.</div>
+            </li>
+            <li class="step-item">
+              <span class="step-idx">7</span>
+              <div class="step-desc">Bấm nút <span class="btn-target btn-green">CREATE</span> để lưu lại.</div>
+            </li>
+          </ul>
+
+          <div class="ui-mockup">
+            <div class="mock-header">
+              <div class="mock-dots"><span class="mock-dot r"></span><span class="mock-dot y"></span><span class="mock-dot g"></span></div>
+              <span>Minh họa thực tế: Thao tác tạo dòng QUIT JOB trong Contract</span>
+              <span>English Interface</span>
+            </div>
+            <div class="mock-body">
+              <table class="mock-table">
+                <thead>
+                  <tr>
+                    <th>TYPE</th>
+                    <th>FROM</th>
+                    <th>TO</th>
+                    <th>INSURANCE SALARY (VND)</th>
+                    <th>REMARK</th>
+                    <th>ACTION</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="glow-highlight">QUIT JOB</span></td>
+                    <td>2026-10-15</td>
+                    <td>2026-10-15</td>
+                    <td><span class="glow-highlight">10,000,000</span> <em style="color:#fcd34d; font-size:0.75rem;">(Bắt buộc gõ lương, không để số 0)</em></td>
+                    <td>Nghi ngang</td>
+                    <td><span class="btn-target btn-green">CREATE</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="callout callout-success">
+            <span>✅ <strong>Kết quả sau khi làm đúng:</strong> Nhân viên này được tự động chuyển sang danh sách thôi việc <strong>Resignation</strong>, và khi sang trang <strong>Payroll</strong> (chọn mục <code>Stopped</code>) sẽ hiển thị đầy đủ lương bảo hiểm và ngày công cuối cùng.</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- TASK 06: ĐĂNG KÝ TĂNG CA (SET OVERTIME) -->
+      <article class="task-card" id="task-06" data-roles="mng,cb">
+        <div class="task-header">
+          <div class="task-title-group">
+            <span class="task-num">6</span>
+            <span class="task-title">Đăng ký kế hoạch tăng ca trước (Set Overtime)</span>
+          </div>
+          <span class="task-badge badge-mgr">Quản lý / C&B</span>
+        </div>
+        <div class="task-body">
+          <div class="pathway">📂 Menu trên Web: <strong>MANAGE</strong> <span class="arrow">▶</span> <strong>Set Overtime</strong></div>
+          <ul class="steps-list">
+            <li class="step-item">
+              <span class="step-idx">1</span>
+              <div class="step-desc">Chọn Ngày tăng ca và chọn Phòng ban / Chuyền may ở thanh lọc trên cùng.</div>
+            </li>
+            <li class="step-item">
+              <span class="step-idx">2</span>
+              <div class="step-desc">Bấm nút <span class="btn-target btn-blue">Add</span>, tick chọn những nhân viên tham gia tăng ca ca đó.</div>
+            </li>
+            <li class="step-item">
+              <span class="step-idx">3</span>
+              <div class="step-desc">Nhập giờ bắt đầu và kết thúc tăng ca (ví dụ: 17:00 ~ 20:00). Bấm nút <span class="btn-target btn-green">OK</span> để lưu.</div>
+            </li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- TASK 07: ĐĂNG KÝ NGHỈ PHÉP (LEAVE) -->
+      <article class="task-card" id="task-07" data-roles="mng,cb">
+        <div class="task-header">
+          <div class="task-title-group">
+            <span class="task-num">7</span>
+            <span class="task-title">Đăng ký xin nghỉ phép (Leave) & Giải thích toàn bộ nút bấm</span>
+          </div>
+          <span class="task-badge badge-mgr">Quản lý / C&B</span>
+        </div>
+        <div class="task-body">
+          <div class="pathway">📂 Menu trên Web: <strong>MANAGE</strong> <span class="arrow">▶</span> <strong>Leave</strong></div>
+          
+          <ul class="steps-list">
+            <li class="step-item">
+              <span class="step-idx">1</span>
+              <div class="step-desc"><strong>Cách 1 - Tạo đơn cho từng người:</strong> Bấm nút <span class="btn-target btn-green">➕ Add</span> ➔ Chọn nhân viên ➔ Chọn ngày bắt đầu, ngày kết thúc và Loại nghỉ (Phép năm, ốm, việc riêng...) ➔ Bấm nút <span class="btn-target btn-green">OK</span> để lưu.</div>
+            </li>
+            <li class="step-item">
+              <span class="step-idx">2</span>
+              <div class="step-desc"><strong>Cách 2 - Nạp nhiều người / nhiều ngày bằng Excel:</strong> Bấm nút <span class="btn-target btn-amber">⬇ Template Leave (Multi-day)</span> để tải file mẫu Excel về điền ➔ Sau đó bấm <span class="btn-target btn-blue">⬆ Import Leave (Multi-day)</span> để hệ thống tự nạp hàng loạt.</div>
+            </li>
+          </ul>
+
+          <!-- BẢNG GIẢI THÍCH CHI TIẾT TOÀN BỘ NÚT BẤM TRÊN MÀN HÌNH MANAGE > LEAVE -->
+          <div class="button-guide-box">
+            <div class="button-guide-header">
+              <span>🔘 BẢNG GIẢI THÍCH CHI TIẾT TOÀN BỘ NÚT BẤM TRÊN MÀN HÌNH MANAGE › LEAVE</span>
+            </div>
+            <table class="button-guide-table">
+              <thead>
+                <tr>
+                  <th style="width: 210px;">Tên nút trên Web</th>
+                  <th style="width: 130px;">Màu sắc & Vị trí</th>
+                  <th>Ý nghĩa nghiệp vụ & Khi nào cần bấm?</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="btn-chip green">➕ Add</span></td>
+                  <td>Xanh lá (Thanh trên)</td>
+                  <td><strong>Tạo đơn nghỉ phép thủ công:</strong> Dùng khi có 1 hoặc vài công nhân nộp đơn xin nghỉ, mở popup để chọn mã NV, ngày nghỉ, loại nghỉ và số giờ.</td>
+                </tr>
+                <tr>
+                  <td><span class="btn-chip green">⬆ Import Leave (Full)</span></td>
+                  <td>Xanh lá (Thanh trên)</td>
+                  <td><strong>Nạp danh sách phép tổng hợp:</strong> Dành cho bộ phận HR tải lên file Excel tổng hợp toàn bộ các loại phép trong tháng của toàn công ty.</td>
+                </tr>
+                <tr>
+                  <td><span class="btn-chip amber">⬇ D/L Leave (Month)</span></td>
+                  <td>Màu cam (Thanh trên)</td>
+                  <td><strong>Tải danh sách phép cả tháng:</strong> Xuất toàn bộ dữ liệu nghỉ phép của tháng đang chọn ra file Excel để kiểm tra và đối soát với dữ liệu quẹt thẻ.</td>
+                </tr>
+                <tr>
+                  <td><span class="btn-chip blue">⬆ Import Leave (Multi-day)</span></td>
+                  <td>Xanh dương (Thanh trên)</td>
+                  <td><strong>Nạp phép nghỉ nhiều ngày liên tiếp:</strong> Tải lên file Excel đăng ký nghỉ từ ngày A đến ngày B cho công nhân (sau khi đã điền vào file mẫu).</td>
+                </tr>
+                <tr>
+                  <td><span class="btn-chip amber">⬇ Template Leave (Multi-day)</span></td>
+                  <td>Màu cam (Thanh trên)</td>
+                  <td><strong>Tải file Excel mẫu:</strong> Tải file mẫu chuẩn từ hệ thống về máy tính để điền thông tin trước khi dùng nút <em>Import Leave (Multi-day)</em>.</td>
+                </tr>
+                <tr>
+                  <td><span class="btn-chip amber">⬇ D/L Wedd &amp; Funeral</span></td>
+                  <td>Màu cam (Thanh trên)</td>
+                  <td><strong>Tải danh sách Cưới hỏi &amp; Tang chế:</strong> Xuất báo cáo danh sách nhân viên nghỉ việc riêng có hưởng nguyên lương theo Bộ luật Lao động (Kết hôn 3 ngày, tang tứ thân phụ mẫu 3 ngày...).</td>
+                </tr>
+                <tr>
+                  <td><span class="btn-chip amber">⬇ D/L Leave Early</span></td>
+                  <td>Màu cam (Thanh trên)</td>
+                  <td><strong>Tải danh sách Về sớm / Ra ngoài:</strong> Xuất báo cáo danh sách nhân viên xin phép về sớm hoặc ra ngoài trong giờ làm việc.</td>
+                </tr>
+                <tr>
+                  <td><span class="btn-chip gray">🔄 Search</span></td>
+                  <td>Nút trắng/xám (Góc phải)</td>
+                  <td><strong>Tìm kiếm / Làm mới:</strong> Tải lại bảng dữ liệu sau khi bạn chọn Năm, Tháng hoặc Bộ phận/Chuyền cần tra cứu.</td>
+                </tr>
+                <tr>
+                  <td><span class="btn-chip cyan">🌸 (Display UI)</span></td>
+                  <td>Xanh biển (Góc phải)</td>
+                  <td><strong>Tùy biến cột hiển thị:</strong> Cho phép tick chọn ẩn/hiện hoặc điều chỉnh độ rộng các cột trên bảng dữ liệu theo nhu cầu quản lý của bạn.</td>
+                </tr>
+                <tr>
+                  <td><span class="btn-chip gray">🎛️ (Filter by column)</span></td>
+                  <td>Đầu mỗi cột bảng</td>
+                  <td><strong>Lọc nhanh theo cột:</strong> Bấm vào biểu tượng cần gạt trên đầu cột để lọc riêng 1 phòng ban, 1 mã nhân viên hoặc 1 loại phép cụ thể.</td>
+                </tr>
+                <tr>
+                  <td><span class="btn-chip green">OK</span> / <span class="btn-chip red">DELETE</span></td>
+                  <td>Trong Popup nhập phép</td>
+                  <td><strong>Xác nhận Lưu hoặc Xóa đơn:</strong> Bấm <span class="btn-chip green">OK</span> để lưu đơn nghỉ phép vào hệ thống; hoặc chọn đơn cũ bấm <span class="btn-chip red">DELETE</span> để hủy đơn nghỉ nếu công nhân đổi ý đi làm lại.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout callout-success" style="margin-top: 1rem;">
+            <span>💡</span>
+            <div><strong>Cơ chế tự động cảnh báo thông minh:</strong> Hệ thống đã được nâng cấp tính năng tự động cảnh báo khi bạn đăng ký phép cho ngày đã có quẹt thẻ đi làm, hoặc khi nhân viên đã đăng ký phép trước nhưng sau đó lại có phát sinh quẹt thẻ. Giúp bộ phận Quản lý &amp; HR ngăn chặn hoàn toàn sai sót tính trùng công.</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- TASK 08: ĐỒNG BỘ CÔNG & TÍNH CÔNG (WORKING HOURS) -->
+      <article class="task-card" id="task-08" data-roles="cb">
+        <div class="task-header">
+          <div class="task-title-group">
+            <span class="task-num">8</span>
+            <span class="task-title">Đồng bộ vân tay & Tính giờ công (Working hours)</span>
+          </div>
+          <span class="task-badge badge-c-b">Nhân sự C&B</span>
+        </div>
+        <div class="task-body">
+          <div class="pathway">📂 Menu trên Web: <strong>ATTENDANCE</strong> <span class="arrow">▶</span> <strong>Working hours</strong></div>
+          <ul class="steps-list">
+            <li class="step-item">
+              <span class="step-idx">1</span>
+              <div class="step-desc">Chọn <strong>Năm</strong> và <strong>Tháng</strong> cần chốt công.</div>
+            </li>
+            <li class="step-item">
+              <span class="step-idx">2</span>
+              <div class="step-desc">Bấm nút màu xanh <span class="btn-target btn-blue">Sync data</span> để kéo dữ liệu quẹt thẻ vân tay từ máy chấm công về server, sau đó phần mềm tự động quy đổi thành giờ công chuẩn và giờ làm thêm OT.</div>
+            </li>
+            <li class="step-item">
+              <span class="step-idx">3</span>
+              <div class="step-desc">Bấm nút màu xanh lá <span class="btn-target btn-green">Calculation</span> để phần mềm tự động quy đổi thành giờ công chuẩn và giờ làm thêm OT. (chỉ dùng nút này khi cần phần mềm tính toán lại)</div>
+            </li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- TASK 09: XEM BẢNG CHẤM CÔNG 31 NGÀY (ATTENDANCE) -->
+      <article class="task-card" id="task-09" data-roles="all,cb,mng">
+        <div class="task-header">
+          <div class="task-title-group">
+            <span class="task-num">9</span>
+            <span class="task-title">Xem & Kiểm tra bảng chấm công 31 ngày (Attendance)</span>
+          </div>
+          <span class="task-badge badge-c-b">Tất cả người dùng</span>
+        </div>
+        <div class="task-body">
+          <div class="pathway">📂 Menu trên Web: <strong>ATTENDANCE</strong> <span class="arrow">▶</span> <strong>Attendance</strong></div>
+          <p style="margin-bottom:0.75rem;">Chọn Năm, Tháng và Bộ phận, bấm <span class="btn-target btn-blue">Search</span> để xem chi tiết từng ngày công. Ý nghĩa các ký hiệu viết tắt trên bảng:</p>
+          <div style="display:flex; flex-wrap:wrap; gap:0.5rem; font-size:0.85rem;">
+            <span style="background:#e2e8f0; padding:0.2rem 0.5rem; border-radius:4px;"><strong>Số giờ (vd: 8.0):</strong> Có đi làm đủ giờ</span>
+            <span style="background:#fef3c7; padding:0.2rem 0.5rem; border-radius:4px;"><strong>PN:</strong> Nghỉ phép năm (hưởng lương)</span>
+            <span style="background:#fee2e2; padding:0.2rem 0.5rem; border-radius:4px;"><strong>OFF:</strong> Nghỉ chủ nhật / ngày nghỉ tuần</span>
+            <span style="background:#e0f2fe; padding:0.2rem 0.5rem; border-radius:4px;"><strong>L:</strong> Nghỉ Lễ, Tết theo luật</span>
+            <span style="background:#f3e8ff; padding:0.2rem 0.5rem; border-radius:4px;"><strong>SN:</strong> Nghỉ chế độ sinh con</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- TASK 10: TÍNH LƯƠNG TỰ ĐỘNG (PAYROLL CORE) -->
+      <article class="task-card" id="task-10" data-roles="cb">
+        <div class="task-header">
+          <div class="task-title-group">
+            <span class="task-num">10</span>
+            <span class="task-title">Tính bảng lương tự động hàng tháng (Salary Calculation)</span>
+          </div>
+          <span class="task-badge badge-c-b" style="background:#fee2e2; color:#b91c1c;">Nghiệp vụ cốt lõi C&B</span>
+        </div>
+        <div class="task-body">
+          <div class="pathway">📂 Menu trên Web: <strong>ATTENDANCE</strong> <span class="arrow">▶</span> <strong>Payroll</strong></div>
+          <ul class="steps-list">
+            <li class="step-item">
+              <span class="step-idx">1</span>
+              <div class="step-desc">Chọn ô Năm (ví dụ: <code>2026</code>) và Tháng (ví dụ: <code>Oct</code> - Tháng 10).</div>
+            </li>
+            <li class="step-item">
+              <span class="step-idx">2</span>
+              <div class="step-desc">Tại ô chọn trạng thái, để mặc định là <strong>`Working`</strong> (đang làm việc).</div>
+            </li>
+            <li class="step-item">
+              <span class="step-idx">3</span>
+              <div class="step-desc">Bấm nút màu xanh lá: <span class="btn-target btn-green">Salary Calculation</span>. Chờ vài giây để hệ thống tính toàn bộ công ty.</div>
+            </li>
+            <li class="step-item">
+              <span class="step-idx">4</span>
+              <div class="step-desc"><strong>Sửa khoản tiền riêng lẻ (nếu cần):</strong> Nhấp trực tiếp vào ô số tiền (ví dụ: <code>AD_MEAL</code> - tiền ăn, <code>AD_OTHER</code> - điều chỉnh khác) gõ số tiền mới và Enter.</div>
+            </li>
+            <li class="step-item">
+              <span class="step-idx">5</span>
+              <div class="step-desc"><strong>Tính lại riêng cho người vừa sửa:</strong> Tick ô vuông đầu dòng của người đó, bấm nút <span class="btn-target btn-blue">RE-CALC</span> ở cuối bảng.</div>
+            </li>
+          </ul>
+
+          <div class="ui-mockup">
+            <div class="mock-header">
+              <div class="mock-dots"><span class="mock-dot r"></span><span class="mock-dot y"></span><span class="mock-dot g"></span></div>
+              <span>Minh họa thực tế: Bảng Attendance › Payroll trên Web</span>
+              <span>SIMS V26.10</span>
+            </div>
+            <div class="mock-body">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+                <div>Bộ lọc: Year <strong>2026</strong> | Month <strong>Oct</strong> | Type <strong>[Working]</strong></div>
+                <div class="glow-highlight">Bấm nút: [ Salary Calculation ]</div>
+              </div>
+              <table class="mock-table">
+                <thead>
+                  <tr>
+                    <th>EMP ID</th>
+                    <th>FULL NAME</th>
+                    <th>INSURANCE SALARY</th>
+                    <th>BASIC GASOLINE</th>
+                    <th>BASIC SALARY</th>
+                    <th>ACTUAL SALARY</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>00279</td>
+                    <td>NGUYỄN THỊ LOAN</td>
+                    <td>10,000,000</td>
+                    <td>3,005,000</td>
+                    <td>13,005,000</td>
+                    <td>12,450,000</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- TASK 11: TÍNH LƯƠNG NGƯỜI THÔI VIỆC (STOPPED TAB) -->
+      <article class="task-card" id="task-11" data-roles="cb">
+        <div class="task-header">
+          <div class="task-title-group">
+            <span class="task-num">11</span>
+            <span class="task-title">Tính & Xem lương người Nghỉ việc / Nghỉ ngang (Mục Stopped)</span>
+          </div>
+          <span class="task-badge badge-c-b" style="background:#fee2e2; color:#b91c1c;">Giải quyết phản hồi</span>
+        </div>
+        <div class="task-body">
+          <div class="pathway">📂 Menu trên Web: <strong>ATTENDANCE</strong> <span class="arrow">▶</span> <strong>Payroll</strong></div>
+          <ul class="steps-list">
+            <li class="step-item">
+              <span class="step-idx">1</span>
+              <div class="step-desc">Tại trang <strong>Payroll</strong>, tại ô chọn loại nhân viên (ngay cạnh ô chọn Tháng), <strong>chọn `Stopped`</strong> (thay vì `Working`).</div>
+            </li>
+            <li class="step-item">
+              <span class="step-idx">2</span>
+              <div class="step-desc">Bấm nút <span class="btn-target btn-blue">Search</span> (hoặc nút <span class="btn-target btn-green">Salary Calculation</span>).</div>
+            </li>
+            <li class="step-item">
+              <span class="step-idx">3</span>
+              <div class="step-desc">Hệ thống sẽ lọc ra danh sách những nhân viên đã nghỉ trong tháng đó với số ngày công thực tế trước ngày nghỉ.</div>
+            </li>
+            <li class="step-item">
+              <span class="step-idx">4</span>
+              <div class="step-desc"><strong>Gán tuần trả lương:</strong> Tại cột cuối cùng, bấm nút <span class="btn-target btn-blue">Choose Week</span> để chọn tuần kế toán sẽ chi trả tiền lương cho người nghỉ.</div>
+            </li>
+          </ul>
+
+          <div class="callout callout-warning">
+            <span>❓ <strong>Nếu thấy cột Insurance Salary & Basic Salary bị số 0:</strong> Bạn chỉ cần vào lại <strong>Manage › Contract (Terminate)</strong>, mở dòng <strong>QUIT JOB</strong> của nhân viên này, nhập lại mức lương bảo hiểm tại cột <strong>INSURANCE SALARY (VND)</strong>, bấm lưu, rồi quay lại trang Payroll bấm nút <strong>Salary Calculation</strong> là dữ liệu sẽ lập tức hiển thị lại đầy đủ!</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- TASK 12: CHỐT LƯƠNG & IN PHIẾU LƯƠNG -->
+      <article class="task-card" id="task-12" data-roles="cb">
+        <div class="task-header">
+          <div class="task-title-group">
+            <span class="task-num">12</span>
+            <span class="task-title">Chốt khóa bảng lương & In phiếu lương (Lock & Payslip)</span>
+          </div>
+          <span class="task-badge badge-c-b">Nhân sự C&B</span>
+        </div>
+        <div class="task-body">
+          <div class="pathway">📂 Menu trên Web: <strong>ATTENDANCE</strong> <span class="arrow">▶</span> <strong>Payroll</strong></div>
+          <ul class="steps-list">
+            <li class="step-item">
+              <span class="step-idx">1</span>
+              <div class="step-desc"><strong>Khóa bảng lương:</strong> Khi đã duyệt xong toàn bộ số tiền, tick chọn ô vuông trên thanh tiêu đề để chọn tất cả nhân viên, bấm nút màu vàng <span class="btn-target btn-amber">Lock</span> ở góc dưới để đóng băng dữ liệu chống sửa đổi.</div>
+            </li>
+            <li class="step-item">
+              <span class="step-idx">2</span>
+              <div class="step-desc"><strong>Tải phiếu lương (Payslip):</strong> Bấm nút màu vàng <span class="btn-target btn-amber">D/L</span> ở góc trên, chọn mục <em>Main (PDF)</em> để xuất file phiếu lương cá nhân phát cho người lao động.</div>
+            </li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- TASK 13: XUẤT NGÂN HÀNG & TIỀN MẶT -->
+      <article class="task-card" id="task-13" data-roles="cb">
+        <div class="task-header">
+          <div class="task-title-group">
+            <span class="task-num">13</span>
+            <span class="task-title">Xuất danh sách chuyển khoản Ngân hàng (Bank) & Tiền mặt (Cash)</span>
+          </div>
+          <span class="task-badge badge-c-b">Nhân sự & Kế toán</span>
+        </div>
+        <div class="task-body">
+          <div class="pathway">📂 Menu trên Web: <strong>ATTENDANCE</strong> <span class="arrow">▶</span> <strong>Bank</strong> / <strong>Cash</strong></div>
+          <ul class="steps-list">
+            <li class="step-item">
+              <span class="step-idx">1</span>
+              <div class="step-desc"><strong>Chuyển khoản BIDV:</strong> Vào `Attendance > Bank`, chọn Tháng lương, bấm nút <span class="btn-target btn-blue">Export</span> để tải file Excel mẫu chuẩn nộp cho ngân hàng.</div>
+            </li>
+            <li class="step-item">
+              <span class="step-idx">2</span>
+              <div class="step-desc"><strong>Ký nhận tiền mặt:</strong> Vào `Attendance > Cash`, chọn Tháng lương, bấm nút <span class="btn-target btn-blue">Export</span> để in danh sách cho công nhân ký nhận tiền tay.</div>
+            </li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- TASK 14: CON NHỎ & THAI SẢN -->
+      <article class="task-card" id="task-14" data-roles="cb">
+        <div class="task-header">
+          <div class="task-title-group">
+            <span class="task-num">14</span>
+            <span class="task-title">Khai báo Con nhỏ & Nghỉ thai sản (&lt; 7yrs old & Maternity)</span>
+          </div>
+          <span class="task-badge badge-c-b">Chế độ Phúc lợi</span>
+        </div>
+        <div class="task-body">
+          <div class="pathway">📂 Menu trên Web: <strong>MANAGE</strong> <span class="arrow">▶</span> <strong>&lt; 7yrs old</strong> & <strong>Maternity Benefit</strong></div>
+          <ul class="steps-list">
+            <li class="step-item">
+              <span class="step-idx">1</span>
+              <div class="step-desc"><strong>Phụ cấp con nhỏ:</strong> Vào `Manage > < 7yrs old`, bấm <span class="btn-target btn-blue">Add</span>, chọn nhân viên, nhập họ tên con, ngày sinh của bé. Bảng lương hàng tháng sẽ tự động cộng thêm phụ cấp con nhỏ.</div>
+            </li>
+            <li class="step-item">
+              <span class="step-idx">2</span>
+              <div class="step-desc"><strong>Nghỉ sinh con (6 tháng):</strong> Vào `Manage > Maternity Benefit`, bấm <span class="btn-target btn-blue">Add</span>, chọn nhân viên và nhập khoảng thời gian nghỉ sinh.</div>
+            </li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- TASK 15: KỶ LUẬT & CẢNH CÁO -->
+      <article class="task-card" id="task-15" data-roles="cb,mng">
+        <div class="task-header">
+          <div class="task-title-group">
+            <span class="task-num">15</span>
+            <span class="task-title">Lập biên bản vi phạm kỷ luật (Warning)</span>
+          </div>
+          <span class="task-badge badge-mgr">Quản lý / Nhân sự</span>
+        </div>
+        <div class="task-body">
+          <div class="pathway">📂 Menu trên Web: <strong>MANAGE</strong> <span class="arrow">▶</span> <strong>Warning</strong></div>
+          <ul class="steps-list">
+            <li class="step-item">
+              <span class="step-idx">1</span>
+              <div class="step-desc">Vào `Manage > Warning`, bấm nút <span class="btn-target btn-blue">ADD WARNING</span>.</div>
+            </li>
+            <li class="step-item">
+              <span class="step-idx">2</span>
+              <div class="step-desc">Chọn nhân viên vi phạm, ngày vi phạm, nhập lý do và mức độ cảnh cáo. Bấm Lưu.</div>
+            </li>
+            <li class="step-item">
+              <span class="step-idx">3</span>
+              <div class="step-desc">Sau khi ký biên bản giấy, bấm nút <span class="btn-target btn-blue">Upload warning letter</span> để đính kèm file scan lưu hồ sơ.</div>
+            </li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- TASK 16: CẤU HÌNH CA & LỊCH -->
+      <article class="task-card" id="task-16" data-roles="admin">
+        <div class="task-header">
+          <div class="task-title-group">
+            <span class="task-num">16</span>
+            <span class="task-title">Cấu hình Ca làm việc & Xếp lịch phân ca (Shift & Schedule)</span>
+          </div>
+          <span class="task-badge badge-adm">Quản trị Admin</span>
+        </div>
+        <div class="task-body">
+          <div class="pathway">📂 Menu trên Web: <strong>CONFIG</strong> <span class="arrow">▶</span> <strong>Shift</strong> & <strong>Schedule</strong></div>
+          <ul class="steps-list">
+            <li class="step-item">
+              <span class="step-idx">1</span>
+              <div class="step-desc">Vào `Config > Shift`, bấm <span class="btn-target btn-blue">ADD</span> để tạo ca (ví dụ: Ca Hành chính HC: 07:30 ~ 16:30, nghỉ trưa 1 tiếng).</div>
+            </li>
+            <li class="step-item">
+              <span class="step-idx">2</span>
+              <div class="step-desc">Vào `Config > Schedule`, bấm <span class="btn-target btn-blue">ADD</span> để gán ca này cho từng phòng ban hoặc từng tổ sản xuất.</div>
+            </li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- TASK 17: QUẢN TRỊ TÀI KHOẢN -->
+      <article class="task-card" id="task-17" data-roles="admin">
+        <div class="task-header">
+          <div class="task-title-group">
+            <span class="task-num">17</span>
+            <span class="task-title">Tạo tài khoản người dùng & Phân quyền (Account)</span>
+          </div>
+          <span class="task-badge badge-adm">Quản trị Admin</span>
+        </div>
+        <div class="task-body">
+          <div class="pathway">📂 Menu trên Web: <strong>ADMIN</strong> <span class="arrow">▶</span> <strong>Account</strong></div>
+          <ul class="steps-list">
+            <li class="step-item">
+              <span class="step-idx">1</span>
+              <div class="step-desc">Bấm <span class="btn-target btn-blue">Add new user</span>, nhập User ID và mật khẩu khởi tạo.</div>
+            </li>
+            <li class="step-item">
+              <span class="step-idx">2</span>
+              <div class="step-desc">Gán người dùng vào nhóm quyền tương ứng (ví dụ: Nhóm HR, Nhóm Quản lý xưởng, Nhóm Kế toán).</div>
+            </li>
+            <li class="step-item">
+              <span class="step-idx">3</span>
+              <div class="step-desc">Bấm nút <span class="btn-target btn-blue">OK (Set Permission)</span> để hoàn thành.</div>
+            </li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- SECTION: XỬ LÝ SỰ CỐ / FAQ -->
+      <section class="task-card" id="troubleshooting" data-roles="all,cb,mng,admin" style="border: 2px solid #f59e0b;">
+        <div class="task-header" style="background:#fffbeb;">
+          <div class="task-title-group">
+            <span style="font-size:1.3rem;">🛠️</span>
+            <span class="task-title" style="color:#b45309;">Câu Hỏi Thường Gặp & Xử Lý Sự Cố Thực Tế</span>
+          </div>
+          <span class="task-badge badge-mgr">Hỗ trợ khẩn cấp</span>
+        </div>
+        <div class="task-body">
+
+          <!-- FAQ ITEM 1 -->
+          <div class="accordion-item open">
+            <div class="accordion-header">
+              <span>❓ Công nhân đã nghỉ việc nhưng tại sao vẫn hiển thị trong danh sách đi làm (Working) ở bảng Payroll?</span>
+              <span class="accordion-icon">▼</span>
+            </div>
+            <div class="accordion-body">
+              <p><strong>Trả lời:</strong> Do bạn chưa tạo dòng hợp đồng <code>QUIT JOB</code> trong trang <strong>Manage › Contract (Terminate)</strong>. Chỉ khi tạo dòng hợp đồng kết thúc này, phần mềm mới tự động chuyển người lao động từ nhóm <code>Working</code> sang nhóm <code>Stopped</code>.</p>
+            </div>
+          </div>
+
+          <!-- FAQ ITEM 3 -->
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <span>❓ Tại sao nhấp chuột vào ô tiền lương trên bảng Payroll không thể chỉnh sửa được?</span>
+              <span class="accordion-icon">▼</span>
+            </div>
+            <div class="accordion-body">
+              <p><strong>Trả lời:</strong> Bảng lương tháng đó đã bị bấm nút <strong>Lock</strong> (Khóa) để bảo vệ số liệu. Để sửa lại, bạn cần liên hệ người có quyền Admin vào chọn nhân viên đó và bấm nút <strong>Unlock</strong> (Mở khóa).</p>
+            </div>
+          </div>
+
+          <!-- FAQ ITEM 4 -->
+          <div class="accordion-item">
+            <div class="accordion-header">
+              <span>❓ Có đi làm và quẹt thẻ đầy đủ nhưng trên phần mềm lại bị báo thiếu công?</span>
+              <span class="accordion-icon">▼</span>
+            </div>
+            <div class="accordion-body">
+              <p><strong>Trả lời:</strong> Kiểm tra 2 điểm:</p>
+              <ul style="margin-left:1.5rem; margin-top:0.25rem;">
+                <li>Người lao động có quẹt thẻ thiếu đầu vào hoặc đầu ra hay không? (Hệ thống yêu cầu đủ quẹt thẻ vào và ra).</li>
+                <li>Nhân sự đã được xếp đúng Ca làm việc (Schedule) trong <strong>Config › Schedule</strong> chưa? Nếu chưa được phân ca, hệ thống không có mốc giờ để tính công.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <footer>
+    <p>© 2026 SIMS HRM - Cẩm nang hướng dẫn sử dụng thực tế (English Interface Mapping).</p>
+    <p style="font-size:0.75rem; color:#64748b; margin-top:0.35rem;">Static Documentation Website - Triển khai độc lập cho GitHub Pages & Chạy Offline.</p>
+  </footer>
+
+  <!-- FLOATING CHATBOT BUTTON -->
+  <button id="floatingChatBtn" class="floating-chat-btn" aria-label="Mở trợ lý ảo và gửi yêu cầu">
+    <span class="pulse-indicator"></span>
+    <span>💬 Trợ lý &amp; Góp ý</span>
+  </button>
+
+  <!-- CHAT & FEEDBACK POPUP CARD -->
+  <div id="chatWidgetCard" class="chat-widget-card" role="dialog" aria-modal="true">
+    <div class="chat-widget-header">
+      <div class="chat-header-info">
+        <h4>🤖 Trợ lý HRM &amp; Góp ý</h4>
+        <p>Hỏi đáp tra cứu nhanh hoặc gửi yêu cầu lên Google Sheet</p>
+      </div>
+      <button id="chatCloseBtn" class="chat-close-btn" title="Đóng">&times;</button>
+    </div>
+
+    <!-- TABS -->
+    <div class="chat-tabs">
+      <button class="chat-tab-btn active" data-tab="tab-bot">
+        <span>🤖 Hỏi đáp tức thì</span>
+      </button>
+      <button class="chat-tab-btn" data-tab="tab-sheet">
+        <span>📝 Gửi yêu cầu (Google Sheet)</span>
+      </button>
+    </div>
+
+    <!-- TAB 1: BOT TRA CỨU TỨC THÌ -->
+    <div id="tab-bot" class="chat-tab-panel active">
+      <div id="chatMessages" class="chat-messages-area">
+        <div class="chat-bubble bot">
+          <strong>Xin chào!</strong> Tôi là Trợ lý số của cẩm nang HRM. Bạn đang gặp sự cố hoặc muốn thực hiện thao tác nào?
+          <div style="margin-top:6px; font-size:0.8rem; color:#64748b;">Chọn câu hỏi nhanh hoặc gõ câu hỏi bên dưới:</div>
+          <div class="chat-suggestions">
+            <button class="suggestion-chip" onclick="handleChipClick('Dữ liệu ATTENDANCE > Attendance lấy từ đâu ?')">Nguồn dữ liệu Attendance</button>
+            <button class="suggestion-chip" onclick="handleChipClick('Làm gì tiếp theo sau khi nhập thông tin nhân viên?')">Làm gì tiếp sau khi tạo NV?</button>
+            <button class="suggestion-chip" onclick="handleChipClick('Làm gì tiếp theo ?')">Làm gì tiếp theo?</button>
+            <button class="suggestion-chip" onclick="handleChipClick('Attendance + Leave: 0 là gì?')">Attendance + Leave</button>
+            <button class="suggestion-chip" onclick="handleChipClick('Ý nghĩa cột Coefficient & Coefficient(OT)?')">Cột Coefficient & OT</button>
+            <button class="suggestion-chip" onclick="handleChipClick('Nhập lương cơ bản ra sao ?')">Nhập lương cơ bản</button>
+            <button class="suggestion-chip" onclick="handleChipClick('Giải thích các nút trang Leave')">Nút trang Leave</button>
+            <button class="suggestion-chip" onclick="handleChipClick('Cách tính lương hàng tháng')">Cách tính bảng lương</button>
+            <button class="suggestion-chip" onclick="handleChipClick('Quẹt thẻ đủ nhưng thiếu công?')">Quẹt thẻ đủ nhưng thiếu công</button>
+          </div>
+        </div>
+      </div>
+      <div class="chat-input-row">
+        <input type="text" id="chatInputText" placeholder="Gõ câu hỏi: mất lương, tăng ca, tính công...">
+        <button id="chatSendBtn" title="Gửi câu hỏi">&#10148;</button>
+      </div>
+    </div>
+
+    <!-- TAB 2: FORM GỬI YÊU CẦU GOOGLE SHEET -->
+    <div id="tab-sheet" class="chat-tab-panel">
+      <div class="sheet-form-container">
+        <div class="sheet-notice">
+          <strong>💡 Ẩn danh &amp; Không cần tài khoản:</strong> Bạn chỉ cần nhập yêu cầu. Thông tin sẽ được chuyển thẳng đến bảng tính Google Sheet của Quản trị viên để tiếp nhận và xử lý.
+        </div>
+
+        <div class="form-group-item">
+          <label>Nội dung yêu cầu / Thắc mắc / Báo lỗi <span style="color:#ef4444">*</span></label>
+          <textarea id="sheetRequest" rows="4" placeholder="Ví dụ: Tháng 10 tính lương công nhân thôi việc bị mất Basic Salary; hoặc hướng dẫn giúp cách xuất file BIDV..."></textarea>
+        </div>
+
+        <div class="form-group-item">
+          <label>Tên Zalo hoặc Số điện thoại <span style="font-weight:normal; color:#64748b;">(Tùy chọn)</span></label>
+          <input type="text" id="sheetZalo" placeholder="VD: Lan Zalo: 0987xxxxxx (để Admin liên hệ lại)">
+        </div>
+
+        <div class="form-group-item">
+          <label>Tên Công ty / Phân xưởng <span style="font-weight:normal; color:#64748b;">(Tùy chọn)</span></label>
+          <input type="text" id="sheetCompany" placeholder="VD: Công ty SVG / Xưởng 2...">
+        </div>
+
+        <button id="sheetSubmitBtn" class="btn-submit-sheet">
+          <span>🚀 Gửi yêu cầu ngay</span>
+        </button>
+
+        <div id="sheetStatusMsg" class="sheet-status-alert"></div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    // TÌM KIẾM TỨC THÌ (LIVE INSTANT SEARCH)
+    const searchInput = document.getElementById('searchInput');
+    const taskCards = document.querySelectorAll('.task-card');
+
+    searchInput.addEventListener('input', function(e) {
+      const term = e.target.value.toLowerCase().trim();
+      taskCards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        if (text.includes(term)) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+
+    // LỌC THEO VAI TRÒ (ROLE FILTERING)
+    const rolePills = document.querySelectorAll('.role-pill');
+    const navItems = document.querySelectorAll('.nav-item');
+
+    rolePills.forEach(pill => {
+      pill.addEventListener('click', function() {
+        rolePills.forEach(p => p.classList.remove('active'));
+        this.classList.add('active');
+        const role = this.getAttribute('data-role');
+
+        taskCards.forEach(card => {
+          const roles = (card.getAttribute('data-roles') || '').split(',');
+          if (role === 'all' || roles.includes(role) || roles.includes('all')) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        navItems.forEach(item => {
+          const roles = (item.getAttribute('data-roles') || '').split(',');
+          if (role === 'all' || roles.includes(role) || roles.includes('all')) {
+            item.style.display = '';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // ACCORDION FAQ TOGGLE
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+    accordionHeaders.forEach(header => {
+      header.addEventListener('click', function() {
+        const item = this.parentElement;
+        item.classList.toggle('open');
+      });
+    });
+
+    // ACTIVE SIDEBAR HIGHLIGHT
+    window.addEventListener('scroll', () => {
+      let current = '';
+      taskCards.forEach(card => {
+        const cardTop = card.offsetTop;
+        if (pageYOffset >= cardTop - 120) {
+          current = card.getAttribute('id');
+        }
+      });
+      navItems.forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('href') === '#' + current) {
+          item.classList.add('active');
+        }
+      });
+    });
+
+    // ==========================================
+    // FLOATING CHATBOT & GOOGLE SHEET INTEGRATION
+    // ==========================================
+    
+    // ĐƯỜNG DẪN GOOGLE APPS SCRIPT WEB APP
+    // (Sau khi tạo theo file GOOGLE_SHEET_GUIDE.md, bạn dán link URL vào đây)
+    const GOOGLE_SHEET_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbwZy_F3H1rOyASlRcQ232udKlspUlb-3mGLKhCGPlBSz7tfdxPYf0H0WvnHDcbhfY5N/exec";
+
+    const floatingChatBtn = document.getElementById('floatingChatBtn');
+    const chatWidgetCard = document.getElementById('chatWidgetCard');
+    const chatCloseBtn = document.getElementById('chatCloseBtn');
+    const chatTabBtns = document.querySelectorAll('.chat-tab-btn');
+    const chatTabPanels = document.querySelectorAll('.chat-tab-panel');
+
+    function toggleChatWidget() {
+      if (!chatWidgetCard) return;
+      chatWidgetCard.classList.toggle('open');
+      if (chatWidgetCard.classList.contains('open')) {
+        const input = document.getElementById('chatInputText');
+        if (input) input.focus();
+      }
+    }
+
+    function closeChat() {
+      if (chatWidgetCard) chatWidgetCard.classList.remove('open');
+    }
+
+    if (floatingChatBtn) {
+      floatingChatBtn.addEventListener('click', toggleChatWidget);
+    }
+    if (chatCloseBtn) {
+      chatCloseBtn.addEventListener('click', closeChat);
+    }
+
+    // CHUYỂN TAB TRONG CHAT WIDGET
+    chatTabBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        chatTabBtns.forEach(b => b.classList.remove('active'));
+        chatTabPanels.forEach(p => p.classList.remove('active'));
+        this.classList.add('active');
+        const tabId = this.getAttribute('data-tab');
+        document.getElementById(tabId).classList.add('active');
+      });
+    });
+
+    function switchToSheetTab() {
+      chatTabBtns.forEach(b => b.classList.remove('active'));
+      chatTabPanels.forEach(p => p.classList.remove('active'));
+      const sheetTabBtn = document.querySelector('.chat-tab-btn[data-tab="tab-sheet"]');
+      if (sheetTabBtn) sheetTabBtn.classList.add('active');
+      const sheetPanel = document.getElementById('tab-sheet');
+      if (sheetPanel) sheetPanel.classList.add('active');
+      document.getElementById('sheetRequest').focus();
+    }
+
+    // CHATBOT TRA CỨU TỨC THÌ
+    const chatMessages = document.getElementById('chatMessages');
+    const chatInputText = document.getElementById('chatInputText');
+    const chatSendBtn = document.getElementById('chatSendBtn');
+
+    function appendMessage(sender, htmlContent) {
+      const bubble = document.createElement('div');
+      bubble.className = `chat-bubble ${sender}`;
+      bubble.innerHTML = htmlContent;
+      chatMessages.appendChild(bubble);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    // =========================================================================
+    // HỆ TRI THỨC TOÀN DIỆN CỦA CHATBOT CHUYÊN SÂU HỆ THỐNG SIMS HRM (26 CHỦ ĐỀ)
+    // =========================================================================
+    const HRM_KNOWLEDGE_BASE = [
+      {
+        id: 'attendance_leave_warning',
+        keywords: ['attendance + leave', 'attendance+leave', 'attendance leave', 'xung đột công', 'trùng công', 'vừa đi làm vừa nghỉ phép', 'cảnh báo phép', 'warning phép', 'sptotal1', 'attendance + leave: 0'],
+        title: 'Cảnh báo xung đột "Attendance + Leave: 0" & Cột WARNING',
+        answer: `<strong>⚠️ Dòng "Attendance + Leave: 0" & Cột WARNING trên trang Working hours:</strong><br><br>
+          Đây là <strong>bộ đếm cảnh báo xung đột (Conflict Counter)</strong> giữa giờ quẹt thẻ đi làm và đăng ký nghỉ phép:<br><br>
+          • <strong>Nguyên nhân:</strong> Hệ thống cho phép nhập phép ngay cả khi ngày đó công nhân có quẹt thẻ. Do đó có nguy cơ công nhân vừa được tính công đi làm (<code>HC Fingerprint</code>), vừa được tính công nghỉ phép hưởng lương (<code>HC Leave</code>).<br>
+          • <strong>Ý nghĩa con số hiển thị:</strong><br>
+          &nbsp;&nbsp;- <code>Attendance + Leave: 0</code>: Dữ liệu sạch, không có nhân viên nào bị trùng công.<br>
+          &nbsp;&nbsp;- <code>Attendance + Leave: N (N &gt; 0)</code>: Cảnh báo có <strong>N trường hợp</strong> bị trùng cả công đi làm và công nghỉ phép.<br>
+          • <strong>Cách xử lý khi N &gt; 0:</strong><br>
+          &nbsp;&nbsp;1. Nhìn xuống cột <strong>Attendance + Leave</strong> (tên trường kỹ thuật là <code>WARNING</code> ở gần cuối bảng), bấm biểu tượng phễu lọc để xem danh sách bị trùng.<br>
+          &nbsp;&nbsp;2. Đối soát thực tế: Nếu công nhân có đi làm thì vào <code>MANAGE &gt; Leave</code> xóa đơn phép để không bị tính lương gấp đôi.<br><br>
+          👉 <a href="#task-08" onclick="closeChat()" style="color:#1e88e5; font-weight:600;">Xem chi tiết Task 08 (Working hours) &raquo;</a>`
+      },
+      {
+        id: 'coefficient_regular',
+        keywords: ['coefficient', 'hc_bonus', 'hệ số công', 'hệ số', 'hệ số ca', 'hệ số ngày làm', 'hệ số lương'],
+        title: 'Ý nghĩa cột COEFFICIENT (Hệ số công tiêu chuẩn)',
+        answer: `<strong>📊 Ý nghĩa cột COEFFICIENT trên bảng Working hours:</strong><br><br>
+          • <strong>Mã dữ liệu backend:</strong> <code>HC_BONUS</code>.<br>
+          • <strong>Ý nghĩa nghiệp vụ:</strong> Là <strong>hệ số nhân tính lương cho giờ làm việc hành chính/chuẩn</strong> trong ca của ngày đó:<br>
+          &nbsp;&nbsp;+ <strong>Ngày thường:</strong> Hệ số mặc định là <code>1.0</code> (100% lương ngày thường).<br>
+          &nbsp;&nbsp;+ <strong>Ngày nghỉ tuần / Ngày Lễ / Tết:</strong> Nếu công nhân được xếp lịch đi làm vào ngày nghỉ hoặc Lễ/Tết (cấu hình tại <code>Config &gt; Holiday</code> mục <em>Salary coefficient (Work)</em>), hệ số này sẽ tự động nhảy lên <code>2.0</code>, <code>3.0</code> (tương ứng 200%, 300% lương theo Luật Lao động).<br><br>
+          👉 <a href="#task-08" onclick="closeChat()" style="color:#1e88e5; font-weight:600;">Xem chi tiết Task 08 (Working hours) &raquo;</a>`
+      },
+      {
+        id: 'coefficient_ot',
+        keywords: ['coefficient(ot)', 'coefficient ot', 'hc_bonus_ot', 'hệ số tăng ca', 'hệ số ot', 'hệ số làm thêm'],
+        title: 'Ý nghĩa cột COEFFICIENT(OT) (Hệ số lương tăng ca)',
+        answer: `<strong>⏰ Ý nghĩa cột COEFFICIENT(OT) trên bảng Working hours:</strong><br><br>
+          • <strong>Mã dữ liệu backend:</strong> <code>HC_BONUS_OT</code>.<br>
+          • <strong>Ý nghĩa nghiệp vụ:</strong> Là <strong>hệ số nhân tính lương cho các giờ làm thêm ngoài giờ (Overtime - OT)</strong> trong ngày:<br>
+          &nbsp;&nbsp;+ <strong>Tăng ca ngày thường:</strong> Áp dụng hệ số <code>1.5</code> (150% lương - tương ứng cột <code>TC1.5</code> / <code>H_RC1</code>).<br>
+          &nbsp;&nbsp;+ <strong>Tăng ca ngày Chủ nhật (nghỉ tuần):</strong> Áp dụng hệ số <code>2.0</code> (200% lương).<br>
+          &nbsp;&nbsp;+ <strong>Tăng ca ngày Lễ / Tết:</strong> Áp dụng hệ số <code>3.0</code> (300% lương theo cấu hình <em>Salary coefficient (Work-OT)</em> tại <code>Config &gt; Holiday</code>).<br><br>
+          👉 <a href="#task-08" onclick="closeChat()" style="color:#1e88e5; font-weight:600;">Xem chi tiết Task 08 (Working hours) &raquo;</a>`
+      },
+      {
+        id: 'working_hours_all_columns',
+        keywords: ['các cột working hours', 'giải thích working hours', 'cột working hours', 'h_hc', 'hc fingerprint', 'hc leave', 'hc total', 'tc1.5', 'miss finger', 'check-in', 'check-out'],
+        title: 'Giải thích chi tiết các cột trên bảng Working hours',
+        answer: `<strong>📋 Bảng giải thích chi tiết các cột trong ATTENDANCE &gt; Working hours:</strong><br><br>
+          • <strong>CHECK-IN 1 / OUT 1 / IN 2 / OUT 2:</strong> Giờ quẹt vân tay vào/ra chặng sáng và chặng chiều/tối.<br>
+          • <strong>SET OVERTIME:</strong> Thời gian tăng ca đã đăng ký trước từ <code>Manage &gt; Set Overtime</code>.<br>
+          • <strong>STATUS (L_TEXT_FULL):</strong> Trạng thái đi làm, nghỉ phép, vắng mặt.<br>
+          • <strong>HC (Fingerprint):</strong> Giờ hành chính tính từ dữ liệu máy quẹt vân tay.<br>
+          • <strong>HC (Leave):</strong> Giờ công tính từ các đơn xin nghỉ phép hưởng lương hợp lệ.<br>
+          • <strong>HC (Total):</strong> Tổng giờ hành chính hợp lệ trong ngày (bằng Fingerprint + Leave).<br>
+          • <strong>TC1.5 (H_RC1):</strong> Giờ tăng ca ngày thường (nhân hệ số 1.5).<br>
+          • <strong>COEFFICIENT / COEFFICIENT(OT):</strong> Hệ số lương ca thường (1.0..3.0) và hệ số tăng ca (1.5..3.0).<br>
+          • <strong>No / Missing fingerprint (MISS_FINGER):</strong> Cảnh báo quên quẹt vào hoặc quên quẹt ra.<br>
+          • <strong>NOTE:</strong> Ghi chú đặc biệt về ca kíp.<br>
+          • <strong>Attendance + Leave (WARNING):</strong> Cảnh báo xung đột vừa có quẹt thẻ vừa có đơn phép.<br>
+          • <strong>ACTION:</strong> Nút mở popup gửi yêu cầu (Request) điều chỉnh giờ quẹt thẻ.<br><br>
+          👉 <a href="#task-08" onclick="closeChat()" style="color:#1e88e5; font-weight:600;">Xem chi tiết Task 08 (Working hours) &raquo;</a>`
+      },
+      {
+        id: 'working_hours_buttons',
+        keywords: ['nút working hours', 'sync data', 'calculation', 'đồng bộ vân tay', 'tính giờ công', 'các nút trong working hours', 'nút bấm working hours'],
+        title: 'Quy trình và chức năng các nút bấm trên trang Working hours',
+        answer: `<strong>🔘 Các nút chức năng trên ATTENDANCE &gt; Working hours:</strong><br><br>
+          1️⃣ <strong>Sync data (Đồng bộ vân tay):</strong> Kết nối đến các máy chấm công để tải toàn bộ lần quẹt thẻ thô về server. <em>Bắt buộc phải bấm nút này trước!</em><br>
+          2️⃣ <strong>Calculation (Tính giờ công):</strong> Hệ thống tự động tính toán từ giờ quẹt thẻ thành giờ công chuẩn (HC) và giờ tăng ca (TC1.5) trong 3-5 giây.<br>
+          3️⃣ <strong>Search:</strong> Lọc dữ liệu theo khoảng thời gian từ ngày (FROM_DATE) đến ngày (TO_DATE).<br>
+          4️⃣ <strong>D/L:</strong> Tải báo cáo giờ công chi tiết ra file PDF hoặc Excel theo mẫu in.<br>
+          5️⃣ <strong>Export:</strong> Xuất toàn bộ bảng giờ công đang hiển thị ra file Excel.<br>
+          6️⃣ <strong>Import:</strong> Nhập dữ liệu quẹt thẻ hiệu chỉnh từ file Excel vào hệ thống.<br>
+          7️⃣ <strong>Nút Action (ở cuối mỗi dòng):</strong> Mở popup gửi đề xuất (Request) điều chỉnh giờ CHECK-IN/OUT khi công nhân quên chấm công.<br><br>
+          👉 <a href="#task-08" onclick="closeChat()" style="color:#1e88e5; font-weight:600;">Xem chi tiết Task 08 &raquo;</a>`
+      },
+      {
+        id: 'leave_buttons_and_types',
+        keywords: ['nút leave', 'nút bấm leave', 'giải thích nút leave', 'các nút trong leave', 'd/l leave', 'template leave', 'import leave', 'wedd & funeral', 'leave early', 'đăng ký phép'],
+        title: 'Giải thích toàn bộ các nút bấm và nghiệp vụ trên trang Manage > Leave',
+        answer: `<strong>🏖️ Giải thích toàn bộ các nút bấm trên MANAGE &gt; Leave:</strong><br><br>
+          • <strong>➕ Add:</strong> Mở popup đăng ký đơn nghỉ phép lẻ cho từng nhân viên (chọn ngày, loại nghỉ, lý do).<br>
+          • <strong>D/L Leave (Month):</strong> Tải file Excel danh sách toàn bộ các đơn nghỉ phép đã đăng ký trong tháng.<br>
+          • <strong>Template Leave (Multi-day):</strong> Tải file Excel mẫu để nhập đơn nghỉ phép hàng loạt cho nhiều công nhân.<br>
+          • <strong>Import Leave (Multi-day):</strong> Tải file Excel đã điền lên hệ thống để duyệt phép hàng loạt nhanh chóng.<br>
+          • <strong>D/L Wedd & Funeral:</strong> Tải danh sách công nhân nghỉ theo chế độ Hiếu / Hỉ (kết hôn, tang chế) hưởng nguyên lương.<br>
+          • <strong>D/L Leave Early:</strong> Tải danh sách đơn xin về sớm (do nuôi con nhỏ dưới 7 tuổi hoặc có việc gấp).<br>
+          • <strong>EXCEL:</strong> Xuất dữ liệu bảng phép đang hiển thị ra file Excel.<br><br>
+          💡 <em>Lưu ý nghiệp vụ: Hệ thống đã có cơ chế cảnh báo khi đăng ký phép cho ngày đã có quẹt thẻ đi làm, hoặc khi nhân viên đã đăng ký phép trước nhưng sau đó lại có công đi làm thực tế.</em><br><br>
+          👉 <a href="#task-07" onclick="closeChat()" style="color:#1e88e5; font-weight:600;">Xem chi tiết Task 07 (Quản lý nghỉ phép) &raquo;</a>`
+      },
+      {
+        id: 'basic_salary_entry',
+        keywords: ['lương cơ bản', 'nhập lương', 'basic salary', 'insurance salary', 'lương bảo hiểm', 'mức lương', 'nhập lương cơ bản ra sao', 'sửa lương cơ bản'],
+        title: 'Cách nhập mức Lương cơ bản / Lương bảo hiểm trên toàn hệ thống',
+        answer: `<strong>💰 Cách nhập mức Lương cơ bản / Lương bảo hiểm trên HRM:</strong><br><br>
+          Trên hệ thống SIMS HRM, <code>Basic Salary</code> (Lương cơ bản) trên bảng lương được tính từ mức <strong>Insurance salary</strong> (Lương đóng bảo hiểm). Bạn nhập mức lương theo các cách sau tùy trường hợp:<br><br>
+          1️⃣ <strong>Khi tiếp nhận nhân sự mới:</strong><br>
+          Vào <code>MANAGE &gt; Registration</code> ➔ Bấm nút <strong>MANAGE</strong> tại dòng nhân viên ➔ Nhập số tiền vào ô <strong>Insurance salary</strong> ➔ Bấm <strong>LƯU</strong>.<br><br>
+          2️⃣ <strong>Khi ký Hợp đồng lao động:</strong><br>
+          Vào <code>MANAGE &gt; Contract (Terminate)</code> ➔ Bấm <strong>MANAGE</strong> ➔ Bấm <strong>ADD CONTRACT</strong> ➔ Nhập mức lương vào cột <strong>INSURANCE SALARY (VND)</strong> ➔ Bấm <strong>CREATE</strong>.<br><br>
+          3️⃣ <strong>Khi khai báo Thôi việc / Nghỉ việc (QUIT JOB):</strong><br>
+          Tại dòng <code>QUIT JOB</code>, hệ thống tự để mức lương là <code>0</code>. <strong>Bắt buộc bạn phải nhấp vào ô INSURANCE SALARY (VND) và gõ lại đúng mức lương bảo hiểm</strong>, sau đó mới bấm <strong>CREATE</strong> để không bị mất lương khi thôi việc!<br><br>
+          👉 <a href="#task-04" onclick="closeChat()" style="color:#1e88e5; font-weight:600;">Xem chi tiết Task 04 (Quản lý hợp đồng) &raquo;</a>`
+      },
+      {
+        id: 'payroll_monthly_calculation',
+        keywords: ['tính lương', 'bảng lương', 'salary calculation', 're-calc', 'quy trình tính lương', 'payroll', 'cách tính bảng lương'],
+        title: 'Quy trình tính Bảng lương tự động hàng tháng (Payroll)',
+        answer: `<strong>💵 Quy trình tính Bảng lương tự động hàng tháng (Payroll):</strong><br><br>
+          1. Vào <code>ATTENDANCE &gt; Payroll</code>.<br>
+          2. Chọn <strong>Năm</strong> và <strong>Tháng</strong> cần tính lương.<br>
+          3. Để ô trạng thái là <strong>Working</strong> (danh sách người đang làm việc).<br>
+          4. Bấm nút màu xanh <strong>Salary Calculation</strong> (hệ thống tự động tính công và lương cho toàn công ty trong 3-5 giây).<br>
+          5. <strong>Chỉnh sửa phụ cấp:</strong> Nhấp trực tiếp vào ô tiền cần sửa (Thưởng, Tiền ăn, Khác...). Sau khi sửa, tick chọn dòng người đó và bấm <strong>RE-CALC</strong> ở cuối bảng để tính lại Gross, Giảm trừ và Thực lĩnh (Net).<br><br>
+          👉 <a href="#task-10" onclick="closeChat()" style="color:#1e88e5; font-weight:600;">Xem chi tiết Task 10 (Tính bảng lương) &raquo;</a>`
+      },
+      {
+        id: 'stopped_payroll_quit_job',
+        keywords: ['lương thôi việc', 'quit job', 'stopped', 'lương nghỉ việc', 'mất lương thôi việc', 'lương tháng 10', 'mất lương', 'nghỉ việc mất lương'],
+        title: 'Khắc phục lỗi mất lương thôi việc (Tab Stopped & QUIT JOB)',
+        answer: `<strong>⚠️ Cách tính lương và khắc phục lỗi mất lương thôi việc:</strong><br><br>
+          • <strong>Cách xem lương thôi việc:</strong> Vào <code>ATTENDANCE &gt; Payroll</code>, tại ô chọn trạng thái chuyển từ <code>Working</code> sang <code>Stopped</code> ➔ Bấm <strong>Salary Calculation</strong>.<br><br>
+          • <strong>Nếu lương bảo hiểm hoặc lương cơ bản bị về 0:</strong><br>
+          &nbsp;&nbsp;1. Vào <code>MANAGE &gt; Contract (Terminate)</code>, tìm nhân viên đó, bấm <strong>MANAGE</strong>.<br>
+          &nbsp;&nbsp;2. Tại dòng <code>QUIT JOB</code>, nhấp vào ô <strong>INSURANCE SALARY (VND)</strong> và gõ lại đúng mức lương (ví dụ: 10,000,000) ➔ Bấm <strong>CREATE / Lưu</strong>.<br>
+          &nbsp;&nbsp;3. Quay lại <code>ATTENDANCE &gt; Payroll</code>, chọn tab <strong>Stopped</strong> và bấm <strong>Salary Calculation</strong>.<br><br>
+          💡 <em>Đội ngũ kỹ thuật đã hoàn thiện bản cập nhật backend không còn đọc lương từ dòng QUIT JOB nữa (tự lấy từ hợp đồng liền trước). Trong lúc chờ public lên máy chủ chính thức, bạn hãy áp dụng thao tác trên nhé.</em><br><br>
+          👉 <a href="#task-05" onclick="closeChat()" style="color:#1e88e5; font-weight:600;">Xem chi tiết Task 05 (Khai báo Thôi việc) &raquo;</a>`
+      },
+      {
+        id: 'lock_unlock_payroll',
+        keywords: ['khóa bảng lương', 'mở khóa', 'lock', 'unlock', 'không sửa được lương', 'bị khóa', 'lock working hours', 'khóa công'],
+        title: 'Tại sao không sửa được số tiền trên bảng Payroll? Cách Khóa & Mở khóa',
+        answer: `<strong>🔒 Tại sao không sửa được số tiền trên bảng Payroll?</strong><br><br>
+          • <strong>Lý do:</strong> Bảng lương tháng đó đã được bấm nút <strong>Lock (Khóa)</strong> để chốt số liệu kế toán và ngăn chặn chỉnh sửa trái phép.<br><br>
+          • <strong>Cách mở khóa:</strong> Cần tài khoản Quản lý hoặc Admin vào <code>ATTENDANCE &gt; Payroll</code>, tick chọn nhân viên cần chỉnh sửa, sau đó bấm nút <strong>Unlock (Mở khóa)</strong>.<br><br>
+          • <strong>Khóa ngày công:</strong> Quản trị viên có thể vào <code>CONFIG &gt; Lock / Work hours</code> để khóa toàn bộ dữ liệu quẹt thẻ của tháng đã quyết toán.<br><br>
+          👉 <a href="#troubleshooting" onclick="closeChat()" style="color:#1e88e5; font-weight:600;">Xem giải đáp FAQ &raquo;</a>`
+      },
+      {
+        id: 'attendance_31_days',
+        keywords: ['attendance', 'bảng công 31 ngày', 'bảng chấm công', 'oth_meal', 'ad_diligent', 'ad_house', 'bảng công tháng', 'ký hiệu công'],
+        title: 'Bảng chấm công tổng hợp 31 ngày trong tháng (Attendance)',
+        answer: `<strong>📅 Màn hình chấm công tổng hợp ATTENDANCE &gt; Attendance:</strong><br><br>
+          • Hiển thị ma trận công từ ngày 01 đến ngày 31 của toàn bộ công nhân viên trong tháng.<br>
+          • <strong>Các chỉ số quan trọng:</strong><br>
+          &nbsp;&nbsp;+ <code>OTH_HOUR_NT_L</code>: Tổng số giờ công hành chính trong tháng.<br>
+          &nbsp;&nbsp;+ <code>OTH_HOUR_PN</code>: Tổng số giờ nghỉ phép năm hưởng lương.<br>
+          &nbsp;&nbsp;+ <code>OTH_MEAL</code>: Số suất ăn trưa (tự động đếm theo số ngày đi làm thực tế).<br>
+          &nbsp;&nbsp;+ <code>OTH_HOUR_OT / OT_21 / OT_20</code>: Tổng số giờ tăng ca ngày thường và tăng ca đêm.<br>
+          &nbsp;&nbsp;+ <code>AD_DILIGENT</code>: Phụ cấp chuyên cần (tự trừ nếu nghỉ không phép hoặc đi muộn quá quy định).<br>
+          &nbsp;&nbsp;+ <code>ANNUAL_LEAVE</code>: Quỹ phép năm còn lại.<br><br>
+          👉 <a href="#task-09" onclick="closeChat()" style="color:#1e88e5; font-weight:600;">Xem chi tiết Task 09 (Bảng chấm công tháng) &raquo;</a>`
+      },
+      {
+        id: 'bank_bidv_and_cash',
+        keywords: ['ngân hàng', 'bidv', 'chuyển khoản', 'tiền mặt', 'cash', 'bank', 'xuất file bidv', 'file ngân hàng'],
+        title: 'Xuất file chuyển khoản Ngân hàng BIDV & Bảng ký nhận tiền mặt',
+        answer: `<strong>🏦 Xuất file chuyển khoản BIDV &amp; Danh sách ký tiền mặt:</strong><br><br>
+          • <strong>Chuyển khoản BIDV:</strong> Vào <code>ATTENDANCE &gt; Bank</code>, chọn Tháng lương, bấm <strong>Export</strong> tải file Excel theo chuẩn định dạng chi hộ của ngân hàng BIDV (STT, Số TK, Tên thụ hưởng, Số tiền, Diễn giải).<br><br>
+          • <strong>Ký nhận tiền mặt:</strong> Vào <code>ATTENDANCE &gt; Cash</code>, chọn Tháng lương, bấm <strong>Export</strong> để in danh sách cho công nhân nhận lương tay ký xác nhận.<br><br>
+          👉 <a href="#task-13" onclick="closeChat()" style="color:#1e88e5; font-weight:600;">Xem chi tiết Task 13 (Bank &amp; Cash) &raquo;</a>`
+      },
+      {
+        id: 'severance_pay',
+        keywords: ['severance', 'thôi việc', 'trợ cấp thôi việc', 'thanh toán thôi việc', 'phép tồn thôi việc', 'thanh toán phép'],
+        title: 'Tính trợ cấp thôi việc & Thanh toán phép tồn (Severance)',
+        answer: `<strong>💼 Màn hình tính chi trả thôi việc ATTENDANCE &gt; Severance:</strong><br><br>
+          • <strong>Mục đích:</strong> Tự động tính toán các chế độ tài chính cho nhân viên khi chấm dứt hợp đồng lao động theo quy định pháp luật:<br>
+          &nbsp;&nbsp;+ <strong>Trợ cấp thôi việc:</strong> Tính cho khoảng thời gian nhân viên làm việc tại công ty trước năm 2009 (giai đoạn chưa tham gia BHTN).<br>
+          &nbsp;&nbsp;+ <strong>Thanh toán tiền phép năm:</strong> Tự động quy đổi những ngày phép năm chưa nghỉ hết thành tiền lương chi trả cho người lao động.<br>
+          • <strong>Thao tác:</strong> Có nút <strong>Export</strong> để xuất bảng quyết toán ra Excel và nút <strong>Bank</strong> để chuyển danh sách chi trả sang ngân hàng.<br><br>
+          👉 <a href="#task-11" onclick="closeChat()" style="color:#1e88e5; font-weight:600;">Xem chi tiết Task 11 (Quyết toán thôi việc) &raquo;</a>`
+      },
+      {
+        id: 'allowances_and_deductions',
+        keywords: ['phụ cấp', 'giảm trừ', 'tiền ăn', 'chuyên cần', 'nhà ở', 'bhxh', 'thuế tncn', 'pit', 'ad_', 'de_', 'các khoản phụ cấp'],
+        title: 'Bảng mã các khoản Phụ cấp (AD_) và Giảm trừ (DE_) trên bảng lương',
+        answer: `<strong>🧾 Bảng mã các khoản Phụ cấp và Giảm trừ trong Payroll:</strong><br><br>
+          • <strong>CÁC KHOẢN PHỤ CẤP CỘNG THÊM (AD_...):</strong><br>
+          &nbsp;&nbsp;+ <code>AD_MEAL</code>: Phụ cấp tiền ăn trưa.<br>
+          &nbsp;&nbsp;+ <code>AD_DILIGENT</code>: Phụ cấp chuyên cần.<br>
+          &nbsp;&nbsp;+ <code>AD_HOUSE</code>: Hỗ trợ tiền thuê nhà ở.<br>
+          &nbsp;&nbsp;+ <code>AD_TRAVEL</code>: Hỗ trợ xăng xe, đi lại.<br>
+          &nbsp;&nbsp;+ <code>AD_CHIL_7YRS</code>: Trợ cấp nuôi con nhỏ dưới 7 tuổi (50.000đ/con/tháng).<br>
+          &nbsp;&nbsp;+ <code>AD_PCCC</code>: Phụ cấp trách nhiệm PCCC.<br>
+          &nbsp;&nbsp;+ <code>AD_EVAL_1 .. 4</code>: Thưởng đánh giá chất lượng tay nghề hàng tháng.<br><br>
+          • <strong>CÁC KHOẢN KHẤU TRỪ VÀO LƯƠNG (DE_...):</strong><br>
+          &nbsp;&nbsp;+ <code>DE_SOCIAL</code>: Trích nộp BHXH (8%).<br>
+          &nbsp;&nbsp;+ <code>DE_HEALTH</code>: Trích nộp BHYT (1.5%).<br>
+          &nbsp;&nbsp;+ <code>DE_UNEMPLOYEED</code>: Trích nộp BHTN (1%).<br>
+          &nbsp;&nbsp;+ <code>DE_UNION_FEE</code>: Đoàn phí công đoàn (1%).<br>
+          &nbsp;&nbsp;+ <code>DE_PIT</code>: Thuế Thu nhập cá nhân (đã trừ bản thân 11tr và người phụ thuộc 4.4tr/người).<br><br>
+          👉 <a href="#task-10" onclick="closeChat()" style="color:#1e88e5; font-weight:600;">Xem chi tiết Task 10 (Payroll) &raquo;</a>`
+      },
+      {
+        id: 'registration_new_employee',
+        keywords: ['người mới', 'nhân viên mới', 'registration', 'tiếp nhận', 'tuyển dụng', 'sync employee', 'đăng ký nhân viên'],
+        title: 'Quy trình tiếp nhận và kích hoạt nhân viên mới (Registration)',
+        answer: `<strong>👤 Quy trình tiếp nhận nhân sự mới trên MANAGE &gt; Registration:</strong><br><br>
+          1️⃣ <strong>Lấy vân tay:</strong> Cho nhân viên mới đăng ký vân tay trên máy chấm công để tạo mã ID máy.<br>
+          2️⃣ <strong>Đồng bộ ID:</strong> Vào <code>MANAGE &gt; Registration</code>, bấm nút <strong>Sync employee</strong> để hệ thống kéo mã vân tay mới về web.<br>
+          3️⃣ <strong>Khai báo hồ sơ:</strong> Tại dòng nhân viên mới, bấm nút màu xanh <strong>MANAGE</strong>.<br>
+          4️⃣ <strong>Điền thông tin:</strong> Nhập CCCD, Họ tên, chọn Phòng ban (Section), Vị trí (Job), Ca làm việc (Shift), và mức Lương bảo hiểm (Insurance salary).<br>
+          5️⃣ <strong>Lưu &amp; Kích hoạt:</strong> Bấm <strong>LƯU</strong> để kích hoạt nhân viên chính thức vào danh sách công ty.<br><br>
+          👉 <a href="#task-02" onclick="closeChat()" style="color:#1e88e5; font-weight:600;">Xem chi tiết Task 02 (Tiếp nhận nhân sự) &raquo;</a>`
+      },
+      {
+        id: 'contract_types_and_print',
+        keywords: ['hợp đồng', 'contract', 'in hợp đồng', 'in thẻ', 'card', 'loại hợp đồng', 'probation', 'fixed term', 'indefinite term', 'phụ lục hợp đồng'],
+        title: 'Quản lý các loại Hợp đồng lao động & In thẻ nhân viên',
+        answer: `<strong>📄 Quản lý Hợp đồng &amp; In thẻ tại MANAGE &gt; Contract (Terminate):</strong><br><br>
+          • <strong>Các loại Hợp đồng chuẩn trên hệ thống:</strong><br>
+          &nbsp;&nbsp;+ <code>PROBATION</code>: Hợp đồng thử việc (thời hạn 2 tháng).<br>
+          &nbsp;&nbsp;+ <code>FIXED_TERM_1</code>: Hợp đồng xác định thời hạn 1 năm lần thứ nhất.<br>
+          &nbsp;&nbsp;+ <code>FIXED_TERM_2</code>: Hợp đồng xác định thời hạn 1 năm lần thứ hai.<br>
+          &nbsp;&nbsp;+ <code>INDEFINITE_TERM</code>: Hợp đồng không xác định thời hạn (vô thời hạn).<br>
+          &nbsp;&nbsp;+ <code>CONTRACT_APPENDIX</code>: Phụ lục hợp đồng lao động.<br><br>
+          • <strong>In hợp đồng:</strong> Tick chọn những nhân viên cần in ở bảng ngoài, bấm nút <strong>CONTRACT</strong> để tải file hợp đồng đã điền thông tin tự động.<br>
+          • <strong>In thẻ đeo ngực:</strong> Tick chọn nhân sự và bấm nút <strong>CARD</strong>.<br><br>
+          👉 <a href="#task-04" onclick="closeChat()" style="color:#1e88e5; font-weight:600;">Xem chi tiết Task 04 (Hợp đồng lao động) &raquo;</a>`
+      },
+      {
+        id: 'resignation_view_export',
+        keywords: ['resignation', 'đơn xin nghỉ việc', 'view resignation', 'export resignation', 'print resignation', 'thôi việc resignation', 'reg_letter'],
+        title: 'Quản lý đơn xin thôi việc & In / Xuất Excel (Resignation)',
+        answer: `<strong>📄 Quản lý Đơn thôi việc trên MANAGE &gt; Resignation:</strong><br><br>
+          • <strong>Tính năng Export &amp; Print:</strong><br>
+          &nbsp;&nbsp;Khi nhấp vào dòng nhân viên để kích hoạt/mở màn hình <strong>DETAIL / VIEW</strong> (popup chi tiết đơn thôi việc), trong trang View <strong>ĐÃ CÓ sẵn nút Print và nút Export</strong> để in phiếu hoặc xuất file.<br><br>
+          • <strong>Cột RESIGNATION LETTER (REG_LETTER):</strong><br>
+          &nbsp;&nbsp;Cho phép lọc và quản lý tình trạng nộp đơn của nhân viên (<em>CÓ ĐƠN</em> hoặc <em>KHÔNG ĐƠN</em> / nghỉ ngang).<br><br>
+          💡 <em>Đội ngũ kỹ thuật đang tiếp tục bổ sung thêm 01 nút Export danh sách tổng ngay trên thanh công cụ ngoài bảng chính để HR tải toàn bộ danh sách thôi việc nhanh hơn.</em><br><br>
+          👉 <a href="#task-05" onclick="closeChat()" style="color:#1e88e5; font-weight:600;">Xem chi tiết Task 05 &raquo;</a>`
+      },
+      {
+        id: 'set_overtime_registration',
+        keywords: ['tăng ca', 'ot', 'overtime', 'làm thêm', 'set overtime', 'đăng ký tăng ca', 'kế hoạch tăng ca'],
+        title: 'Hướng dẫn Đăng ký kế hoạch tăng ca trước (Set Overtime)',
+        answer: `<strong>⏰ Hướng dẫn đăng ký tăng ca trước (Set Overtime):</strong><br><br>
+          1. Vào <code>MANAGE &gt; Set Overtime</code>.<br>
+          2. Chọn <strong>Ngày</strong> và <strong>Bộ phận/Chuyền</strong> cần tổ chức tăng ca.<br>
+          3. Bấm <strong>Add</strong>, tick chọn danh sách công nhân tham gia ca tăng ca đó.<br>
+          4. Nhập giờ bắt đầu và giờ kết thúc (ví dụ: <code>17:00 ~ 20:00</code>).<br>
+          5. Bấm <strong>LƯU</strong>.<br><br>
+          💡 <em>Dữ liệu này sẽ liên kết trực tiếp sang cột SET OVERTIME tại trang Working hours để làm căn cứ tính công tăng ca hợp lệ.</em><br><br>
+          👉 <a href="#task-06" onclick="closeChat()" style="color:#1e88e5; font-weight:600;">Xem chi tiết Task 06 (Set Overtime) &raquo;</a>`
+      },
+      {
+        id: 'annual_leave_carry_forward',
+        keywords: ['phép năm', 'annual leave', 'phép tồn', 'carried', 'thâm niên phép', 'tính phép năm', 'quỹ phép'],
+        title: 'Quản lý quỹ Phép năm & Chuyển phép tồn (Annual leave)',
+        answer: `<strong>🌴 Quản lý Phép năm tại ATTENDANCE &gt; Annual leave:</strong><br><br>
+          • <strong>Quy tắc tính phép năm:</strong> Mỗi tháng làm việc đủ tính 1 ngày phép (tổng 12 ngày/năm).<br>
+          • <strong>Chế độ thâm niên:</strong> Cứ làm việc đủ 5 năm tại công ty, nhân viên được tự động cộng thêm <strong>1 ngày phép thâm niên</strong>.<br>
+          • <strong>Phép tồn (Carried):</strong> Số ngày phép của năm trước chưa nghỉ hết được chuyển sang năm sau sử dụng theo hạn định quy chế của công ty (thường hết ngày 31/03).<br>
+          • Có nút <strong>D/L</strong> và <strong>EXCEL</strong> để xuất báo cáo đối soát quỹ phép toàn nhà máy.<br><br>
+          👉 <a href="#task-12" onclick="closeChat()" style="color:#1e88e5; font-weight:600;">Xem chi tiết Task 12 (Phép năm) &raquo;</a>`
+      },
+      {
+        id: 'warning_and_discipline',
+        keywords: ['cảnh cáo', 'kỷ luật', 'vi phạm', 'warning', 'thư cảnh cáo', 'biên bản vi phạm', 'kỷ luật lao động'],
+        title: 'Lập biên bản Kỷ luật & Cảnh cáo lao động (Warning)',
+        answer: `<strong>⚠️ Quản lý Kỷ luật &amp; Cảnh cáo tại MANAGE &gt; Warning:</strong><br><br>
+          1. Vào <code>MANAGE &gt; Warning</code>.<br>
+          2. Bấm <strong>Add Warning</strong>, chọn mã nhân viên, ngày vi phạm, cấp độ cảnh cáo (Nhắc nhở, Cảnh cáo bằng văn bản, Đình chỉ...).<br>
+          3. Nhập diễn giải lý do vi phạm nội quy.<br>
+          4. Bấm <strong>Upload warning letter</strong> để đính kèm file biên bản/quyết định đã có chữ ký xác nhận.<br>
+          5. Bấm <strong>Save</strong> để lưu vào hồ sơ nhân sự phục vụ xét thi đua, thưởng tháng 13.<br><br>
+          👉 <a href="#task-15" onclick="closeChat()" style="color:#1e88e5; font-weight:600;">Xem chi tiết Task 15 (Kỷ luật &amp; Warning) &raquo;</a>`
+      },
+      {
+        id: 'special_regimes_maternity_child',
+        keywords: ['thai sản', 'con nhỏ', 'maternity', 'khám thai', '7 tuổi', '7yrs', 'con nhỏ dưới 7 tuổi', 'chế độ thai sản'],
+        title: 'Quản lý chế độ Con nhỏ dưới 7 tuổi, Khám thai & Thai sản',
+        answer: `<strong>👶 Chế độ Con nhỏ dưới 7 tuổi, Khám thai &amp; Thai sản:</strong><br><br>
+          • <strong>Con nhỏ dưới 7 tuổi (&lt; 7yrs-old):</strong> Vào <code>MANAGE &gt; 7yrs-old</code>, bấm <strong>Add</strong> chọn nhân viên và ngày sinh của bé. Hệ thống tự động ghi nhận chế độ giảm 1 giờ làm việc mỗi ngày theo luật và cộng phụ cấp con nhỏ <code>AD_CHIL_7YRS</code> hàng tháng.<br><br>
+          • <strong>Khám thai:</strong> Vào <code>MANAGE &gt; Pregnancy Exam</code> để đăng ký các ngày nghỉ khám thai (hưởng trợ cấp theo chế độ BHXH).<br><br>
+          • <strong>Thai sản 6 tháng:</strong> Vào <code>MANAGE &gt; Maternity Benefit</code> để ghi nhận thời gian nghỉ sinh con 6 tháng.<br><br>
+          👉 <a href="#task-14" onclick="closeChat()" style="color:#1e88e5; font-weight:600;">Xem chi tiết Task 14 &raquo;</a>`
+      },
+      {
+        id: 'config_shift_and_schedule',
+        keywords: ['ca làm việc', 'shift', 'schedule', 'phân ca', 'lịch phân ca', 'quẹt thẻ không có công', 'thiếu công', 'quẹt thẻ đủ nhưng thiếu công', 'chưa xếp ca'],
+        title: 'Cấu hình Ca (Shift) & Phân ca (Schedule) - Xử lý quẹt thẻ đủ nhưng thiếu công',
+        answer: `<strong>⚙️ Cấu hình Ca làm việc &amp; Lịch phân ca (Schedule):</strong><br><br>
+          • <strong>Config &gt; Shift:</strong> Định nghĩa các ca làm việc (giờ bắt đầu, giờ kết thúc, giờ nghỉ ăn giữa ca, ca ngày, ca đêm, ca 12h).<br>
+          • <strong>Config &gt; Schedule:</strong> Xếp lịch phân ca hàng tháng cho từng nhân viên/tổ chuyền.<br><br>
+          ⚠️ <strong>Sự cố: Công nhân quẹt thẻ đầy đủ nhưng tại Working hours lại bị 0 giờ công?</strong><br>
+          &nbsp;&nbsp;👉 <strong>Nguyên nhân:</strong> Nhân viên đó <strong>chưa được xếp Ca trong Config &gt; Schedule</strong>. Máy chủ không biết áp dụng khung giờ nào nên không thể tính công.<br>
+          &nbsp;&nbsp;👉 <strong>Cách xử lý:</strong> Vào <code>CONFIG &gt; Schedule</code>, gán ca làm việc cho nhân viên trong tháng, sau đó quay lại <code>Working hours</code> bấm <strong>Calculation</strong> là công sẽ tự động hiển thị đầy đủ!<br><br>
+          👉 <a href="#troubleshooting" onclick="closeChat()" style="color:#1e88e5; font-weight:600;">Xem mục FAQ Sự cố &raquo;</a>`
+      },
+      {
+        id: 'config_holiday_coefficients',
+        keywords: ['holiday', 'ngày lễ', 'lễ tết', 'nghỉ lễ', 'lương ngày lễ', 'hệ số ngày lễ', 'salary coefficient'],
+        title: 'Cấu hình Lịch nghỉ Lễ / Tết & Tỷ lệ % lương (Config > Holiday)',
+        answer: `<strong>🎉 Cấu hình Ngày Lễ / Tết tại CONFIG &gt; Holiday:</strong><br><br>
+          • Khai báo danh mục các ngày lễ trong năm (Tết Dương lịch, Tết Nguyên đán, Giỗ Tổ 10/3, 30/4 - 1/5, Quốc khánh...).<br>
+          • <strong>Các thiết lập hệ số lương quan trọng:</strong><br>
+          &nbsp;&nbsp;+ <code>Has salary</code>: Đánh dấu ngày nghỉ có được hưởng nguyên lương hay không (theo Luật Lao động là có lương).<br>
+          &nbsp;&nbsp;+ <code>Salary coefficient(Work) (%)</code>: Hệ số lương nếu công nhân đi làm vào ngày lễ (ví dụ 200%, 300%).<br>
+          &nbsp;&nbsp;+ <code>Salary coefficient(Work-OT) (%)</code>: Hệ số lương nếu công nhân làm thêm giờ tăng ca trong ngày lễ (thường là 300%).<br><br>
+          👉 <a href="#glossary" onclick="closeChat()" style="color:#1e88e5; font-weight:600;">Xem Bảng tra cứu thuật ngữ &raquo;</a>`
+      },
+      {
+        id: 'filter_and_export_upgrade',
+        keywords: ['filter', 'bộ lọc', 'export excel', 'filter blanks', 'lọc ô trống', 'số thứ tự', 'stt', 'in đậm', 'xuất excel', 'nâng cấp export'],
+        title: 'Hướng dẫn sử dụng Filter theo cột & 4 nâng cấp kỹ thuật mới nhất',
+        answer: `<strong>🔍 Tính năng Lọc (Filter) &amp; Xuất file (Export Excel):</strong><br><br>
+          • <strong>Cách lọc theo cột:</strong> Nhấp vào biểu tượng nút vặn / phễu lọc tại tiêu đề cột bất kỳ, gõ từ khóa tìm kiếm hoặc tick chọn các giá trị cần xem ➔ Bấm dấu tick xanh <strong>OK</strong>.<br><br>
+          • <strong>4 HẠNG MỤC NÂNG CẤP HỆ THỐNG ĐANG TRIỂN KHAI:</strong><br>
+          &nbsp;&nbsp;1️⃣ <strong>Filter Blanks (Lọc ô trống):</strong> Thêm tùy chọn <code>(Blanks)</code> ở đầu danh sách lọc để tìm nhanh những người chưa nhập CCCD, chưa có số tài khoản Bank, chưa có hạn hợp đồng.<br>
+          &nbsp;&nbsp;2️⃣ <strong>Export Excel toàn bộ:</strong> Bổ sung nút Export lên 100% các màn hình còn thiếu (kể cả các màn hình cấu hình &amp; quản trị).<br>
+          &nbsp;&nbsp;3️⃣ <strong>Cột Số thứ tự (STT):</strong> Tất cả file Excel xuất ra bắt buộc có <strong>Cột A là Cột STT (1, 2, 3...)</strong> thay vì bắt đầu ngay bằng Mã NV.<br>
+          &nbsp;&nbsp;4️⃣ <strong>In đậm Header &amp; Dòng Tổng:</strong> Toàn bộ tiêu đề cột và hàng Tổng cộng (Total) ở cuối bảng được định dạng in đậm nổi bật.<br><br>
+          👉 <a href="#troubleshooting" onclick="closeChat()" style="color:#1e88e5; font-weight:600;">Xem chi tiết Tài liệu nâng cấp kỹ thuật &raquo;</a>`
+      },
+      {
+        id: 'english_interface_lookup',
+        keywords: ['tiếng anh', 'đổi tiếng việt', 'ngôn ngữ', 'english', 'vietnamese', 'giao diện tiếng anh', 'dịch tiếng anh', 'thuật ngữ'],
+        title: 'Tại sao hệ thống dùng Tiếng Anh? Bảng tra cứu thuật ngữ Anh - Việt',
+        answer: `<strong>🌐 Về ngôn ngữ giao diện Tiếng Anh trên hệ thống HRM:</strong><br><br>
+          • <strong>Tại sao hệ thống dùng tiếng Anh?</strong> Hệ thống SIMS HRM V26.10 được lập trình chuẩn giao diện quốc tế. Thành phần chuyển đổi ngôn ngữ trên web đang bị ẩn do máy chủ chưa kích hoạt gói tiếng Việt.<br><br>
+          • <strong>Bảng tra cứu nhanh các thuật ngữ chính:</strong><br>
+          &nbsp;&nbsp;+ <code>EMP ID</code> = Mã nhân viên | <code>FULL NAME</code> = Họ và tên<br>
+          &nbsp;&nbsp;+ <code>SECTION</code> = Phòng ban / Chuyền may | <code>JOB</code> = Vị trí / Chức danh<br>
+          &nbsp;&nbsp;+ <code>Working</code> = Đang làm việc | <code>Stopped</code> = Đã thôi việc<br>
+          &nbsp;&nbsp;+ <code>Shift</code> = Ca làm việc | <code>Schedule</code> = Lịch phân ca<br>
+          &nbsp;&nbsp;+ <code>Sync data</code> = Đồng bộ vân tay | <code>Calculation</code> = Tính công tự động<br>
+          &nbsp;&nbsp;+ <code>Basic Salary</code> = Lương cơ bản | <code>Net Salary</code> = Thực lĩnh<br><br>
+          👉 <a href="#glossary" onclick="closeChat()" style="color:#1e88e5; font-weight:600;">Xem Bảng đối soát 50 thuật ngữ chi tiết &raquo;</a>`
+      },
+      {
+        id: 'admin_security_ip',
+        contextTag: 'admin',
+        keywords: ['admin', 'tài khoản', 'phân quyền', 'login history', 'white list', 'bảo mật', 'đổi mật khẩu', 'quản trị'],
+        title: 'Khối Quản trị, Phân quyền & An ninh mạng (ADMIN)',
+        answer: `<strong>🛡️ Khối Quản trị và An ninh mạng (Menu ADMIN):</strong><br><br>
+          • <strong>Admin &gt; Account:</strong> Quản lý danh sách tài khoản người dùng, tạo tài khoản mới và gán nhóm quyền (User Group: Nhân viên, Quản lý chuyền, Chuyên viên C&amp;B, Quản trị viên).<br>
+          • <strong>Admin &gt; Login history:</strong> Nhật ký đăng nhập hệ thống, ghi nhận địa chỉ IP, thời gian đăng nhập và thiết bị truy cập phục vụ kiểm toán an ninh.<br>
+          • <strong>Admin &gt; White list:</strong> Danh sách dải địa chỉ IP mạng nội bộ của nhà máy được phép đăng nhập HRM (chặn các kết nối từ bên ngoài Internet).<br>
+          • <strong>Admin &gt; Profile / Edit:</strong> Đổi mật khẩu cá nhân và cập nhật thông tin tài khoản đang đăng nhập.<br><br>
+          👉 <a href="#faq" onclick="closeChat()" style="color:#1e88e5; font-weight:600;">Xem FAQ &raquo;</a>`
+      },
+
+      // --- CÁC KIẾN THỨC VỀ NGUỒN GỐC DỮ LIỆU LIÊN MÀN HÌNH (DATA LINEAGE) ---
+      {
+        id: 'data_source_attendance',
+        contextTag: 'working_hours',
+        keywords: ['dữ liệu attendance lấy từ đâu', 'dữ liệu bảng công lấy từ đâu', 'nguồn dữ liệu attendance', 'attendance lấy từ đâu', 'attendance lấy từ nguồn nào', 'attendance ▶ attendance lấy từ đâu', 'bảng công lấy từ đâu'],
+        title: 'Dữ liệu màn hình ATTENDANCE > Attendance lấy từ đâu?',
+        answer: `<strong>🔄 Dữ liệu bảng ATTENDANCE &gt; Attendance (31 ngày) được lấy từ đâu?</strong><br><br>
+          Bảng chấm công tổng hợp tháng tại <code>ATTENDANCE &gt; Attendance</code> được hệ thống tự động tổng hợp từ <strong>5 nguồn dữ liệu chính</strong>:<br><br>
+          1️⃣ <strong>Giờ công đi làm thực tế &amp; Tăng ca:</strong> Lấy từ <code>ATTENDANCE &gt; Working hours</code> (dữ liệu quẹt thẻ vân tay thô sau khi Quản lý bấm nút <strong>Sync data</strong> và tính công qua nút <strong>Calculation</strong>).<br>
+          2️⃣ <strong>Giờ nghỉ phép hưởng lương (OTH_HOUR_PN):</strong> Lấy tự động từ các đơn xin nghỉ phép đã được phê duyệt hợp lệ tại <code>MANAGE &gt; Leave</code> (phép năm, phép chế độ, hiếu hỉ, về sớm).<br>
+          3️⃣ <strong>Kế hoạch tăng ca (OTH_HOUR_OT):</strong> Đối soát với danh sách đăng ký tăng ca trước từ <code>MANAGE &gt; Set Overtime</code>.<br>
+          4️⃣ <strong>Khung giờ ca làm việc chuẩn:</strong> Lấy từ <code>CONFIG &gt; Schedule</code> và <code>CONFIG &gt; Shift</code> để xác định ca ngày/ca đêm và giờ nghỉ ăn ca.<br>
+          5️⃣ <strong>Suất ăn trưa (OTH_MEAL):</strong> Tự động tích lũy dựa trên số ngày công nhân có đi làm thực tế tại nhà máy.<br><br>
+          👉 <strong>Dòng chảy tiếp theo:</strong> Toàn bộ tổng giờ công thường (<code>OTH_HOUR_NT_L</code>), giờ phép (<code>OTH_HOUR_PN</code>), giờ tăng ca (<code>OTH_HOUR_OT</code>) và tiền ăn trưa sẽ được tự động chuyển sang <strong><code>ATTENDANCE &gt; Payroll</code></strong> để nhân đơn giá tính ra bảng lương tháng!<br><br>
+          👉 <a href="#task-09" onclick="closeChat()" style="color:#1e88e5; font-weight:600;">Xem chi tiết Task 09 (Bảng công tháng) &raquo;</a>`
+      },
+      {
+        id: 'data_source_payroll',
+        contextTag: 'payroll',
+        keywords: ['dữ liệu payroll lấy từ đâu', 'dữ liệu bảng lương lấy từ đâu', 'nguồn dữ liệu payroll', 'payroll lấy từ đâu', 'bảng lương lấy từ đâu', 'attendance ▶ payroll lấy từ đâu'],
+        title: 'Dữ liệu màn hình ATTENDANCE > Payroll lấy từ đâu?',
+        answer: `<strong>💰 Dữ liệu bảng lương ATTENDANCE &gt; Payroll được lấy từ đâu?</strong><br><br>
+          Bảng tính lương tháng <code>Payroll</code> là trung tâm tổng hợp tài chính của toàn bộ hệ thống, kết hợp từ các nguồn sau:<br><br>
+          1️⃣ <strong>Mức lương cơ bản &amp; Lương bảo hiểm (Insurance salary):</strong> Lấy từ Hợp đồng lao động hợp lệ tại <code>MANAGE &gt; Contract (Terminate)</code> (hoặc hồ sơ tiếp nhận tại <code>Registration</code>).<br>
+          2️⃣ <strong>Số giờ công &amp; Giờ tăng ca:</strong> Lấy trực tiếp từ bảng chấm công 31 ngày <code>ATTENDANCE &gt; Attendance</code> (các cột <code>OTH_HOUR_NT_L</code>, <code>OTH_HOUR_PN</code>, <code>OTH_HOUR_OT</code>).<br>
+          3️⃣ <strong>Tiền ăn trưa (AD_MEAL):</strong> Bằng tổng suất ăn từ cột <code>OTH_MEAL</code> nhân với đơn giá phụ cấp tiền ăn ca của công ty.<br>
+          4️⃣ <strong>Phụ cấp con nhỏ (AD_CHIL_7YRS):</strong> Tự động lấy từ danh sách con dưới 7 tuổi tại <code>MANAGE &gt; 7yrs-old</code>.<br>
+          5️⃣ <strong>Giảm trừ trích nộp:</strong> Tự động tính 10.5% (BHXH 8%, BHYT 1.5%, BHTN 1%), 1% Công đoàn và Thuế TNCN (sau khi trừ bản thân 11tr và 4.4tr/người phụ thuộc).<br><br>
+          👉 <strong>Dòng chảy tiếp theo:</strong> Số tiền thực lĩnh (<code>NET_SALARY</code>) sẽ được tự động xuất sang <strong><code>ATTENDANCE &gt; Bank</code></strong> (BIDV) và <strong><code>Cash</code></strong> (tiền mặt).<br><br>
+          👉 <a href="#task-10" onclick="closeChat()" style="color:#1e88e5; font-weight:600;">Xem chi tiết Task 10 (Payroll) &raquo;</a>`
+      },
+      {
+        id: 'data_source_working_hours',
+        contextTag: 'working_hours',
+        keywords: ['dữ liệu working hours lấy từ đâu', 'dữ liệu giờ công lấy từ đâu', 'nguồn dữ liệu working hours', 'working hours lấy từ đâu', 'attendance ▶ working hours lấy từ đâu'],
+        title: 'Dữ liệu màn hình ATTENDANCE > Working hours lấy từ đâu?',
+        answer: `<strong>⏰ Dữ liệu bảng ATTENDANCE &gt; Working hours lấy từ đâu?</strong><br><br>
+          Bảng giờ công chi tiết hàng ngày được hình thành từ:<br><br>
+          1️⃣ <strong>Dữ liệu quẹt thẻ thực tế:</strong> Tải trực tiếp từ máy chấm công vân tay trong toàn xưởng khi bấm <strong>Sync data</strong> (các mốc giờ CHECK-IN 1/2 và CHECK-OUT 1/2).<br>
+          2️⃣ <strong>Đơn nghỉ phép (HC Leave):</strong> Tự động kéo từ các đơn phép đã duyệt tại <code>MANAGE &gt; Leave</code>.<br>
+          3️⃣ <strong>Kế hoạch tăng ca (SET OVERTIME):</strong> Lấy từ <code>MANAGE &gt; Set Overtime</code> làm căn cứ tính giờ tăng ca hợp lệ.<br>
+          4️⃣ <strong>Khung giờ chuẩn (Schedule):</strong> So khớp với ca làm việc được phân bổ tại <code>CONFIG &gt; Schedule</code> để tính giờ công chuẩn (HC) và giờ tăng ca (TC1.5).<br><br>
+          👉 <a href="#task-08" onclick="closeChat()" style="color:#1e88e5; font-weight:600;">Xem chi tiết Task 08 &raquo;</a>`
+      },
+      {
+        id: 'data_source_bank_cash',
+        contextTag: 'payroll',
+        keywords: ['dữ liệu bank lấy từ đâu', 'dữ liệu cash lấy từ đâu', 'nguồn dữ liệu bank', 'nguồn dữ liệu cash', 'bank lấy từ đâu', 'cash lấy từ đâu'],
+        title: 'Dữ liệu màn hình Bank và Cash lấy từ đâu?',
+        answer: `<strong>🏦 Dữ liệu ATTENDANCE &gt; Bank và Cash lấy từ đâu?</strong><br><br>
+          1️⃣ <strong>Số tiền chi trả:</strong> Lấy trực tiếp từ cột <code>NET_SALARY</code> (Thực lĩnh) trên bảng lương đã được tính toán và chốt khóa tại <code>ATTENDANCE &gt; Payroll</code>.<br>
+          2️⃣ <strong>Tài khoản thụ hưởng:</strong> Lấy số tài khoản BIDV từ trường <code>BANK_2</code> trong hồ sơ nhân viên (<code>MANAGE &gt; Information</code>).<br>
+          3️⃣ <strong>Phân luồng:</strong> Những ai có số tài khoản BIDV hợp lệ chuyển vào bảng <strong>Bank</strong>; những nhân viên nhận tiền mặt được chuyển vào bảng <strong>Cash</strong>.<br><br>
+          👉 <a href="#task-13" onclick="closeChat()" style="color:#1e88e5; font-weight:600;">Xem chi tiết Task 13 &raquo;</a>`
+      },
+      {
+        id: 'data_source_resignation',
+        contextTag: 'quit_job',
+        keywords: ['dữ liệu resignation lấy từ đâu', 'nguồn dữ liệu resignation', 'resignation lấy từ đâu', 'danh sách thôi việc lấy từ đâu'],
+        title: 'Dữ liệu màn hình MANAGE > Resignation lấy từ đâu?',
+        answer: `<strong>🚪 Dữ liệu màn hình MANAGE &gt; Resignation lấy từ đâu?</strong><br><br>
+          • <strong>Nguồn phát sinh:</strong> Danh sách thôi việc được tạo tự động khi Nhân sự hoặc Quản lý vào <code>MANAGE &gt; Contract (Terminate)</code>, bấm <strong>MANAGE</strong> tại dòng nhân viên và tạo 01 dòng hợp đồng mới có loại là <strong>QUIT JOB</strong>.<br>
+          • <strong>Đồng bộ tức thì:</strong> Ngay khi bấm <code>CREATE</code> dòng QUIT JOB, nhân viên đó sẽ lập tức xuất hiện trong bảng <code>MANAGE &gt; Resignation</code> kèm ngày thôi việc và lý do nghỉ việc.<br><br>
+          👉 <a href="#task-05" onclick="closeChat()" style="color:#1e88e5; font-weight:600;">Xem chi tiết Task 05 &raquo;</a>`
+      },
+
+      // --- CÁC KIẾN THỨC VỀ BƯỚC TIẾP THEO (NEXT STEPS THEO QUY TRÌNH) ---
+      {
+        id: 'next_step_after_registration',
+        contextTag: 'registration',
+        keywords: ['làm gì tiếp theo sau khi nhập thông tin nhân viên', 'sau khi nhập thông tin nhân viên', 'sau khi registration', 'tiếp theo sau registration', 'sau khi tạo nhân viên mới', 'làm gì tiếp theo sau khi tạo nhân viên', 'sau khi nhập thông tin nhân viên làm gì', 'nhập xong thông tin nhân viên thì làm gì'],
+        title: 'Làm gì tiếp theo sau khi nhập thông tin nhân viên mới (Registration)?',
+        answer: `<strong>👤 Quy trình 4 bước tiếp theo sau khi nhập xong thông tin nhân viên mới:</strong><br><br>
+          Sau khi lưu hồ sơ nhân sự tại <code>MANAGE &gt; Registration</code>, bạn cần thực hiện tuần tự 4 bước sau để hoàn tất tiếp nhận:<br><br>
+          1️⃣ <strong>Ký Hợp đồng lao động đầu tiên:</strong><br>
+          &nbsp;&nbsp;Vào <code>MANAGE &gt; Contract (Terminate)</code>, tìm nhân viên đó ➔ bấm <strong>MANAGE</strong> ➔ bấm <strong>ADD CONTRACT</strong> ➔ chọn loại <code>PROBATION</code> (Thử việc 2 tháng) hoặc <code>FIXED_TERM_1</code>, nhập mức lương <strong>INSURANCE SALARY (VND)</strong> ➔ Bấm <strong>CREATE</strong>.<br>
+          &nbsp;&nbsp;<em>(Sau đó tick chọn nhân viên và bấm nút <strong>CONTRACT</strong> để in hợp đồng ký tay với người lao động).</em><br><br>
+          2️⃣ <strong>In thẻ đeo nhân viên:</strong><br>
+          &nbsp;&nbsp;Ngay tại bảng <code>MANAGE &gt; Contract (Terminate)</code>, tick chọn nhân viên và bấm nút <strong>CARD</strong> trên thanh công cụ để tải file in thẻ đeo ngực cho công nhân.<br><br>
+          3️⃣ <strong>Xếp ca làm việc vào lịch (Schedule):</strong><br>
+          &nbsp;&nbsp;Vào <code>CONFIG &gt; Schedule</code>, gán ca làm việc tháng cho nhân viên vào đúng Chuyền / Tổ.<br>
+          &nbsp;&nbsp;⚠️ <em>BƯỚC BẮT BUỘC: Nếu không xếp ca, khi công nhân đi làm quẹt vân tay sẽ bị chấm 0 giờ công!</em><br><br>
+          4️⃣ <strong>Khai báo chế độ con nhỏ (nếu có):</strong><br>
+          &nbsp;&nbsp;Nếu nhân viên nuôi con dưới 7 tuổi, vào <code>MANAGE &gt; 7yrs-old</code> bấm <strong>Add</strong> để khai báo ngày sinh của bé (được giảm 1 giờ làm/ngày và hưởng phụ cấp 50k/tháng).<br><br>
+          👉 <a href="#task-04" onclick="closeChat()" style="color:#1e88e5; font-weight:600;">Xem tiếp Task 04 (Ký hợp đồng &amp; In thẻ) &raquo;</a>`
+      },
+      {
+        id: 'next_step_after_working_hours',
+        contextTag: 'working_hours',
+        keywords: ['làm gì tiếp theo sau khi tính giờ công', 'sau khi tính công', 'sau khi tính giờ công', 'sau khi working hours', 'tiếp theo sau working hours', 'tính xong công làm gì', 'sau khi sync và calculation làm gì'],
+        title: 'Làm gì tiếp theo sau khi tính giờ công (Working hours)?',
+        answer: `<strong>⏰ Các bước tiếp theo sau khi tính giờ công trên Working hours:</strong><br><br>
+          Sau khi bấm <code>Sync data</code> và <code>Calculation</code> tại <code>ATTENDANCE &gt; Working hours</code>, bạn thực hiện tiếp:<br><br>
+          1️⃣ <strong>Kiểm tra xung đột công:</strong> Quan sát dòng <strong>Attendance + Leave: 0</strong>. Nếu số này &gt; 0, hãy bấm lọc ở cột <code>WARNING</code> để xóa các đơn phép trùng ngày có đi làm.<br>
+          2️⃣ <strong>Kiểm tra lỗi quên quẹt thẻ:</strong> Lọc cột <code>MISS_FINGER</code> (quên quẹt vào hoặc quẹt ra) để yêu cầu công nhân gửi phiếu giải trình (bấm nút Action / Request để bổ sung giờ).<br>
+          3️⃣ <strong>Đối soát bảng công tổng hợp:</strong> Sang <code>ATTENDANCE &gt; Attendance</code> kiểm tra ma trận công 31 ngày xem số ngày công và tiền ăn trưa đã chuẩn xác chưa.<br>
+          4️⃣ <strong>Chuyển sang Tính lương:</strong> Vào <code>ATTENDANCE &gt; Payroll</code> bấm nút màu xanh <strong>Salary Calculation</strong> để tính lương cho toàn công ty!<br><br>
+          👉 <a href="#task-09" onclick="closeChat()" style="color:#1e88e5; font-weight:600;">Xem tiếp Task 09 &amp; Task 10 &raquo;</a>`
+      },
+      {
+        id: 'next_step_after_payroll',
+        contextTag: 'payroll',
+        keywords: ['làm gì tiếp theo sau khi tính bảng lương', 'sau khi tính lương', 'sau khi payroll', 'tính xong lương làm gì', 'tiếp theo sau payroll', 'sau khi salary calculation làm gì'],
+        title: 'Làm gì tiếp theo sau khi tính bảng lương (Payroll)?',
+        answer: `<strong>💵 Các bước tiếp theo sau khi tính bảng lương tại Payroll:</strong><br><br>
+          Sau khi bấm <code>Salary Calculation</code> tại <code>ATTENDANCE &gt; Payroll</code>, bạn thực hiện 4 bước sau để hoàn tất kỳ chi trả lương:<br><br>
+          1️⃣ <strong>Hiệu chỉnh phụ cấp &amp; thưởng:</strong> Nhấp trực tiếp vào các ô Thưởng, Phụ cấp khác nếu có điều chỉnh ➔ Tick chọn dòng người đó và bấm <strong>RE-CALC</strong> ở cuối bảng.<br>
+          2️⃣ <strong>Khóa bảng lương (Lock):</strong> Sau khi Kế toán trưởng &amp; Giám đốc duyệt, bấm nút <strong>Lock</strong> trên toolbar để khóa số liệu chống sửa đổi.<br>
+          3️⃣ <strong>Xuất danh sách chuyển khoản &amp; Tiền mặt:</strong><br>
+          &nbsp;&nbsp;+ Vào <code>ATTENDANCE &gt; Bank</code> bấm <strong>Export</strong> tải file nộp ngân hàng BIDV.<br>
+          &nbsp;&nbsp;+ Vào <code>ATTENDANCE &gt; Cash</code> bấm <strong>Export</strong> in danh sách ký nhận tiền mặt.<br>
+          4️⃣ <strong>In phiếu lương (Payslip):</strong> Bấm nút <strong>PAYROLL</strong> để xuất file bảng lương chi tiết gửi công nhân đối soát.<br><br>
+          👉 <a href="#task-13" onclick="closeChat()" style="color:#1e88e5; font-weight:600;">Xem tiếp Task 13 (Xuất Bank &amp; Cash) &raquo;</a>`
+      },
+      {
+        id: 'next_step_after_quit_job',
+        contextTag: 'quit_job',
+        keywords: ['làm gì tiếp theo sau khi khai báo thôi việc', 'sau khi quit job', 'sau khi thôi việc', 'tiếp theo sau thôi việc', 'làm gì tiếp theo sau khi quit', 'khai báo quit job xong làm gì'],
+        title: 'Làm gì tiếp theo sau khi khai báo thôi việc (QUIT JOB)?',
+        answer: `<strong>🚪 Các bước tiếp theo sau khi khai báo thôi việc (QUIT JOB):</strong><br><br>
+          Sau khi tạo dòng <code>QUIT JOB</code> kèm mức lương bảo hiểm tại <code>MANAGE &gt; Contract (Terminate)</code>, bạn thực hiện tiếp:<br><br>
+          1️⃣ <strong>Kiểm tra hồ sơ tại Resignation:</strong> Vào <code>MANAGE &gt; Resignation</code>, bấm vào dòng nhân viên để mở trang View / Detail in quyết định thôi việc hoặc bấm Export, cập nhật tình trạng nộp đơn (<code>REG_LETTER</code>).<br>
+          2️⃣ <strong>Tính lương kỳ cuối:</strong> Vào <code>ATTENDANCE &gt; Payroll</code>, chuyển ô chọn trạng thái từ <code>Working</code> sang <strong>Stopped</strong> ➔ Bấm <strong>Salary Calculation</strong> để tính lương cho những ngày công đi làm cuối cùng.<br>
+          3️⃣ <strong>Quyết toán trợ cấp thôi việc &amp; Phép tồn:</strong> Vào <code>ATTENDANCE &gt; Severance</code> để tính trợ cấp thôi việc (giai đoạn trước 2009) và thanh toán bằng tiền những ngày phép năm chưa nghỉ hết.<br><br>
+          👉 <a href="#task-05" onclick="closeChat()" style="color:#1e88e5; font-weight:600;">Xem chi tiết Task 05 &amp; Task 11 &raquo;</a>`
+      },
+      {
+        id: 'next_step_after_leave',
+        contextTag: 'leave',
+        keywords: ['làm gì tiếp theo sau khi duyệt nghỉ phép', 'sau khi duyệt phép', 'sau khi nhập phép', 'tiếp theo sau leave', 'duyệt phép xong làm gì', 'nhập phép xong làm gì'],
+        title: 'Làm gì tiếp theo sau khi duyệt đơn nghỉ phép (Leave)?',
+        answer: `<strong>🏖️ Các bước tiếp theo sau khi duyệt đơn nghỉ phép tại Leave:</strong><br><br>
+          Sau khi duyệt hoặc import đơn nghỉ phép tại <code>MANAGE &gt; Leave</code>, bạn cần kiểm tra liên thông:<br><br>
+          1️⃣ <strong>Đối soát không bị trùng công:</strong> Vào <code>ATTENDANCE &gt; Working hours</code>, kiểm tra dòng <strong>Attendance + Leave: 0</strong>. Đảm bảo ngày nghỉ phép công nhân không đi quẹt thẻ đi làm.<br>
+          2️⃣ <strong>Kiểm tra giờ phép tháng:</strong> Vào <code>ATTENDANCE &gt; Attendance</code>, kiểm tra cột <code>OTH_HOUR_PN</code> đã được cộng dồn đúng số giờ phép hưởng lương của nhân viên.<br>
+          3️⃣ <strong>Kiểm tra trừ quỹ phép năm:</strong> Vào <code>ATTENDANCE &gt; Annual leave</code> để xác nhận số ngày phép đã được trừ tự động vào quỹ phép năm.<br><br>
+          👉 <a href="#task-07" onclick="closeChat()" style="color:#1e88e5; font-weight:600;">Xem tiếp Task 07 (Leave) &raquo;</a>`
+      }
+    ];
+
+    // LƯU VẾT NGỮ CẢNH HỘI THOẠI ĐA LƯỢT (MULTI-TURN CONVERSATION STATE)
+    let conversationContext = {
+      lastTopic: null,
+      lastTopicTitle: null
+    };
+
+    function getKnowledgeById(id) {
+      return HRM_KNOWLEDGE_BASE.find(item => item.id === id) || null;
+    }
+
+    function getBotReply(userQuery) {
+      const q = userQuery.toLowerCase().trim();
+      if (!q) return 'Vui lòng nhập câu hỏi của bạn.';
+
+      // BƯỚC 0: NHẬN DIỆN CÂU HỎI MƠ HỒ / THIẾU NGỮ CẢNH: "LÀM GÌ TIẾP THEO ?"
+      const isAmbiguousNextStep = (
+        q === 'làm gì tiếp theo' ||
+        q === 'làm gì tiếp theo ?' ||
+        q === 'làm gì tiếp theo?' ||
+        q === 'bước tiếp theo' ||
+        q === 'bước tiếp theo là gì' ||
+        q === 'bước tiếp theo là gì ?' ||
+        q === 'bước tiếp theo là gì?' ||
+        q === 'tiếp theo làm gì' ||
+        q === 'tiếp theo làm gì ?' ||
+        q === 'tiếp theo làm gì?' ||
+        q === 'tiếp theo là gì' ||
+        q === 'tiếp theo là gì ?' ||
+        q === 'tiếp theo là gì?' ||
+        q === 'làm gì nữa' ||
+        q === 'làm gì nữa ?' ||
+        q === 'làm gì nữa?' ||
+        q === 'xong rồi làm gì' ||
+        q === 'xong rồi làm gì ?' ||
+        q === 'xong rồi làm gì?' ||
+        q === 'bây giờ làm gì' ||
+        q === 'bây giờ làm gì ?' ||
+        q === 'bây giờ làm gì?' ||
+        q === 'next step' ||
+        q === 'làm tiếp thế nào' ||
+        q === 'làm tiếp thế nào ?' ||
+        q === 'làm tiếp thế nào?'
+      );
+
+      if (isAmbiguousNextStep) {
+        // Nếu đã có ngữ cảnh trước đó trong phiên chat
+        if (conversationContext.lastTopic === 'registration') {
+          const item = getKnowledgeById('next_step_after_registration');
+          return `👉 <em>Nhận thấy bạn vừa xem quy trình <strong>Tiếp nhận nhân viên mới (Registration)</strong>, dưới đây là các bước tiếp theo bạn cần làm:</em><br><br>` + item.answer;
+        } else if (conversationContext.lastTopic === 'working_hours') {
+          const item = getKnowledgeById('next_step_after_working_hours');
+          return `👉 <em>Nhận thấy bạn vừa xem quy trình <strong>Tính giờ công (Working hours)</strong>, dưới đây là các bước tiếp theo bạn cần làm:</em><br><br>` + item.answer;
+        } else if (conversationContext.lastTopic === 'payroll') {
+          const item = getKnowledgeById('next_step_after_payroll');
+          return `👉 <em>Nhận thấy bạn vừa xem quy trình <strong>Tính bảng lương (Payroll)</strong>, dưới đây là các bước tiếp theo bạn cần làm:</em><br><br>` + item.answer;
+        } else if (conversationContext.lastTopic === 'quit_job') {
+          const item = getKnowledgeById('next_step_after_quit_job');
+          return `👉 <em>Nhận thấy bạn vừa xem quy trình <strong>Khai báo thôi việc (QUIT JOB)</strong>, dưới đây là các bước tiếp theo bạn cần làm:</em><br><br>` + item.answer;
+        } else if (conversationContext.lastTopic === 'leave') {
+          const item = getKnowledgeById('next_step_after_leave');
+          return `👉 <em>Nhận thấy bạn vừa xem quy trình <strong>Đăng ký nghỉ phép (Leave)</strong>, dưới đây là các bước tiếp theo bạn cần làm:</em><br><br>` + item.answer;
+        } else {
+          // Chưa có ngữ cảnh -> Chủ động hỏi lại và đưa ra các nút bấm lựa chọn thông minh
+          return `❓ <strong>Bạn đang muốn hỏi bước tiếp theo cho quy trình nào?</strong><br><br>
+            Do câu hỏi chưa rõ bạn vừa hoàn thành thao tác nào, hãy <strong>bấm vào một trong các lựa chọn bên dưới</strong> hoặc cho tôi biết bạn đang làm tới bước nào để tôi hướng dẫn chi tiết nhé:<br><br>
+            <div style="display:flex; flex-direction:column; gap:6px; margin-top:8px;">
+              <button class="suggestion-chip" style="text-align:left; padding:8px 12px; font-weight:500;" onclick="handleChipClick('Làm gì tiếp theo sau khi nhập thông tin nhân viên?')">👤 1. Sau khi nhập thông tin nhân viên mới (Registration)</button>
+              <button class="suggestion-chip" style="text-align:left; padding:8px 12px; font-weight:500;" onclick="handleChipClick('Làm gì tiếp theo sau khi tính giờ công Working hours?')">⏰ 2. Sau khi tính giờ công (Working hours)</button>
+              <button class="suggestion-chip" style="text-align:left; padding:8px 12px; font-weight:500;" onclick="handleChipClick('Làm gì tiếp theo sau khi tính bảng lương Payroll?')">💵 3. Sau khi tính bảng lương tháng (Payroll)</button>
+              <button class="suggestion-chip" style="text-align:left; padding:8px 12px; font-weight:500;" onclick="handleChipClick('Làm gì tiếp theo sau khi khai báo thôi việc QUIT JOB?')">🚪 4. Sau khi khai báo thôi việc (QUIT JOB)</button>
+              <button class="suggestion-chip" style="text-align:left; padding:8px 12px; font-weight:500;" onclick="handleChipClick('Làm gì tiếp theo sau khi duyệt nghỉ phép Leave?')">🏖️ 5. Sau khi duyệt đơn nghỉ phép (Leave)</button>
+            </div>`;
+        }
+      }
+
+      // BƯỚC 1: TÌM KIẾM TRONG HỆ TRI THỨC TOÀN DIỆN (HRM_KNOWLEDGE_BASE)
+      let bestKbMatch = null;
+      let highestKbScore = 0;
+
+      for (let i = 0; i < HRM_KNOWLEDGE_BASE.length; i++) {
+        const item = HRM_KNOWLEDGE_BASE[i];
+        let score = 0;
+
+        // 1.1 Khớp chính xác cụm từ hoặc từ khóa đại diện
+        for (let k = 0; k < item.keywords.length; k++) {
+          const kw = item.keywords[k].toLowerCase();
+          if (q === kw || q.includes(kw)) {
+            score += (kw.length >= 8 ? 10 : 6);
+          }
+        }
+
+        // 1.2 Khớp từng từ đơn lẻ trong câu hỏi
+        const qWords = q.split(/\s+/).filter(w => w.length > 1);
+        qWords.forEach(w => {
+          if (item.title.toLowerCase().includes(w)) score += 2;
+          for (let k = 0; k < item.keywords.length; k++) {
+            if (item.keywords[k].toLowerCase().includes(w)) score += 1;
+          }
+        });
+
+        if (score > highestKbScore) {
+          highestKbScore = score;
+          bestKbMatch = item;
+        }
+      }
+
+      // Nếu điểm số tri thức đủ cao (khớp từ khóa trực tiếp), ghi nhận ngữ cảnh và trả về câu trả lời chuyên sâu
+      if (bestKbMatch && highestKbScore >= 3) {
+        if (bestKbMatch.contextTag) {
+          conversationContext.lastTopic = bestKbMatch.contextTag;
+          conversationContext.lastTopicTitle = bestKbMatch.title;
+        }
+        return bestKbMatch.answer;
+      }
+
+      // BƯỚC 2: TỰ ĐỘNG TÌM KIẾM TRONG TOÀN BỘ CẨM NANG DOM (SMART FALLBACK SEARCH)
+      const allCards = document.querySelectorAll('.task-card, .accordion-item');
+      let bestMatch = null;
+      let highestScore = 0;
+      const searchTerms = q.split(/\s+/).filter(w => w.length > 1);
+
+      allCards.forEach(card => {
+        const cardText = card.innerText.toLowerCase();
+        let score = 0;
+        searchTerms.forEach(term => {
+          if (cardText.includes(term)) score += 1;
+        });
+        if (score > highestScore) {
+          highestScore = score;
+          bestMatch = card;
+        }
+      });
+
+      if (bestMatch && highestScore > 0) {
+        const cardId = bestMatch.getAttribute('id') || 'manual-content';
+        const cardTitle = bestMatch.querySelector('.task-title, .accordion-title')?.innerText || 'Hướng dẫn liên quan';
+        const cardPath = bestMatch.querySelector('.pathway, .task-path')?.innerText || '';
+        const stepList = bestMatch.querySelectorAll('.step-desc');
+        let stepsSummary = '';
+        if (stepList.length > 0) {
+          stepsSummary = `<ul style="margin: 6px 0 6px 18px; font-size:0.83rem; color:#334155;">`;
+          for (let i = 0; i < Math.min(stepList.length, 3); i++) {
+            stepsSummary += `<li>${stepList[i].innerText}</li>`;
+          }
+          stepsSummary += `</ul>`;
+        }
+
+        return `🔍 <strong>Tìm thấy nội dung phù hợp nhất trong cẩm nang:</strong><br><br>
+          <strong>${cardTitle}</strong><br>
+          ${cardPath ? `<span style="font-size:0.75rem; color:#64748b;">${cardPath}</span><br>` : ''}
+          ${stepsSummary}
+          👉 <a href="#${cardId}" onclick="closeChat()" style="color:#1e88e5; font-weight:600;">Bấm vào đây để xem toàn bộ thao tác &raquo;</a>`;
+      }
+
+      // BƯỚC 3: NẾU HOÀN TOÀN KHÔNG TÌM THẤY
+      return `Tôi đã ghi nhận câu hỏi: <em>"${userQuery}"</em>.<br><br>
+        Để được hỗ trợ chuyên sâu và giải quyết trực tiếp trên hệ thống, bạn hãy bấm vào nút dưới đây để gửi yêu cầu đến Quản trị viên &amp; AI Agent:<br><br>
+        <button onclick="switchToSheetTab()" style="background:#10b981; color:#fff; border:none; padding:8px 14px; border-radius:6px; font-weight:600; cursor:pointer; font-size:0.85rem;">
+          📝 Chuyển sang gửi yêu cầu lên Google Sheet &raquo;
+        </button>`;
+    }
+
+    function sendChatMessage() {
+      const text = chatInputText.value.trim();
+      if (!text) return;
+
+      appendMessage('user', text);
+      chatInputText.value = '';
+
+      // Bot trả lời sau 300ms
+      setTimeout(() => {
+        const reply = getBotReply(text);
+        appendMessage('bot', reply);
+      }, 300);
+    }
+
+    if (chatSendBtn) {
+      chatSendBtn.addEventListener('click', sendChatMessage);
+    }
+    if (chatInputText) {
+      chatInputText.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') sendChatMessage();
+      });
+    }
+
+    window.handleChipClick = function(chipText) {
+      if (chatInputText) {
+        chatInputText.value = chipText;
+        sendChatMessage();
+      }
+    };
+
+    // FORM TIẾP NHẬN YÊU CẦU LƯU VÀO GOOGLE SHEET
+    const sheetSubmitBtn = document.getElementById('sheetSubmitBtn');
+    const sheetRequest = document.getElementById('sheetRequest');
+    const sheetZalo = document.getElementById('sheetZalo');
+    const sheetCompany = document.getElementById('sheetCompany');
+    const sheetStatusMsg = document.getElementById('sheetStatusMsg');
+
+    if (sheetSubmitBtn) {
+      sheetSubmitBtn.addEventListener('click', function() {
+        const requestVal = sheetRequest ? sheetRequest.value.trim() : '';
+        const zaloVal = sheetZalo ? sheetZalo.value.trim() : '';
+        const companyVal = sheetCompany ? sheetCompany.value.trim() : '';
+
+        if (!requestVal) {
+          if (sheetStatusMsg) {
+            sheetStatusMsg.className = 'sheet-status-alert error';
+            sheetStatusMsg.innerHTML = '⚠️ Vui lòng nhập nội dung yêu cầu hoặc sự cố của bạn!';
+          }
+          if (sheetRequest) sheetRequest.focus();
+          return;
+        }
+
+        sheetSubmitBtn.disabled = true;
+        sheetSubmitBtn.innerHTML = '⏳ Đang gửi yêu cầu...';
+        if (sheetStatusMsg) sheetStatusMsg.style.display = 'none';
+
+        const payload = {
+          timestamp: new Date().toLocaleString('vi-VN'),
+          request: requestVal,
+          zalo: zaloVal || 'Ẩn danh',
+          company: companyVal || 'Không điền',
+          url: window.location.href
+        };
+
+        // Lưu dự phòng vào LocalStorage của trình duyệt
+        try {
+          const localHistory = JSON.parse(localStorage.getItem('hrm_saved_requests') || '[]');
+          localHistory.push(payload);
+          localStorage.setItem('hrm_saved_requests', JSON.stringify(localHistory));
+        } catch (err) {}
+
+        // TỰ ĐỘNG CHUYỂN SANG TAB CHATBOT ĐỂ BÁO TRẠNG THÁI TRONG CHAT
+        switchToBotTab();
+
+        // 1. Thêm tin nhắn của người dùng vào khung Chat
+        const userMsgHtml = `<strong>📝 ĐÃ GỬI YÊU CẦU:</strong><br>${escapeHtml(requestVal)}<br>
+          <div style="font-size:0.75rem; margin-top:5px; opacity:0.85;">
+            👤 Zalo/SĐT: <strong>${escapeHtml(zaloVal || 'Ẩn danh')}</strong> | 🏢 Công ty: <strong>${escapeHtml(companyVal || 'Không điền')}</strong>
+          </div>`;
+        appendMessage('user', userMsgHtml);
+
+        // 2. Thêm bong bóng trạng thái đang gửi của Bot
+        const pendingBubble = document.createElement('div');
+        pendingBubble.className = 'chat-bubble bot';
+        pendingBubble.innerHTML = `⏳ <em>Đang kết nối và truyền dữ liệu đến Google Sheet...</em>`;
+        chatMessages.appendChild(pendingBubble);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        // Chuẩn bị dữ liệu Form
+        const formData = new FormData();
+        formData.append('request', requestVal);
+        formData.append('zalo', zaloVal || 'Ẩn danh');
+        formData.append('company', companyVal || 'Không điền');
+        formData.append('timestamp', payload.timestamp);
+        formData.append('url', payload.url);
+
+        // Gửi qua Fetch (mode: no-cors)
+        if (GOOGLE_SHEET_WEBAPP_URL && GOOGLE_SHEET_WEBAPP_URL.startsWith('http')) {
+          fetch(GOOGLE_SHEET_WEBAPP_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            body: formData
+          })
+          .then(() => {
+            finishSubmission(pendingBubble, payload, false);
+          })
+          .catch(err => {
+            finishSubmission(pendingBubble, payload, false);
+          });
+        } else {
+          setTimeout(() => {
+            finishSubmission(pendingBubble, payload, true);
+          }, 800);
+        }
+      });
+    }
+
+    function switchToBotTab() {
+      chatTabBtns.forEach(b => b.classList.remove('active'));
+      chatTabPanels.forEach(p => p.classList.remove('active'));
+      const botTabBtn = document.querySelector('.chat-tab-btn[data-tab="tab-bot"]');
+      if (botTabBtn) botTabBtn.classList.add('active');
+      const botPanel = document.getElementById('tab-bot');
+      if (botPanel) botPanel.classList.add('active');
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      const div = document.createElement('div');
+      div.innerText = str;
+      return div.innerHTML;
+    }
+
+    function finishSubmission(bubbleElem, payload, isDemo) {
+      if (sheetSubmitBtn) {
+        sheetSubmitBtn.disabled = false;
+        sheetSubmitBtn.innerHTML = '🚀 Gửi yêu cầu ngay';
+      }
+      if (sheetRequest) sheetRequest.value = '';
+      if (sheetZalo) sheetZalo.value = '';
+      if (sheetCompany) sheetCompany.value = '';
+
+      if (isDemo) {
+        bubbleElem.style.borderLeft = '4px solid #f59e0b';
+        bubbleElem.style.background = '#fffbeb';
+        bubbleElem.innerHTML = `⚠️ <strong>CHƯA CẤU HÌNH GOOGLE SHEET:</strong><br><br>
+          Yêu cầu của bạn đã được lưu tạm vào bộ nhớ LocalStorage của trình duyệt.<br>
+          <em>(Vui lòng cấu hình biến <code>GOOGLE_SHEET_WEBAPP_URL</code> trong file để chuyển thẳng vào Google Sheet).</em>`;
+      } else {
+        bubbleElem.style.borderLeft = '4px solid #10b981';
+        bubbleElem.style.background = '#f0fdf4';
+        bubbleElem.innerHTML = `🎉 <strong>ĐÃ GỬI YÊU CẦU THÀNH CÔNG!</strong><br><br>
+          Yêu cầu đã được chuyển tiếp đến Google Sheet của Quản trị viên &amp; AI Agent.<br>
+          <em>Chúng tôi sẽ kiểm tra và phản hồi sớm nhất qua Zalo (${escapeHtml(payload.zalo)}).</em>`;
+      }
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+
+      if (sheetStatusMsg) {
+        sheetStatusMsg.className = 'sheet-status-alert success';
+        sheetStatusMsg.style.display = 'block';
+        sheetStatusMsg.innerHTML = '🎉 Đã gửi thành công! Xem chi tiết xác nhận trong tab <strong>Hỏi đáp tức thì</strong>.';
+      }
+    }
+  </script>
+</body>
+</html>
