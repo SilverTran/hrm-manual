@@ -30,7 +30,7 @@
 > ⚠️ **LƯU Ý QUAN TRỌNG VỀ NGÔN NGỮ:**  
 > Hệ thống HRM hiện tại **hiển thị 100% bằng tiếng Anh** (thành phần chuyển đổi ngôn ngữ trên trang web đang bị ẩn và endpoint máy chủ trả về 404). Người dùng không cần tìm nút đổi tiếng Việt. Toàn bộ tài liệu bên dưới đã ánh xạ chuẩn xác từng nút bấm tiếng Anh thực tế trên màn hình.
 
-- **Đăng nhập:** Mở cổng thông tin hệ thống SIMS HRM nội bộ
+- **Đăng nhập:** Mở cổng thông tin hệ thống HRM nội bộ
 - **Bước 1:** Nhập **User ID** (tài khoản) và **Password** (mật khẩu).
 - **Bước 2:** Bấm nút tròn màu xanh có mũi tên `➔` bên phải ô mật khẩu để đăng nhập.
 - **Bước 3:** Sau khi đăng nhập thành công, bạn sẽ vào màn hình Dashboard với thanh menu ngang ở trên cùng gồm: `MANAGE`, `ATTENDANCE`, `EMPLOYEE`, `CONFIG`, `ADMIN`.
