@@ -2558,6 +2558,33 @@
           👉 <a href="#task-05" onclick="closeChat()" style="color:#1e88e5; font-weight:600;">Xem chi tiết Task 05 &raquo;</a>`
       },
 
+      // --- KẾT NỐI VÀ ĐỒNG BỘ MÁY CHẤM CÔNG ---
+      {
+        id: 'time_attendance_machine_connection',
+        contextTag: 'working_hours',
+        keywords: [
+          'kết nối máy chấm công', 'máy chấm công', 'kết nối với máy chấm công', 
+          'máy vân tay', 'kết nối máy vân tay', 'đồng bộ máy chấm công', 
+          'lấy dữ liệu từ máy chấm công', 'cách kết nối máy chấm công', 
+          'máy chấm công kết nối ra sao', 'máy quẹt thẻ', 'thiết bị chấm công'
+        ],
+        title: 'Hệ thống kết nối và lấy dữ liệu từ máy chấm công ra sao?',
+        answer: `<strong>📟 Cơ chế kết nối và đồng bộ dữ liệu giữa SIMS HRM và Máy chấm công:</strong><br><br>
+          Hệ thống SIMS HRM giao tiếp với các máy chấm công vân tay / khuôn mặt theo cơ chế mạng nội bộ an toàn và đồng bộ theo lệnh (On-demand Batch Sync):<br><br>
+          1️⃣ <strong>Mô hình kết nối mạng (Hạ tầng vật lý):</strong><br>
+          • Các máy chấm công (ZKTeco, Ronald Jack...) tại nhà máy / văn phòng được kết nối trực tiếp vào mạng <strong>LAN nội bộ</strong> của công ty thông qua cáp mạng RJ45.<br>
+          • Mỗi máy chấm công được gán một <strong>Địa chỉ IP tĩnh (Static IP)</strong> và một cổng Port cố định (mặc định Port 4370) do phòng IT thiết lập.<br>
+          • Server HRM được cấp quyền kết nối TCP/IP trực tiếp tới danh sách IP máy chấm công này qua giao thức SDK / API (được mã hóa với mã bảo mật <code>SyncKey</code>).<br><br>
+          2️⃣ <strong>Cơ chế đồng bộ dữ liệu quẹt thẻ (Working Hours Sync):</strong><br>
+          • <strong>Tại sao không kéo realtime tự động từng giây?</strong> Để tránh quá tải đường truyền mạng nhà máy và không làm treo máy chấm công khi hàng nghìn công nhân tan ca cùng lúc, hệ thống sử dụng cơ chế <em>đồng bộ theo ca / theo lệnh</em>.<br>
+          • <strong>Thao tác của HR:</strong> HR vào <code>ATTENDANCE &gt; Working hours</code> ➔ Bấm nút màu xanh <strong>Sync data</strong>.<br>
+          • <strong>Quá trình xử lý ngầm:</strong> Popup hiện lên cho phép chọn khoảng ngày (<code>SYNC_FROM_DATE</code> đến <code>SYNC_TO_DATE</code>) ➔ Bấm <strong>Sync</strong> (gọi API <code>/hrm/Manage/WorkingHours_Sync</code>). Server sẽ gửi tín hiệu kết nối đến tất cả IP máy chấm công, trích xuất toàn bộ bản ghi quẹt thẻ mới nhất về bảng tạm, sau đó HR bấm <strong>Calculation</strong> để hệ thống tính giờ công chuẩn (HC) và tăng ca (TC1.5).<br><br>
+          3️⃣ <strong>Cơ chế đồng bộ danh sách nhân viên mới (Employee Sync):</strong><br>
+          • Khi nhân viên mới vào làm, sau khi quét vân tay/khuôn mặt trên máy chấm công, HR vào <code>MANAGE &gt; Registration</code> ➔ Bấm nút <strong>Sync employee</strong> (gọi API <code>/hrm/Manage/Registration_SyncNewEmp</code>).<br>
+          • Hệ thống sẽ tự động quét ID và tên từ máy chấm công kéo về danh sách tiếp nhận của HRM để HR hoàn tất hồ sơ mà không phải gõ tay mã số.<br><br>
+          👉 <a href="#task-08" onclick="closeChat()" style="color:#1e88e5; font-weight:600;">Xem chi tiết Task 08 (Thao tác Sync data &amp; Calculation) &raquo;</a>`
+      },
+
       // --- CÁC KIẾN THỨC VỀ BƯỚC TIẾP THEO (NEXT STEPS THEO QUY TRÌNH) ---
       {
         id: 'next_step_after_registration',
@@ -2711,24 +2738,46 @@
       let bestKbMatch = null;
       let highestKbScore = 0;
 
+      // Danh sách từ dừng (Stop words) tiếng Việt không mang ý nghĩa nhận diện chuyên biệt
+      const STOP_WORDS = new Set([
+        'hệ', 'thống', 'với', 'ra', 'sao', 'thế', 'nào', 'như', 'ở', 'đâu', 
+        'cho', 'được', 'các', 'cái', 'là', 'gì', 'những', 'của', 'trong', 
+        'và', 'về', 'có', 'không', 'thì', 'tôi', 'bạn', 'em', 'mình', 'khi', 
+        'này', 'đó', 'kia', 'bị', 'do', 'để', 'lại', 'qua', 'từ'
+      ]);
+
+      const qCleanWords = q.split(/[\s,?.!;:()\[\]"]+/).filter(w => w.length > 1 && !STOP_WORDS.has(w));
+
       for (let i = 0; i < HRM_KNOWLEDGE_BASE.length; i++) {
         const item = HRM_KNOWLEDGE_BASE[i];
         let score = 0;
 
-        // 1.1 Khớp chính xác cụm từ hoặc từ khóa đại diện
+        // 1.1 Khớp chính xác cụm từ hoặc từ khóa đại diện (Exact phrase / Substring match)
         for (let k = 0; k < item.keywords.length; k++) {
           const kw = item.keywords[k].toLowerCase();
-          if (q === kw || q.includes(kw)) {
-            score += (kw.length >= 8 ? 10 : 6);
+          if (q === kw) {
+            score += 50; // Trùng tuyệt đối cả câu
+          } else if (q.includes(kw)) {
+            // Cụm từ càng dài, điểm trọng số càng cao
+            score += (kw.includes(' ') ? 25 : (kw.length >= 6 ? 12 : 6));
           }
         }
 
-        // 1.2 Khớp từng từ đơn lẻ trong câu hỏi
-        const qWords = q.split(/\s+/).filter(w => w.length > 1);
-        qWords.forEach(w => {
-          if (item.title.toLowerCase().includes(w)) score += 2;
-          for (let k = 0; k < item.keywords.length; k++) {
-            if (item.keywords[k].toLowerCase().includes(w)) score += 1;
+        // 1.2 Khớp từng từ khóa ý nghĩa (đã loại bỏ Stop words)
+        // Lưu ý: Mỗi từ trong câu hỏi chỉ được tính điểm 1 lần duy nhất cho mỗi bài viết, tránh nhân vô hạn
+        qCleanWords.forEach(w => {
+          let matched = false;
+          if (item.title.toLowerCase().includes(w)) {
+            score += 3;
+            matched = true;
+          }
+          if (!matched) {
+            for (let k = 0; k < item.keywords.length; k++) {
+              if (item.keywords[k].toLowerCase().includes(w)) {
+                score += 2;
+                break; // Chỉ tính điểm 1 lần cho từ này trong item
+              }
+            }
           }
         });
 
@@ -2738,8 +2787,8 @@
         }
       }
 
-      // Nếu điểm số tri thức đủ cao (khớp từ khóa trực tiếp), ghi nhận ngữ cảnh và trả về câu trả lời chuyên sâu
-      if (bestKbMatch && highestKbScore >= 3) {
+      // Ngưỡng tối thiểu được chấp nhận: Phải đạt tối thiểu 6 điểm (khớp cụm từ hoặc nhiều từ có nghĩa)
+      if (bestKbMatch && highestKbScore >= 6) {
         if (bestKbMatch.contextTag) {
           conversationContext.lastTopic = bestKbMatch.contextTag;
           conversationContext.lastTopicTitle = bestKbMatch.title;
