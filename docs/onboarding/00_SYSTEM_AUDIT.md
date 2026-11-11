@@ -1,7 +1,7 @@
 # 00 - KHẢO SÁT TOÀN DIỆN HỆ THỐNG HRM (SYSTEM AUDIT)
 
 **Hệ thống khảo sát:** SIMS - HRM Version 26.10  
-**Địa chỉ truy cập khảo sát:** `https://astro.sv-global.net/hrm`  
+**Địa chỉ truy cập khảo sát:** Hệ thống SIMS HRM nội bộ  
 **Thời gian thực hiện khảo sát:** Ngày 03/11/2026  
 **Phương pháp khảo sát:** Thu thập cấu trúc DOM thực tế (HTML crawl), phân tích mã nguồn client (Javascript bundle), kiểm tra các endpoint API backend thực tế, phân tích dữ liệu đối soát trên hệ thống đang chạy.
 
