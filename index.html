@@ -2933,6 +2933,7 @@
 
         // Chuẩn bị dữ liệu Form
         const formData = new FormData();
+        formData.append('system', 'HRM');
         formData.append('request', requestVal);
         formData.append('zalo', zaloVal || 'Ẩn danh');
         formData.append('company', companyVal || 'Không điền');
