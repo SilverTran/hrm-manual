@@ -1,0 +1,1122 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link href="/hrm/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Administrator &rsaquo; Account</title>
+    <link href="/hrm/Content/bd-css/csss?v=gHaYcIPRIdSx7Cqzwb0cpov_04ZJXbfBT5MQDA2WQEY1" rel="stylesheet"/>
+
+    
+    <link href="/hrm/Content/bd-css/pageGroup?v=beTMfyxm_G4VO9Swr4xSl8R3Jm_svu6Dkjm7zZLHqHA1" rel="stylesheet"/>
+
+    <style>
+        .custom-control-description {
+            line-height: 20px;
+        }
+
+        .listview__heading {
+            margin-top: 20px;
+        }
+
+        .listview__attrs {
+            margin-top: 5px;
+        }
+
+        .listview__item {
+            padding-left: 0px;
+        }
+
+        .listview__attrs > span {
+            border: none;
+        }
+    </style>
+
+
+<script>
+        IMS_CONFIG = {
+            PING: '/hrm/ping',
+            LOG_API: '/hrm/Api/GetData/LogDatas',
+            ARRALERT: [],
+            USERID: 'test',
+            TODAY: '2026-11-03'.replace('/', '-').replace('/', '-'),
+            IP: '127.0.0.1',
+            WAREHOUSE: 'SWH',
+            ALAS: 'hrm'.trim(),
+            LOCATION: 'HRM',
+            NOW: '2026-11-03 14:48:00',
+            MONTH: '11',
+            LOG_ID: '',
+            BEARED_TOKEN: '',
+        };
+</script>
+</head>
+<body data-sa-theme="4">
+    <main class="main">
+        <div class="page-loader"><div class="page-loader__spinner"><svg viewBox="25 25 50 50"><circle cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /></svg><div>Loading...</div></div></div>
+        <header class="header">
+            <div class="navigation-trigger hidden-md-up" data-sa-action="aside-open" data-sa-target=".sidebar"><i class="zmdi zmdi-menu"></i></div>
+            <div class="logo">
+                <h1><a href="/hrm/">SIMS</a></h1>
+                <div class="sims-version">V 26.10 - HRM</div>
+            </div>
+            <div class="slogan hidden-sm-down">Administrator <i class='zmdi zmdi-caret-right zmdi-hc-fw'></i> Account</div>
+            <ul class="top-nav hidden-sm-down">
+                    <li class="dropdown top-nav__notifications">
+                        <a data-toggle="dropdown">MANAGE</a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu--block" role="menu">
+                            <div class="dropdown-header">MANAGE</div>
+                            <div class="row app-shortcuts">
+                                    <a class="col-4 app-shortcuts__item" href="/hrm/manage/registration"><i class="zmdi zmdi-accounts-add zmdi-hc-fw"></i> <small class="">Registration</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/manage/information"><i class="zmdi zmdi-account-box-o zmdi-hc-fw"></i> <small class="">Information</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/manage/contract"><i class="zmdi zmdi-folder-person"></i> <small class="">Contract<br>(Terminate)</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/manage/resignation"><i class="zmdi zmdi-account zmdi-hc-fw color-red"></i> <small class="">Resignation</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/manage/7yrs-old"><i class="zmdi zmdi-accounts-list-alt zmdi-hc-fw"></i> <small class="">< 7yrs old</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/manage/warning"><i class="zmdi zmdi-alert-polygon zmdi-hc-fw"></i> <small class="">Warning</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/manage/set-overtime"><i class="zmdi zmdi-format-list-bulleted"></i> <small class="">Set Overtime</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/manage/leave"><i class="zmdi zmdi-format-list-bulleted"></i> <small class="">Leave</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Manage/PregnancyExam"><i class="zmdi zmdi-format-list-bulleted"></i> <small class="">Pregnancy<br>Examination</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Manage/MaternityBenefit"><i class="zmdi zmdi-format-list-bulleted"></i> <small class="">Maternity<br>Benefit</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Manage/BenefitPayment"><i class="zmdi zmdi-format-list-bulleted"></i> <small class="">Benefit<br>Payment</small></a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="dropdown top-nav__notifications">
+                        <a data-toggle="dropdown"> ATTENDANCE</a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu--block" role="menu">
+                            <div class="dropdown-header">ATTENDANCE</div>
+                            <div class="row app-shortcuts">
+                                    <a class="col-4 app-shortcuts__item" href="/hrm/attendance/working-hours"><i class="zmdi zmdi-time zmdi-hc-fw"></i> <small class="">Working hours</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/attendance/attendance"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i> <small class="">Attendance</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/attendance/annual-leave"><i class="zmdi zmdi-calendar"></i> <small class="">Annual leave</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Attendance/LateOrLeaveEarly"><i class="zmdi zmdi-calendar"></i> <small class="">Late & leave early</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/attendance/overtime"><i class="zmdi zmdi-format-list-bulleted"></i> <small class="">Overtime</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Attendance/OvertimeYear"><i class="zmdi zmdi-format-list-bulleted"></i> <small class="">Overtime<br>(Year)</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/attendance/payroll"><i class="zmdi zmdi-money zmdi-hc-fw"></i> <small class="">Payroll</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Attendance/Summary"><i class="zmdi zmdi-money zmdi-hc-fw"></i> <small class="">Summary</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Attendance/VTOffice"><i class="zmdi zmdi-money zmdi-hc-fw"></i> <small class="">VT - Office</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Attendance/StopVTOffice"><i class="zmdi zmdi-money zmdi-hc-fw"></i> <small class="">Stop<br>VT - Office</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Attendance/FacSum"><i class="zmdi zmdi-money zmdi-hc-fw"></i> <small class="">Fac Sum</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Attendance/Bank"><i class="zmdi zmdi-money zmdi-hc-fw"></i> <small class="">Bank</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Attendance/Cash"><i class="zmdi zmdi-money zmdi-hc-fw"></i> <small class="">Cash</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Attendance/Severance"><i class="zmdi zmdi-money zmdi-hc-fw"></i> <small class="">Severance</small></a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="dropdown top-nav__notifications">
+                        <a data-toggle="dropdown"> EMPLOYEE</a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu--block" role="menu">
+                            <div class="dropdown-header">EMPLOYEE</div>
+                            <div class="row app-shortcuts">
+                                    <a class="col-4 app-shortcuts__item" href="/hrm/employee/working-hours"><i class="zmdi zmdi-time zmdi-hc-fw"></i> <small class="">Working hours (OT Over)</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/employee/payroll"><i class="zmdi zmdi-money"></i> <small class="">Payroll<br />(OT Over)</small></a>
+                            </div>
+                        </div>
+                    </li>
+
+
+                    <li class="dropdown top-nav__notifications">
+                        <a data-toggle="dropdown"> CONFIG</a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu--block" role="menu">
+                            <div class="dropdown-header">CONFIG</div>
+                            <div class="row app-shortcuts">
+                                    <a class="col-4 app-shortcuts__item" href="/hrm/config/section"><i class="zmdi zmdi-repeat zmdi-hc-fw"></i> <small class="">Section</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/config/leave-elderly"><i class="zmdi zmdi-calendar-note"></i> <small class="">Leave elderly</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/config/etc"><i class="zmdi zmdi-view-headline"></i> <small class="">Etc</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/config/shift"><i class="zmdi zmdi-view-headline"></i> <small class="">Shift</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/config/schedule"><i class="zmdi zmdi-view-headline"></i> <small class="">Schedule</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/config/lock-working-hours"><i class="zmdi zmdi-lock"></i> <small class="">Lock / Work hours</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Config/Holiday"><i class="zmdi zmdi-calendar-note"></i> <small class="">Holiday</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/config/config"><i class="zmdi zmdi-settings"></i> <small class="">Config</small></a>
+                            </div>
+                        </div>
+                    </li>
+
+                <li class="dropdown top-nav__notifications hidden-xs-down">
+                    <a href="#" data-toggle="dropdown">ADMIN</a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu--block" role="menu">
+                        <div class="dropdown-header">Hello, test</div>
+                        <div class="row app-shortcuts">
+                                <a class="col-4 app-shortcuts__item" href="/hrm/admin/account"><i class="zmdi zmdi-accounts-alt zmdi-hc-fw"></i> <small class="">Account</small></a>
+                                                            <a class="col-4 app-shortcuts__item" href="/hrm/admin/login-history"><i class="zmdi zmdi-accounts-list zmdi-hc-fw"></i> <small class="">Login history</small></a>
+                                                            <a class="col-4 app-shortcuts__item" href="/hrm/admin/white-list"><i class="zmdi zmdi-check-all zmdi-hc-fw"></i> <small class="">White list</small></a>
+                            <a class="col-4 app-shortcuts__item" href="/hrm/admin/account/edit"><i class="zmdi zmdi-account-circle zmdi-hc-fw"></i> <small class="">Profile</small></a>
+                            <a class="col-4 app-shortcuts__item" href="/hrm/logout"><i class="zmdi zmdi-sign-in zmdi-hc-fw"></i> <small class="">Logout</small></a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="clock hidden-md-down"><div class="time"><span class="time__hours"></span><span class="time__min"></span><span class="time__sec"></span></div></div>
+        </header>
+
+        <aside class="sidebar sidebar--hidden">
+            <div class="scrollbar-inner">
+                <ul class="navigation">
+                    
+                    <li class="navigation__sub">
+                        <a href=""><i class="zmdi zmdi-more-vert"></i> ADMIN</a>
+                        <ul>
+                                <li><a href="/hrm/admin/account"> Account</a></li>
+                                                            <li><a href="/hrm/Common/LogTracking"> Login history</a></li>
+                                                            <li><a href="/hrm/Common/LogTracking"> White list</a></li>
+                            <li><a href="/hrm/admin/account/edit"> Profile</a></li>
+                            <li><a href="/hrm/logout"> Logout</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </aside>
+        <section class="content content--full">
+            
+
+
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-sm-12">
+                    <a class="btn btnShowAddGroup btn-sm btn-info">
+                        <i class="zmdi zmdi-accounts-add zmdi-hc-fw"></i> Add new group
+                    </a>
+                <a class="btn btnShowManageUser btn-sm btn-primary pull-right">
+                    <i class="zmdi zmdi-account-add zmdi-hc-fw"></i> Add new user
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-hover" id="MainTable">
+                        <thead class="thead-inverse">
+                            <tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Total users</th>
+                                <th>Description</th>
+                                <th style="width:250px;" class="text-left"></th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade model-permissions" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">Permissions</h5>
+                <div class="act-per">
+                    <a class="btn btn-sm btn-light btnCheckNone">NONE</a>
+                    <a class="btn btn-sm btn-info btnCheckAll">ALL</a>
+                </div>
+            </div>
+            <div class="modal-body" style="padding-top:0px">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <input type="hidden" name="USER_TYPE" value="" />
+                        <div class="listview listview--bordered">
+                            <div class="listview__item">
+                                <div class="listview__content">
+                                    <div class="listview__heading">MANAGE</div>
+                                    <div class="listview__attrs">
+                                        <span>
+                                            <span class="permision-group">
+                                                <b>REGISTRATION</b>
+                                                <strong>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="MANAGE.REGISTRATION">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">View</span>
+                                                        </label>
+                                                    </span>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="MANAGE.REGISTRATION_EDIT">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">Edit</span>
+                                                        </label>
+                                                    </span>
+                                                </strong>
+                                            </span>
+                                        </span>
+
+                                        <span>
+                                            <span class="permision-group">
+                                                <b>INFORMATION</b>
+                                                <strong>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="MANAGE.INFORMATION">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">View</span>
+                                                        </label>
+                                                    </span>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="MANAGE.INFORMATION_EDIT">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">Edit</span>
+                                                        </label>
+                                                    </span>
+                                                </strong>
+                                            </span>
+                                        </span>
+
+                                        <span>
+                                            <span class="permision-group">
+                                                <b>CONTRACT</b>
+                                                <strong>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="MANAGE.CONTRACT">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">View</span>
+                                                        </label>
+                                                    </span>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="MANAGE.CONTRACT_EDIT">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">Edit</span>
+                                                        </label>
+                                                    </span>
+                                                </strong>
+                                            </span>
+                                        </span>
+
+                                        <span>
+                                            <span class="permision-group">
+                                                <b>RESIGNATION</b>
+                                                <strong>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="MANAGE.RESIGNATION">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">View</span>
+                                                        </label>
+                                                    </span>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="MANAGE.RESIGNATION_EDIT">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">Edit</span>
+                                                        </label>
+                                                    </span>
+                                                </strong>
+                                            </span>
+                                        </span>
+
+                                        <span>
+                                            <span class="permision-group">
+                                                <b>< 7YRS OLD</b>
+                                                <strong>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="MANAGE.7YEARS_OLD">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">View</span>
+                                                        </label>
+                                                    </span>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="MANAGE.7YEARS_OLD_EDIT">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">Edit</span>
+                                                        </label>
+                                                    </span>
+                                                </strong>
+                                            </span>
+                                        </span>
+
+
+                                        <span>
+                                            <span class="permision-group">
+                                                <b>WARNING</b>
+                                                <strong>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="MANAGE.WARNING">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">View</span>
+                                                        </label>
+                                                    </span>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="MANAGE.WARNING_EDIT">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">Edit</span>
+                                                        </label>
+                                                    </span>
+                                                </strong>
+                                            </span>
+                                        </span>
+
+                                        <span>
+                                            <span class="permision-group">
+                                                <b>SET OVERTIME</b>
+                                                <strong>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="MANAGE.OVERTIME">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">View</span>
+                                                        </label>
+                                                    </span>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="MANAGE.OVERTIME_EDIT">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">Edit</span>
+                                                        </label>
+                                                    </span>
+                                                </strong>
+                                            </span>
+                                        </span>
+
+                                        <span>
+                                            <span class="permision-group">
+                                                <b>LEAVE</b>
+                                                <strong>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="ATTENDANCE.WORKING">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">View</span>
+                                                        </label>
+                                                    </span>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="ATTENDANCE.WORKING_EDIT">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">Edit</span>
+                                                        </label>
+                                                    </span>
+                                                </strong>
+                                            </span>
+                                        </span>
+
+                                        <span>
+                                            <span class="permision-group">
+                                                <b>Pregnancy Examination</b>
+                                                <strong>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="MANAGE.PREGNANCY_EXAM">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">View</span>
+                                                        </label>
+                                                    </span>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="MANAGE.PREGNANCY_EXAM_EDIT">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">Edit</span>
+                                                        </label>
+                                                    </span>
+                                                </strong>
+                                            </span>
+                                        </span>
+
+                                        <span>
+                                            <span class="permision-group">
+                                                <b>Maternity Benefit</b>
+                                                <strong>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="MANAGE.MATERNITY_BENEFIT">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">View</span>
+                                                        </label>
+                                                    </span>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="MANAGE.MATERNITY_BENEFIT_EDIT">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">Edit</span>
+                                                        </label>
+                                                    </span>
+                                                </strong>
+                                            </span>
+                                        </span>
+
+                                        <span>
+                                            <span class="permision-group">
+                                                <b>Benefit Payment</b>
+                                                <strong>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="MANAGE.BENEFIT_PAYMENT">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">View</span>
+                                                        </label>
+                                                    </span>
+                                                </strong>
+                                            </span>
+                                        </span>
+
+                                    </div>
+                                    <!---->
+                                    <div class="listview__heading">ATTENDANCE</div>
+                                    <div class="listview__attrs">
+
+                                        <span>
+                                            <span class="permision-group">
+                                                <b>WORKING HOURS</b>
+                                                <strong>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="MANAGE.WORKING_HOURS">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">View</span>
+                                                        </label>
+                                                    </span>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="MANAGE.WORKING_HOURS_EDIT">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">Edit</span>
+                                                        </label>
+                                                    </span>
+                                                </strong>
+                                            </span>
+                                        </span>
+
+                                        <span>
+                                            <span class="permision-group">
+                                                <b>ATTENDANCE</b>
+                                                <strong>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="ATTENDANCE.ATTENDANCE">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">View</span>
+                                                        </label>
+                                                    </span>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="ATTENDANCE.ATTENDANCE_EDIT">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">Edit</span>
+                                                        </label>
+                                                    </span>
+                                                </strong>
+                                            </span>
+                                        </span>
+
+                                        <span>
+                                            <span class="permision-group">
+                                                <b>ANNUAL LEAVE</b>
+                                                <strong>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="ATTENDANCE.ANNUAL_LEAVE">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">View</span>
+                                                        </label>
+                                                    </span>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="ATTENDANCE.ANNUAL_LEAVE_EDIT">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">Edit</span>
+                                                        </label>
+                                                    </span>
+                                                </strong>
+                                            </span>
+                                        </span>
+
+                                        <span>
+                                            <span class="permision-group">
+                                                <b>LATE & LEAVE EARLY</b>
+                                                <strong>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="ATTENDANCE.LATE_OR_LEAVE_EARLY">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">View</span>
+                                                        </label>
+                                                    </span>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                        </label>
+                                                    </span>
+                                                </strong>
+                                            </span>
+                                        </span>
+
+
+                                        <span>
+                                            <span class="permision-group">
+                                                <b>OVERTIME</b>
+                                                <strong>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="ATTENDANCE.OVERTIME">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">View</span>
+                                                        </label>
+                                                    </span>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="ATTENDANCE.OVERTIME_EDIT">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">Edit</span>
+                                                        </label>
+                                                    </span>
+                                                </strong>
+                                            </span>
+                                        </span>
+
+                                        <span>
+                                            <span class="permision-group">
+                                                <b>OVERTIME(YEAR)</b>
+                                                <strong>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="ATTENDANCE.OVERTIME_YEAR">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">View</span>
+                                                        </label>
+                                                    </span>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="ATTENDANCE.OVERTIME_YEAR_EDIT">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">Edit</span>
+                                                        </label>
+                                                    </span>
+                                                </strong>
+                                            </span>
+                                        </span>
+
+                                        <span>
+                                            <span class="permision-group">
+                                                <b>PAYROLL</b>
+                                                <strong>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="MANAGE.PAYROLL">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">View</span>
+                                                        </label>
+                                                    </span>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="MANAGE.PAYROLL_EDIT">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">Edit</span>
+                                                        </label>
+                                                    </span>
+                                                </strong>
+                                            </span>
+                                        </span>
+
+                                        <span>
+                                            <span class="permision-group">
+                                                <b>SUMMARY</b>
+                                                <strong>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="ATTENDANCE.SUMMARY">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">View</span>
+                                                        </label>
+                                                    </span>
+                                                </strong>
+                                            </span>
+                                        </span>
+
+
+                                        <span>
+                                            <span class="permision-group">
+                                                <b>VT OFFICE</b>
+                                                <strong>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="ATTENDANCE.VT_OFFICE">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">View</span>
+                                                        </label>
+                                                    </span>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="ATTENDANCE.VT_OFFICE_EDIT">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">Edit</span>
+                                                        </label>
+                                                    </span>
+                                                </strong>
+                                            </span>
+                                        </span>
+
+                                        <span>
+                                            <span class="permision-group">
+                                                <b>VT OFFICE</b>
+                                                <strong>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="ATTENDANCE.STOP_VT_OFFICE">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">View</span>
+                                                        </label>
+                                                    </span>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="ATTENDANCE.STOP_VT_OFFICE_EDIT">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">Edit</span>
+                                                        </label>
+                                                    </span>
+                                                </strong>
+                                            </span>
+                                        </span>
+
+
+                                        <span>
+                                            <span class="permision-group">
+                                                <b>FAC SUM</b>
+                                                <strong>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="ATTENDANCE.FAC_SUM">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">View</span>
+                                                        </label>
+                                                    </span>
+                                                </strong>
+                                            </span>
+                                        </span>
+
+                                        <span>
+                                            <span class="permision-group">
+                                                <b>BANK</b>
+                                                <strong>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="ATTENDANCE.BANK">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">View</span>
+                                                        </label>
+                                                    </span>
+                                                </strong>
+                                            </span>
+                                        </span>
+
+                                        <span>
+                                            <span class="permision-group">
+                                                <b>CASH</b>
+                                                <strong>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="ATTENDANCE.CASH">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">View</span>
+                                                        </label>
+                                                    </span>
+                                                </strong>
+                                            </span>
+                                        </span>
+
+                                        <span>
+                                            <span class="permision-group">
+                                                <b>SEVERANCE</b>
+                                                <strong>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="ATTENDANCE.SEVERANCE">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">View</span>
+                                                        </label>
+                                                    </span>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="ATTENDANCE.SEVERANCE_EDIT">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">Edit</span>
+                                                        </label>
+                                                    </span>
+                                                </strong>
+                                            </span>
+                                        </span>
+
+
+                                    </div>
+
+                                    <!---->
+                                    <div class="listview__heading">EMPLOYEE</div>
+                                    <div class="listview__attrs">
+                                        <span>
+                                            <span class="permision-group">
+                                                <b>WORKING HOURS ( OT OVER)</b>
+                                                <strong>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="ACT.WORKING_HOURS">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">View</span>
+                                                        </label>
+                                                    </span>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="ACT.WORKING_HOURS_EDIT">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">Edit</span>
+                                                        </label>
+                                                    </span>
+                                                </strong>
+                                            </span>
+                                        </span>
+                                        <span>
+                                            <span class="permision-group">
+                                                <b>PAYROLL ( OT OVER)</b>
+                                                <strong>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="ACT.PAYROLL">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">View</span>
+                                                        </label>
+                                                    </span>
+                                                    <span>
+                                                        <label class="custom-control custom-checkbox">
+                                                            <input type="checkbox" class="custom-control-input" value="ACT.PAYROLL_EDIT">
+                                                            <span class="custom-control-indicator"></span>
+                                                            <span class="custom-control-description">Edit</span>
+                                                        </label>
+                                                    </span>
+                                                </strong>
+                                            </span>
+                                        </span>
+                                    </div>
+
+                                    <!---->
+                                    <div class="listview__heading">CONFIG</div>
+                                    <div class="listview__attrs">
+                                        <span>
+                                            <label class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" value="CONFIG.SECTION" />
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-description">SECTION</span>
+                                            </label>
+                                        </span>
+                                        <span>
+                                            <label class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" value="CONFIG.LEAVE_ELDERLY" />
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-description">LEAVE / ELDERLY</span>
+                                            </label>
+                                        </span>
+                                        <span>
+                                            <label class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" value="CONFIG.ETC" />
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-description">ETC</span>
+                                            </label>
+                                        </span>
+                                        <span>
+                                            <label class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" value="CONFIG.SHIFT" />
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-description">SHIFT</span>
+                                            </label>
+                                        </span>
+                                        <span>
+                                            <label class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" value="CONFIG.SCHEDULE" />
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-description">SCHEDULE</span>
+                                            </label>
+                                        </span>
+                                        <span>
+                                            <label class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" value="CONFIG.LOCK" />
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-description">LOCK / WORK HOURS</span>
+                                            </label>
+                                        </span>
+                                        <span>
+                                            <label class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" value="CONFIG.HOLIDAY" />
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-description">HOLIDAY</span>
+                                            </label>
+                                        </span>
+                                        <span>
+                                            <label class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" value="CONFIG.CONFIG" />
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-description">CONFIG</span>
+                                            </label>
+                                        </span>
+                                    </div>
+                                    <!---->
+                                    <div class="listview__heading">ADMIN</div>
+                                    <div class="listview__attrs">
+                                        <span>
+                                            <label class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" value="ADMINISTRATOR.ACCOUNT" />
+                                                <span class="custom-control-indicator"></span>
+                                                <span class="custom-control-description">ACCOUNT</span>
+                                            </label>
+                                        </span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success btnSetPermission">OK</button>
+                <button type="button" class="btn btn-link btnCancleModal" data-modal=".model-permissions">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade model-users" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">Users</h5>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="GROUP_ID" value="" />
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped">
+                                <thead class="thead-inverse">
+                                    <tr>
+                                        <th width="30">#</th>
+                                        <th width="100">Account ID</th>
+                                        <th>Full name</th>
+                                        <th width="80">Active</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-link btnCancleModal" data-modal=".model-users">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade model-manauser" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">Update User</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <select class="select2 mw100" name="USER_TYPE"></select>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 mt-20">
+                        <div class="form-group">
+                            <label class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" name="ISACTIVE" checked />
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description">Active</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input type="text" name="ID" value="" placeholder="Account ID" class="form-control mw100" autocomplete="off" />
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input type="text" name="FULL_NAME" value="" placeholder="Full name" class="form-control mw100" autocomplete="off" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input type="password" name="PASSWORD" value="" placeholder="Password" class="form-control mw100" autocomplete="off" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input type="password" name="RE_PASSWORD" value="" placeholder="Re-Password" class="form-control mw100" autocomplete="off" />
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-6 mt-20">
+                        <div class="form-group">
+                            <input type="text" name="EMAIL" value="" placeholder="Email" class="form-control mw100" autocomplete="off" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 mt-20">
+                        <div class="form-group">
+                            <input type="text" name="PHONE" value="" placeholder="Phone" class="form-control mw100" autocomplete="off" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-link btnEditUser hidden">Update</button>
+                <button type="button" class="btn btn-link btnAddUser">Create</button>
+                <button type="button" class="btn btn-link btnCancleModal" data-modal=".model-manauser">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade model-managroup" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">Add group</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-6 mb-10">
+                        <input type="text" name="ID" value="" placeholder="ID" class="form-control mw100" autocomplete="off" />
+                    </div>
+                    <div class="col-sm-6 mb-10">
+                        <input type="text" name="NAME" value="" placeholder="NAME" class="form-control mw100" autocomplete="off" />
+                    </div>
+                    <div class="col-sm-12">
+                        <input type="text" name="DESC" value="" placeholder="DESC" class="form-control mw100" autocomplete="off" />
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-link btnAddGroup">OK</button>
+                <button type="button" class="btn btn-link btnCancleModal" data-modal=".model-managroup">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade model-change-group" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">Change Group</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <input type="hidden" name="ID" value="" />
+                    <input type="hidden" name="DEFAULT_USER_TYPE" value="" />
+                    <div class="col-sm-12">
+                        <label>Group</label>
+                        <select class="form-control mw100" name="USER_TYPE"></select>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-link btnChangeGroup">Change Group</button>
+                <button type="button" class="btn btn-link btnCancleModal" data-modal=".model-change-group">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+            <div class="modal fade modal-log svg-modal" role="dialog">
+                <div class="modal-dialog modal-xl" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title pull-left">LOG</h5>
+                            <a class="btn btn-danger btnCLoseModal"><i class="zmdi zmdi-close"></i></a>
+                        </div>
+                        <div class="modal-body" style="max-height: 1000px; overflow: auto;">
+                            <input type="hidden" name="ID" value="" />
+                            <div class="hiddenFile hidden"></div>
+                            <div class="row">
+                                <div class="col-sm-12 mt-2">
+                                    <table class="table mb-0 table-bordered table-inverse" id="tblLog">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>TITLE</th>
+                                                <th>DESC</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div>
+            <footer class="footer hidden-xs-down p0">
+                <p>© HRM 2026. All rights reserved.</p>
+            </footer>
+        </section>
+    </main>
+
+    <!-- Javascript -->
+    <script src="/hrm/content/components/jquery/dist/jquery.min.js"></script>
+    <script src="/hrm/content/components/popper.js/dist/umd/popper.min.js"></script>
+    <script src="/hrm/content/components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script>
+        jQuery.expr[':'].icontains = function (a, i, m) {
+            return jQuery(a).text().toUpperCase()
+                .indexOf(m[3].toUpperCase()) >= 0;
+        };
+    </script>
+
+    <script src="/hrm/bundles/include?v=vzPCjYP_ihyaQrMcj2w1leL2nbwt41Vls88WLnzqW8M1"></script>
+
+
+    
+    <script>
+        APP_CONFIG = {
+            GetGroups: '/hrm/Api/GetData/GetGroups',
+
+            DeleteGroup: '/hrm/Test/DeleteGroup',
+            AddGroup: '/hrm/Test/InsertGroup',
+            GetInforAddNewAccount: '/hrm/Api/GetData/GetInforAddNewAccount',
+            UpdateGroup: '',
+            KickUser: '/hrm/Test/KickUser',
+            GetPermissions: '/hrm/Api/GetData/GetPermissions',
+            SetPermission: '/hrm/Test/SetPermission',
+
+            GetUsers: '/hrm/Api/GetData/GetUsers',
+            GetUser: '/hrm/Api/GetData/GetUser',
+            GetUsersByGroup: '',
+            AddUser: '/hrm/Test/InsertUser',
+            UpdateUser: '/hrm/Test/UpdateUser',
+            ChangeGroup: '/hrm/Test/ChangeGroup',
+
+        }
+    </script>
+    <script src="/hrm/Content/bd-js/pageGroup?v=ykzEPI581nlm_p6dVlIw5aDgGSzcmyTYHpdNcnziFKo1"></script>
+
+
+</body>
+</html>

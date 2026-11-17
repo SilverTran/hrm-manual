@@ -1,0 +1,476 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link href="/hrm/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Config &rsaquo; Etc</title>
+    <link href="/hrm/Content/bd-css/csss?v=gHaYcIPRIdSx7Cqzwb0cpov_04ZJXbfBT5MQDA2WQEY1" rel="stylesheet"/>
+
+    
+    <link href="/hrm/Content/bd-css/config_etc?v=FL7JnCUbfY_5BArFOpD8-b7gfS1DL1_u_zhzrHQlr441" rel="stylesheet"/>
+
+
+
+<script>
+        IMS_CONFIG = {
+            PING: '/hrm/ping',
+            LOG_API: '/hrm/Api/GetData/LogDatas',
+            ARRALERT: [],
+            USERID: 'test',
+            TODAY: '2026-11-03'.replace('/', '-').replace('/', '-'),
+            IP: '127.0.0.1',
+            WAREHOUSE: 'SWH',
+            ALAS: 'hrm'.trim(),
+            LOCATION: 'HRM',
+            NOW: '2026-11-03 14:47:56',
+            MONTH: '11',
+            LOG_ID: '',
+            BEARED_TOKEN: '',
+        };
+</script>
+</head>
+<body data-sa-theme="4">
+    <main class="main">
+        <div class="page-loader"><div class="page-loader__spinner"><svg viewBox="25 25 50 50"><circle cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /></svg><div>Loading...</div></div></div>
+        <header class="header">
+            <div class="navigation-trigger hidden-md-up" data-sa-action="aside-open" data-sa-target=".sidebar"><i class="zmdi zmdi-menu"></i></div>
+            <div class="logo">
+                <h1><a href="/hrm/">SIMS</a></h1>
+                <div class="sims-version">V 26.10 - HRM</div>
+            </div>
+            <div class="slogan hidden-sm-down">Config &rsaquo; Etc</div>
+            <ul class="top-nav hidden-sm-down">
+                    <li class="dropdown top-nav__notifications">
+                        <a data-toggle="dropdown">MANAGE</a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu--block" role="menu">
+                            <div class="dropdown-header">MANAGE</div>
+                            <div class="row app-shortcuts">
+                                    <a class="col-4 app-shortcuts__item" href="/hrm/manage/registration"><i class="zmdi zmdi-accounts-add zmdi-hc-fw"></i> <small class="">Registration</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/manage/information"><i class="zmdi zmdi-account-box-o zmdi-hc-fw"></i> <small class="">Information</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/manage/contract"><i class="zmdi zmdi-folder-person"></i> <small class="">Contract<br>(Terminate)</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/manage/resignation"><i class="zmdi zmdi-account zmdi-hc-fw color-red"></i> <small class="">Resignation</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/manage/7yrs-old"><i class="zmdi zmdi-accounts-list-alt zmdi-hc-fw"></i> <small class="">< 7yrs old</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/manage/warning"><i class="zmdi zmdi-alert-polygon zmdi-hc-fw"></i> <small class="">Warning</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/manage/set-overtime"><i class="zmdi zmdi-format-list-bulleted"></i> <small class="">Set Overtime</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/manage/leave"><i class="zmdi zmdi-format-list-bulleted"></i> <small class="">Leave</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Manage/PregnancyExam"><i class="zmdi zmdi-format-list-bulleted"></i> <small class="">Pregnancy<br>Examination</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Manage/MaternityBenefit"><i class="zmdi zmdi-format-list-bulleted"></i> <small class="">Maternity<br>Benefit</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Manage/BenefitPayment"><i class="zmdi zmdi-format-list-bulleted"></i> <small class="">Benefit<br>Payment</small></a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="dropdown top-nav__notifications">
+                        <a data-toggle="dropdown"> ATTENDANCE</a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu--block" role="menu">
+                            <div class="dropdown-header">ATTENDANCE</div>
+                            <div class="row app-shortcuts">
+                                    <a class="col-4 app-shortcuts__item" href="/hrm/attendance/working-hours"><i class="zmdi zmdi-time zmdi-hc-fw"></i> <small class="">Working hours</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/attendance/attendance"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i> <small class="">Attendance</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/attendance/annual-leave"><i class="zmdi zmdi-calendar"></i> <small class="">Annual leave</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Attendance/LateOrLeaveEarly"><i class="zmdi zmdi-calendar"></i> <small class="">Late & leave early</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/attendance/overtime"><i class="zmdi zmdi-format-list-bulleted"></i> <small class="">Overtime</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Attendance/OvertimeYear"><i class="zmdi zmdi-format-list-bulleted"></i> <small class="">Overtime<br>(Year)</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/attendance/payroll"><i class="zmdi zmdi-money zmdi-hc-fw"></i> <small class="">Payroll</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Attendance/Summary"><i class="zmdi zmdi-money zmdi-hc-fw"></i> <small class="">Summary</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Attendance/VTOffice"><i class="zmdi zmdi-money zmdi-hc-fw"></i> <small class="">VT - Office</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Attendance/StopVTOffice"><i class="zmdi zmdi-money zmdi-hc-fw"></i> <small class="">Stop<br>VT - Office</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Attendance/FacSum"><i class="zmdi zmdi-money zmdi-hc-fw"></i> <small class="">Fac Sum</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Attendance/Bank"><i class="zmdi zmdi-money zmdi-hc-fw"></i> <small class="">Bank</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Attendance/Cash"><i class="zmdi zmdi-money zmdi-hc-fw"></i> <small class="">Cash</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Attendance/Severance"><i class="zmdi zmdi-money zmdi-hc-fw"></i> <small class="">Severance</small></a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="dropdown top-nav__notifications">
+                        <a data-toggle="dropdown"> EMPLOYEE</a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu--block" role="menu">
+                            <div class="dropdown-header">EMPLOYEE</div>
+                            <div class="row app-shortcuts">
+                                    <a class="col-4 app-shortcuts__item" href="/hrm/employee/working-hours"><i class="zmdi zmdi-time zmdi-hc-fw"></i> <small class="">Working hours (OT Over)</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/employee/payroll"><i class="zmdi zmdi-money"></i> <small class="">Payroll<br />(OT Over)</small></a>
+                            </div>
+                        </div>
+                    </li>
+
+
+                    <li class="dropdown top-nav__notifications">
+                        <a data-toggle="dropdown"> CONFIG</a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu--block" role="menu">
+                            <div class="dropdown-header">CONFIG</div>
+                            <div class="row app-shortcuts">
+                                    <a class="col-4 app-shortcuts__item" href="/hrm/config/section"><i class="zmdi zmdi-repeat zmdi-hc-fw"></i> <small class="">Section</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/config/leave-elderly"><i class="zmdi zmdi-calendar-note"></i> <small class="">Leave elderly</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/config/etc"><i class="zmdi zmdi-view-headline"></i> <small class="">Etc</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/config/shift"><i class="zmdi zmdi-view-headline"></i> <small class="">Shift</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/config/schedule"><i class="zmdi zmdi-view-headline"></i> <small class="">Schedule</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/config/lock-working-hours"><i class="zmdi zmdi-lock"></i> <small class="">Lock / Work hours</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Config/Holiday"><i class="zmdi zmdi-calendar-note"></i> <small class="">Holiday</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/config/config"><i class="zmdi zmdi-settings"></i> <small class="">Config</small></a>
+                            </div>
+                        </div>
+                    </li>
+
+                <li class="dropdown top-nav__notifications hidden-xs-down">
+                    <a href="#" data-toggle="dropdown">ADMIN</a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu--block" role="menu">
+                        <div class="dropdown-header">Hello, test</div>
+                        <div class="row app-shortcuts">
+                                <a class="col-4 app-shortcuts__item" href="/hrm/admin/account"><i class="zmdi zmdi-accounts-alt zmdi-hc-fw"></i> <small class="">Account</small></a>
+                                                            <a class="col-4 app-shortcuts__item" href="/hrm/admin/login-history"><i class="zmdi zmdi-accounts-list zmdi-hc-fw"></i> <small class="">Login history</small></a>
+                                                            <a class="col-4 app-shortcuts__item" href="/hrm/admin/white-list"><i class="zmdi zmdi-check-all zmdi-hc-fw"></i> <small class="">White list</small></a>
+                            <a class="col-4 app-shortcuts__item" href="/hrm/admin/account/edit"><i class="zmdi zmdi-account-circle zmdi-hc-fw"></i> <small class="">Profile</small></a>
+                            <a class="col-4 app-shortcuts__item" href="/hrm/logout"><i class="zmdi zmdi-sign-in zmdi-hc-fw"></i> <small class="">Logout</small></a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="clock hidden-md-down"><div class="time"><span class="time__hours"></span><span class="time__min"></span><span class="time__sec"></span></div></div>
+        </header>
+
+        <aside class="sidebar sidebar--hidden">
+            <div class="scrollbar-inner">
+                <ul class="navigation">
+                    
+                    <li class="navigation__sub">
+                        <a href=""><i class="zmdi zmdi-more-vert"></i> ADMIN</a>
+                        <ul>
+                                <li><a href="/hrm/admin/account"> Account</a></li>
+                                                            <li><a href="/hrm/Common/LogTracking"> Login history</a></li>
+                                                            <li><a href="/hrm/Common/LogTracking"> White list</a></li>
+                            <li><a href="/hrm/admin/account/edit"> Profile</a></li>
+                            <li><a href="/hrm/logout"> Logout</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </aside>
+        <section class="content content--full">
+            
+
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <a class="btn btn-light pull-right btn--icon-text btnFilter bor-radius-0 mr-1"><i class="zmdi zmdi-refresh"></i> Search</a>
+                
+                <a class="btn btn-success pull-left btnImport mr-1"><i class="zmdi zmdi-upload"></i> Import</a>
+                <a class="btn btn-warning pull-left btnTemplate"><i class="zmdi zmdi-download"></i> Template</a>
+                <div class="clearfix"></div>
+
+                <div class="pull-left hidden hiddenData">
+                    <form action="/hrm/Config/Etc_Import" enctype="multipart/form-data" method="post">
+                        <input type="file" class="hidden" name="FileImport" value="" accept=".xlsx,.xls" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-12">
+                <input type="hidden" name="employer_pageNumber" value="1" />
+                <input type="hidden" name="employer_order_by" value="CRT_DTTM" />
+                <input type="hidden" name="employer_order_dir" value="desc" />
+                <h3>List of EMPLOYER</h3>
+                <div class="table-responsive">
+                    <table class="table mb-0 table-bordered table-inverse"
+                           id="tblEmployer"
+                           data-name="config_etc"
+                           data-min-size="40"
+                           data-num="employer_pageNumber"
+                           data-orderby="employer_order_by"
+                           data-orderdir="employer_order_dir"
+                           data-sortkey="CONFIG_ETC"
+                           data-element="tblEmployer">
+                        <thead class="thead-inverse">
+                            <tr>
+                                <th data-column="NAME">
+                                    <div class="space-empty-3"></div>
+                                    NAME
+                                </th>
+                                <th data-column="NATIONALITY">
+                                    <div class="space-empty-2"></div>
+                                    NATIONALITY
+                                </th>
+                                <th data-column="DAY_OF_BIRTH">
+                                    <div class="space-empty-2"></div>
+                                    DATE od BIRTH
+                                </th>
+                                <th data-column="PASSPORT_NO">
+                                    <div class="space-empty-2"></div>
+                                    PASSPORT NO
+                                </th>
+                                <th data-column="EMP_POSITION">
+                                    <div class="space-empty-2"></div>
+                                    POSITION
+                                </th>
+                                <th data-column="EMP_TEL">
+                                    <div class="space-empty-2"></div>
+                                    TEL
+                                </th>
+                                <th data-column="EMP_ADDR">
+                                    <div class="space-empty-2"></div>
+                                    ADDRESS
+                                </th>
+                                <th data-column="ACTION" width="150" class="text-center">
+                                    <div class="space-empty-2"></div>
+                                    <a class="btn btn-sm btn-success btnAddEmployer"><i class="zmdi zmdi-plus"></i> ADD</a>
+                                </th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modal-employer svg-modal" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title pull-left">EMPLOYER</h5>
+                <a class="btn btn-danger btnCLoseModal"><i class="zmdi zmdi-close"></i></a>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="ID" value="" />
+                <div class="row">
+                    <div class="col-sm-12 mt-2">
+                        <table class="table mb-0 table-bordered table-inverse table-layout-fixed" id="tblSubOrder">
+                            <tbody>
+                                <tr>
+                                    <td width="30" class="text-left">Name</td>
+                                    <td width="40">
+                                        <input type="text" class="form-control text-center" name="NAME" value="" />
+                                    </td>
+                                    <td width="30" class="text-left">Nationality</td>
+                                    <td width="40">
+                                        <input type="text" class="form-control text-center" name="NATIONALITY" value="" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="30" class="text-left">Date of birth</td>
+                                    <td width="40">
+                                        <div class="form-group mb-0">
+                                            <input type="text" name="DATE_OF_BIRTH" class="form-control date-picker" placeholder="Pick a date" value="" />
+                                            <i class="form-group__bar"></i>
+                                        </div>
+                                    </td>
+                                    <td width="30" class="text-left">Passport no</td>
+                                    <td width="40">
+                                        <input type="text" class="form-control text-center" name="PASSPORT_NO" value="" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="30" class="text-left">Position</td>
+                                    <td width="40">
+                                        <input type="text" class="form-control text-center" name="EMP_POSITION" value="" />
+                                    </td>
+                                    <td width="30" class="text-left">Tel</td>
+                                    <td width="40">
+                                        <input type="text" class="form-control text-center" name="EMP_TEL" value="" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="30" class="text-left">Address</td>
+                                    <td width="40" colspan="3">
+                                        <input type="text" class="form-control text-center" name="EMP_ADDR" value="" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success btn-OKEmployerpanel">OK</button>
+                <button type="button" class="btn btn-light btn-Cancel">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+
+<div id="option-editor" class="hidden">
+    <div class="row">
+        <div class="col-sm-12 mb-15">
+            <input type="hidden" name="qKey" value="" />
+            <input type="hidden" name="qSortKey" value="" />
+            <input type="hidden" name="qElement" value="" />
+            <input type="text" name="qFilter" class="form-control input-sm" value="" placeholder="search..." />
+            <a class="btn-filter-cleartext"><i class="zmdi zmdi-close zmdi-hc-fw"></i></a>
+        </div>
+        <div class="col-sm-12 mb-15">
+            <div class="scrollbar-inner">
+                <div class="option-content"></div>
+            </div>
+        </div>
+        <div class="col-sm-12 text-center">
+            <a class="btn btn-sm btn-light btn-filter-ok"><i class="zmdi zmdi-check zmdi-hc-fw"></i></a>
+            <a class="btn btn-sm btn-light btn-filter-reset"><i class="zmdi zmdi-block zmdi-hc-fw"></i></a>
+            <a class="btn btn-sm btn-primary btn-filter-check-all">ALL</a>
+        </div>
+        <a class="btn btn-sm btn-light btn-filter-close"><i class="zmdi zmdi-close zmdi-hc-fw"></i></a>
+    </div>
+</div>
+
+<div id="option-column" class="hidden">
+    <div class="column-contain">
+        <div class="column-item">
+            <label class="custom-control custom-checkbox">
+                <input type="checkbox" name="chkColItem" class="custom-control-input" data-value="DATE">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">DATE</span>
+            </label>
+        </div>
+        <div class="column-item">
+            <label class="custom-control custom-checkbox">
+                <input type="checkbox" name="chkColItem" class="custom-control-input" data-value="TIME">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">TIME</span>
+            </label>
+        </div>
+        <div class="column-item">
+            <label class="custom-control custom-checkbox">
+                <input type="checkbox" name="chkColItem" class="custom-control-input" data-value="FACTORY">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">FACTORY</span>
+            </label>
+        </div>
+        <div class="column-item">
+            <label class="custom-control custom-checkbox">
+                <input type="checkbox" name="chkColItem" class="custom-control-input" data-value="LINE">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">LINE</span>
+            </label>
+        </div>
+        <div class="column-item">
+            <label class="custom-control custom-checkbox">
+                <input type="checkbox" name="chkColItem" class="custom-control-input" data-value="POSITION">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">POSITION</span>
+            </label>
+        </div>
+        <div class="column-item">
+            <label class="custom-control custom-checkbox">
+                <input type="checkbox" name="chkColItem" class="custom-control-input" data-value="PROCESSID">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">PROCESSID</span>
+            </label>
+        </div>
+        <div class="column-item">
+            <label class="custom-control custom-checkbox">
+                <input type="checkbox" name="chkColItem" class="custom-control-input" data-value="PART">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">PART</span>
+            </label>
+        </div>
+        <div class="column-item">
+            <label class="custom-control custom-checkbox">
+                <input type="checkbox" name="chkColItem" class="custom-control-input" data-value="PO_IDX">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">PO_IDX</span>
+            </label>
+        </div>
+        <div class="column-item">
+            <label class="custom-control custom-checkbox">
+                <input type="checkbox" name="chkColItem" class="custom-control-input" data-value="MAC_ADDR">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">MAC_ADDR</span>
+            </label>
+        </div>
+        <div class="column-item">
+            <label class="custom-control custom-checkbox">
+                <input type="checkbox" name="chkColItem" class="custom-control-input" data-value="VALUE">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">VALUE</span>
+            </label>
+        </div>
+    </div>
+    <div class="column-footer">
+        <a class="btn btn-sm btn-success btnColumnCheckAll">ALL</a>
+        <a class="btn btn-sm btn-warning btnColumnCheckNone">NONE</a>
+        <a class="btn btn-sm btn-primary btnColumnApply">APPLY</a>
+        <a class="btn btn-sm btn-primary btnColumnAutoFix">AUTO FIT</a>
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+
+            <div class="modal fade modal-log svg-modal" role="dialog">
+                <div class="modal-dialog modal-xl" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title pull-left">LOG</h5>
+                            <a class="btn btn-danger btnCLoseModal"><i class="zmdi zmdi-close"></i></a>
+                        </div>
+                        <div class="modal-body" style="max-height: 1000px; overflow: auto;">
+                            <input type="hidden" name="ID" value="" />
+                            <div class="hiddenFile hidden"></div>
+                            <div class="row">
+                                <div class="col-sm-12 mt-2">
+                                    <table class="table mb-0 table-bordered table-inverse" id="tblLog">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>TITLE</th>
+                                                <th>DESC</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div>
+            <footer class="footer hidden-xs-down p0">
+                <p>© HRM 2026. All rights reserved.</p>
+            </footer>
+        </section>
+    </main>
+
+    <!-- Javascript -->
+    <script src="/hrm/content/components/jquery/dist/jquery.min.js"></script>
+    <script src="/hrm/content/components/popper.js/dist/umd/popper.min.js"></script>
+    <script src="/hrm/content/components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script>
+        jQuery.expr[':'].icontains = function (a, i, m) {
+            return jQuery(a).text().toUpperCase()
+                .indexOf(m[3].toUpperCase()) >= 0;
+        };
+    </script>
+
+    <script src="/hrm/bundles/include?v=vzPCjYP_ihyaQrMcj2w1leL2nbwt41Vls88WLnzqW8M1"></script>
+
+
+    
+    <script>
+        APP_CONFIG = {
+
+            GetCompoment: '/hrm/get-compoment',
+
+            GetDataEmployers: '/hrm/Api/GetData/Config_Etc_GetEmployers',
+            GetByID_ConfigEmployer: '/hrm/Api/GetData/GetByID_ConfigEmployer',
+            Etc_PostEmployer: '/hrm/Config/Etc_PostEmployer',
+            Etc_DelEmployer: '/hrm/Config/Etc_DelEmployer',
+
+            Etc_Template: '/hrm/Config/Etc_Template',
+
+            pageLength: parseInt('100')
+
+        }
+    </script>
+    <script src="/hrm/Content/bd-js/config_etc?v=Lp3Rsd1xYRJBYcbGduE-BBzsXm6qk2Ceq0r_ng1dZ841"></script>
+
+
+</body>
+</html>

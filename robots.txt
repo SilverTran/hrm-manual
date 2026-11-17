@@ -1,0 +1,41 @@
+# Chặn toàn bộ công cụ tìm kiếm và bot thu thập dữ liệu
+User-agent: *
+Disallow: /
+
+# Chặn Googlebot
+User-agent: Googlebot
+Disallow: /
+
+# Chặn Bing / Yahoo
+User-agent: Bingbot
+Disallow: /
+
+# Chặn OpenAI / ChatGPT
+User-agent: GPTBot
+Disallow: /
+User-agent: ChatGPT-User
+Disallow: /
+
+# Chặn Anthropic / Claude
+User-agent: ClaudeBot
+Disallow: /
+User-agent: anthropic-ai
+Disallow: /
+
+# Chặn Google Gemini AI Crawler
+User-agent: Google-Extended
+Disallow: /
+
+# Chặn Perplexity AI Search
+User-agent: PerplexityBot
+Disallow: /
+
+# Chặn Common Crawl & ByteDance
+User-agent: CCBot
+Disallow: /
+User-agent: Bytespider
+Disallow: /
+
+# Chặn Applebot AI
+User-agent: Applebot-Extended
+Disallow: /

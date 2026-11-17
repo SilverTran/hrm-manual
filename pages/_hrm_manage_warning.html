@@ -1,0 +1,501 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link href="/hrm/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Manage &rsaquo; Warning</title>
+    <link href="/hrm/Content/bd-css/csss?v=gHaYcIPRIdSx7Cqzwb0cpov_04ZJXbfBT5MQDA2WQEY1" rel="stylesheet"/>
+
+    
+    <link href="/hrm/Content/bd-css/manage_warning?v=lRynv8kOKIRvurEEdxPH_r2dVmPlsPoGj5mI3boNI5k1" rel="stylesheet"/>
+
+
+
+<script>
+        IMS_CONFIG = {
+            PING: '/hrm/ping',
+            LOG_API: '/hrm/Api/GetData/LogDatas',
+            ARRALERT: [],
+            USERID: 'test',
+            TODAY: '2026-11-03'.replace('/', '-').replace('/', '-'),
+            IP: '127.0.0.1',
+            WAREHOUSE: 'SWH',
+            ALAS: 'hrm'.trim(),
+            LOCATION: 'HRM',
+            NOW: '2026-11-03 14:47:39',
+            MONTH: '11',
+            LOG_ID: '',
+            BEARED_TOKEN: '',
+        };
+</script>
+</head>
+<body data-sa-theme="4">
+    <main class="main">
+        <div class="page-loader"><div class="page-loader__spinner"><svg viewBox="25 25 50 50"><circle cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /></svg><div>Loading...</div></div></div>
+        <header class="header">
+            <div class="navigation-trigger hidden-md-up" data-sa-action="aside-open" data-sa-target=".sidebar"><i class="zmdi zmdi-menu"></i></div>
+            <div class="logo">
+                <h1><a href="/hrm/">SIMS</a></h1>
+                <div class="sims-version">V 26.10 - HRM</div>
+            </div>
+            <div class="slogan hidden-sm-down">Manage &rsaquo; Warning</div>
+            <ul class="top-nav hidden-sm-down">
+                    <li class="dropdown top-nav__notifications">
+                        <a data-toggle="dropdown">MANAGE</a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu--block" role="menu">
+                            <div class="dropdown-header">MANAGE</div>
+                            <div class="row app-shortcuts">
+                                    <a class="col-4 app-shortcuts__item" href="/hrm/manage/registration"><i class="zmdi zmdi-accounts-add zmdi-hc-fw"></i> <small class="">Registration</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/manage/information"><i class="zmdi zmdi-account-box-o zmdi-hc-fw"></i> <small class="">Information</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/manage/contract"><i class="zmdi zmdi-folder-person"></i> <small class="">Contract<br>(Terminate)</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/manage/resignation"><i class="zmdi zmdi-account zmdi-hc-fw color-red"></i> <small class="">Resignation</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/manage/7yrs-old"><i class="zmdi zmdi-accounts-list-alt zmdi-hc-fw"></i> <small class="">< 7yrs old</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/manage/warning"><i class="zmdi zmdi-alert-polygon zmdi-hc-fw"></i> <small class="">Warning</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/manage/set-overtime"><i class="zmdi zmdi-format-list-bulleted"></i> <small class="">Set Overtime</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/manage/leave"><i class="zmdi zmdi-format-list-bulleted"></i> <small class="">Leave</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Manage/PregnancyExam"><i class="zmdi zmdi-format-list-bulleted"></i> <small class="">Pregnancy<br>Examination</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Manage/MaternityBenefit"><i class="zmdi zmdi-format-list-bulleted"></i> <small class="">Maternity<br>Benefit</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Manage/BenefitPayment"><i class="zmdi zmdi-format-list-bulleted"></i> <small class="">Benefit<br>Payment</small></a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="dropdown top-nav__notifications">
+                        <a data-toggle="dropdown"> ATTENDANCE</a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu--block" role="menu">
+                            <div class="dropdown-header">ATTENDANCE</div>
+                            <div class="row app-shortcuts">
+                                    <a class="col-4 app-shortcuts__item" href="/hrm/attendance/working-hours"><i class="zmdi zmdi-time zmdi-hc-fw"></i> <small class="">Working hours</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/attendance/attendance"><i class="zmdi zmdi-trending-up zmdi-hc-fw"></i> <small class="">Attendance</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/attendance/annual-leave"><i class="zmdi zmdi-calendar"></i> <small class="">Annual leave</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Attendance/LateOrLeaveEarly"><i class="zmdi zmdi-calendar"></i> <small class="">Late & leave early</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/attendance/overtime"><i class="zmdi zmdi-format-list-bulleted"></i> <small class="">Overtime</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Attendance/OvertimeYear"><i class="zmdi zmdi-format-list-bulleted"></i> <small class="">Overtime<br>(Year)</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/attendance/payroll"><i class="zmdi zmdi-money zmdi-hc-fw"></i> <small class="">Payroll</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Attendance/Summary"><i class="zmdi zmdi-money zmdi-hc-fw"></i> <small class="">Summary</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Attendance/VTOffice"><i class="zmdi zmdi-money zmdi-hc-fw"></i> <small class="">VT - Office</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Attendance/StopVTOffice"><i class="zmdi zmdi-money zmdi-hc-fw"></i> <small class="">Stop<br>VT - Office</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Attendance/FacSum"><i class="zmdi zmdi-money zmdi-hc-fw"></i> <small class="">Fac Sum</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Attendance/Bank"><i class="zmdi zmdi-money zmdi-hc-fw"></i> <small class="">Bank</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Attendance/Cash"><i class="zmdi zmdi-money zmdi-hc-fw"></i> <small class="">Cash</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Attendance/Severance"><i class="zmdi zmdi-money zmdi-hc-fw"></i> <small class="">Severance</small></a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="dropdown top-nav__notifications">
+                        <a data-toggle="dropdown"> EMPLOYEE</a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu--block" role="menu">
+                            <div class="dropdown-header">EMPLOYEE</div>
+                            <div class="row app-shortcuts">
+                                    <a class="col-4 app-shortcuts__item" href="/hrm/employee/working-hours"><i class="zmdi zmdi-time zmdi-hc-fw"></i> <small class="">Working hours (OT Over)</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/employee/payroll"><i class="zmdi zmdi-money"></i> <small class="">Payroll<br />(OT Over)</small></a>
+                            </div>
+                        </div>
+                    </li>
+
+
+                    <li class="dropdown top-nav__notifications">
+                        <a data-toggle="dropdown"> CONFIG</a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu--block" role="menu">
+                            <div class="dropdown-header">CONFIG</div>
+                            <div class="row app-shortcuts">
+                                    <a class="col-4 app-shortcuts__item" href="/hrm/config/section"><i class="zmdi zmdi-repeat zmdi-hc-fw"></i> <small class="">Section</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/config/leave-elderly"><i class="zmdi zmdi-calendar-note"></i> <small class="">Leave elderly</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/config/etc"><i class="zmdi zmdi-view-headline"></i> <small class="">Etc</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/config/shift"><i class="zmdi zmdi-view-headline"></i> <small class="">Shift</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/config/schedule"><i class="zmdi zmdi-view-headline"></i> <small class="">Schedule</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/config/lock-working-hours"><i class="zmdi zmdi-lock"></i> <small class="">Lock / Work hours</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/Config/Holiday"><i class="zmdi zmdi-calendar-note"></i> <small class="">Holiday</small></a>
+                                                                    <a class="col-4 app-shortcuts__item" href="/hrm/config/config"><i class="zmdi zmdi-settings"></i> <small class="">Config</small></a>
+                            </div>
+                        </div>
+                    </li>
+
+                <li class="dropdown top-nav__notifications hidden-xs-down">
+                    <a href="#" data-toggle="dropdown">ADMIN</a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu--block" role="menu">
+                        <div class="dropdown-header">Hello, test</div>
+                        <div class="row app-shortcuts">
+                                <a class="col-4 app-shortcuts__item" href="/hrm/admin/account"><i class="zmdi zmdi-accounts-alt zmdi-hc-fw"></i> <small class="">Account</small></a>
+                                                            <a class="col-4 app-shortcuts__item" href="/hrm/admin/login-history"><i class="zmdi zmdi-accounts-list zmdi-hc-fw"></i> <small class="">Login history</small></a>
+                                                            <a class="col-4 app-shortcuts__item" href="/hrm/admin/white-list"><i class="zmdi zmdi-check-all zmdi-hc-fw"></i> <small class="">White list</small></a>
+                            <a class="col-4 app-shortcuts__item" href="/hrm/admin/account/edit"><i class="zmdi zmdi-account-circle zmdi-hc-fw"></i> <small class="">Profile</small></a>
+                            <a class="col-4 app-shortcuts__item" href="/hrm/logout"><i class="zmdi zmdi-sign-in zmdi-hc-fw"></i> <small class="">Logout</small></a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="clock hidden-md-down"><div class="time"><span class="time__hours"></span><span class="time__min"></span><span class="time__sec"></span></div></div>
+        </header>
+
+        <aside class="sidebar sidebar--hidden">
+            <div class="scrollbar-inner">
+                <ul class="navigation">
+                    
+                    <li class="navigation__sub">
+                        <a href=""><i class="zmdi zmdi-more-vert"></i> ADMIN</a>
+                        <ul>
+                                <li><a href="/hrm/admin/account"> Account</a></li>
+                                                            <li><a href="/hrm/Common/LogTracking"> Login history</a></li>
+                                                            <li><a href="/hrm/Common/LogTracking"> White list</a></li>
+                            <li><a href="/hrm/admin/account/edit"> Profile</a></li>
+                            <li><a href="/hrm/logout"> Logout</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </aside>
+        <section class="content content--full">
+            
+
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <a class="btn btn-info pull-right btnDisplayUI bor-radius-0"><i class="zmdi zmdi-flower"></i></a>
+                <a class="btn btn-light pull-right btn--icon-text btnFilter bor-radius-0 mr-1"><i class="zmdi zmdi-refresh"></i> Search</a>
+                <div class="pull-right mr-1" style="width:120px;">
+                    <select class="select2" name="Q_YEAR">
+                            <option value="2025" >2025</option>
+                            <option value="2026" selected>2026</option>
+                    </select>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-12">
+                <input type="hidden" name="orderby" value="EMP_ID" />
+                <input type="hidden" name="orderdir" value="asc" />
+                <input type="hidden" name="pageNumber" value="1" />
+                <div class="table-responsive">
+                    <table class="table mb-0 table-bordered table-inverse" id="tblOrder" data-id="tblOrder" data-name="manage_warning"
+                           data-orderby="orderby"
+                           data-orderdir="orderdir"
+                           data-pagenum="pageNumber"
+                           data-min-size="40">
+                        <thead class="thead-inverse">
+                            <tr>
+                                <th data-column="EMP_ID" rowspan="2">
+                                    <div class="space-empty-2"></div>
+                                    ID
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="SECTION_NAME" rowspan="2">
+                                    <div class="space-empty-2"></div>
+                                    SECTION
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="FULL_NAME" rowspan="2">
+                                    <div class="space-empty-2"></div>
+                                    FULL NAME
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="JOB_NAME" rowspan="2">
+                                    <div class="space-empty-2"></div>
+                                    JOB
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="JOB_FACTORY" rowspan="2">
+                                    <div class="space-empty-2"></div>
+                                    JOB (FACTORY)
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-uncolumn="MONTH" colspan="12" data-list-column="T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12">
+                                    <div class="space-empty-2"></div>
+                                    MONTH
+                                </th>
+                                <th data-column="TOTAL" rowspan="2">
+                                    <div class="space-empty-2"></div>
+                                    TOTAL
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                </th>
+
+                                <th data-column="COL_18" rowspan="2">
+                                    <div class="space-empty-2"></div>
+                                    <label class='custom-control custom-checkbox'>
+                                        <input type='checkbox' name='chkAllItem' class='custom-control-input'><span class='custom-control-indicator'></span>
+                                    </label>
+                                    <br />
+                                    <a class="btn btn-sm btn-primary btnWarning">WARNING</a>
+                                </th>
+
+                                <th data-column="COL_19" rowspan="2">
+                                    <div class="space-empty-2"></div>
+                                </th>
+
+                            </tr>
+                            <tr>
+                                <th data-column="T1">
+                                    <div class="space-empty-2"></div>
+                                    01
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="T2">
+                                    <div class="space-empty-2"></div>
+                                    02
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="T3">
+                                    <div class="space-empty-2"></div>
+                                    03
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="T4">
+                                    <div class="space-empty-2"></div>
+                                    04
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="T5">
+                                    <div class="space-empty-2"></div>
+                                    05
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="T6">
+                                    <div class="space-empty-2"></div>
+                                    06
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="T7">
+                                    <div class="space-empty-2"></div>
+                                    07
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="T8">
+                                    <div class="space-empty-2"></div>
+                                    08
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="T9">
+                                    <div class="space-empty-2"></div>
+                                    09
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="T10">
+                                    <div class="space-empty-2"></div>
+                                    10
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="T11">
+                                    <div class="space-empty-2"></div>
+                                    11
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                </th>
+                                <th data-column="T12">
+                                    <div class="space-empty-2"></div>
+                                    12
+                                    <a class="btn btnFilterByColumn" data-value=""><i class="zmdi zmdi-tune zmdi-hc-fw"></i></a>
+                                </th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modal-manage svg-modal svg-reload" role="dialog">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title pull-left">MANAGE</h5>
+                <a class="btn btn-danger btnCLoseModal"><i class="zmdi zmdi-close"></i></a>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="ID" value="" />
+                <div class="hiddenFile hidden"></div>
+                <div class="row">
+                    <div class="col-sm-12 mt-2">
+                        <table class="table mb-0 table-bordered table-inverse" id="tblSubOrder">
+                            <thead>
+                                <tr>
+                                    <th>DATE</th>
+                                    <th>REASON</th>
+                                    <th>FILES</th>
+                                    <th>
+                                            <a class="btn btn-sm btn-success btnAddWarning"> ADD WARNING</a>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade modal-edit-warning svg-modal" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title pull-left">WARNING</h5>
+                <a class="btn btn-danger btnCLoseModalChil"><i class="zmdi zmdi-close"></i></a>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" name="ID" value="" />
+                <div class="hiddenFile hidden"></div>
+
+                <div class="row">
+                    <div class="col-sm-12 mt-2">
+                        <table class="table mb-0 table-bordered table-inverse table-layout-fixed" id="tblSubOrder">
+                            <tbody>
+                                <tr>
+                                    <td width="30" class="text-left">● Date of application</td>
+                                    <td width="40">
+                                        <code class="editor_data text-left" data-type="DATE_VN" data-element="date" data-title="" data-value="" data-pre="" data-com="0"></code>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-left" colspan="2">● Reason</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <code class="editor_data text-left" data-type="REASON" data-element="text" data-title="" data-value="" data-pre="" data-com="0"></code>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="text-left">
+                                        <a class="btn btn-sm btn-success btnAddFileWarning">Upload warning letter</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="text-left">
+                                        <div class="lstFiles inner-block pl-2"></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light btn-WarningFileCancel">Close</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+
+
+
+
+<div id="option-editor" class="hidden">
+    <div class="row">
+        <div class="col-sm-12 mb-15">
+            <input type="hidden" name="qKey" value="" />
+            <input type="text" name="qFilter" class="form-control input-sm" value="" placeholder="search..." />
+            <a class="btn-filter-cleartext"><i class="zmdi zmdi-close zmdi-hc-fw"></i></a>
+        </div>
+        <div class="col-sm-12 mb-15">
+            <div class="scrollbar-inner">
+                <div class="option-content"></div>
+            </div>
+        </div>
+        <div class="col-sm-12 text-center">
+            <a class="btn btn-sm btn-light btn-filter-ok"><i class="zmdi zmdi-check zmdi-hc-fw"></i></a>
+            <a class="btn btn-sm btn-light btn-filter-reset"><i class="zmdi zmdi-block zmdi-hc-fw"></i></a>
+            <a class="btn btn-sm btn-primary btn-filter-check-all">ALL</a>
+        </div>
+        <a class="btn btn-sm btn-light btn-filter-close"><i class="zmdi zmdi-close zmdi-hc-fw"></i></a>
+    </div>
+</div>
+
+<div id="option-column" class="hidden">
+    <div class="column-contain"></div>
+    <div class="column-footer">
+        <a class="btn btn-sm btn-success btnColumnCheckAll">ALL</a>
+        <a class="btn btn-sm btn-warning btnColumnCheckNone">NONE</a>
+        <a class="btn btn-sm btn-primary btnColumnApply">APPLY</a>
+        <a class="btn btn-sm btn-primary btnColumnAutoFix">AUTO FIT</a>
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+
+            <div class="modal fade modal-log svg-modal" role="dialog">
+                <div class="modal-dialog modal-xl" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title pull-left">LOG</h5>
+                            <a class="btn btn-danger btnCLoseModal"><i class="zmdi zmdi-close"></i></a>
+                        </div>
+                        <div class="modal-body" style="max-height: 1000px; overflow: auto;">
+                            <input type="hidden" name="ID" value="" />
+                            <div class="hiddenFile hidden"></div>
+                            <div class="row">
+                                <div class="col-sm-12 mt-2">
+                                    <table class="table mb-0 table-bordered table-inverse" id="tblLog">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>TITLE</th>
+                                                <th>DESC</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div>
+            <footer class="footer hidden-xs-down p0">
+                <p>© HRM 2026. All rights reserved.</p>
+            </footer>
+        </section>
+    </main>
+
+    <!-- Javascript -->
+    <script src="/hrm/content/components/jquery/dist/jquery.min.js"></script>
+    <script src="/hrm/content/components/popper.js/dist/umd/popper.min.js"></script>
+    <script src="/hrm/content/components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script>
+        jQuery.expr[':'].icontains = function (a, i, m) {
+            return jQuery(a).text().toUpperCase()
+                .indexOf(m[3].toUpperCase()) >= 0;
+        };
+    </script>
+
+    <script src="/hrm/bundles/include?v=vzPCjYP_ihyaQrMcj2w1leL2nbwt41Vls88WLnzqW8M1"></script>
+
+
+    
+    <script>
+        APP_CONFIG = {
+            GetCompoment: '/hrm/get-compoment',
+            GetDatas: '/hrm/Api/GetData/Manage_Warning_GetDatas',
+            Manage_Warning_GetWarningByEmpID: '/hrm/Api/GetData/Manage_Warning_GetWarningByEmpID',
+            Manage_Warning_GetWarningByWarningID: '/hrm/Api/GetData/Manage_Warning_GetWarningByWarningID',
+
+            PER_EDIT: parseInt('1'),
+            SAVE_ITEM: '/hrm/Manage/Warning_SaveItem',
+            Warning_DelWarning: '/hrm/Manage/Warning_DelWarning',
+            Warning_PostWarning: '/hrm/Manage/Warning_PostWarning',
+
+            Warning_DelWarningFile: '/hrm/Manage/Warning_DelWarningFile',
+            Warning_PostWarningFile: '/hrm/Manage/Warning_PostWarningFile',
+
+            Warning_DLWarning: '/hrm/Manage/Warning_DLWarning?IDS=_IDS_&YEAR=_YEAR_',
+
+
+
+            PostLinkExport: '/hrm/Api/GetData/PostLinkExport',
+            pageLength: parseInt('100')
+        }
+    </script>
+    <script src="/hrm/Content/bd-js/manage_warning?v=PzVV2m2o2ZnX0sYewkkNJWUYB0fdllZyooSsX732H6U1"></script>
+
+
+</body>
+</html>
